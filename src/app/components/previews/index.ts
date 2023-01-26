@@ -10,6 +10,7 @@ export * from './ModelPreview.jsx'
 export * from './NoisePreview.js'
 export * from './NoiseSettingsPreview.js'
 export * from './StructureSetPreview.jsx'
+export * from './VillagerConfigPreview.jsx'
 
 export type PreviewProps = {
 	model: DataModel,

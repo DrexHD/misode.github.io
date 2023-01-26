@@ -1,0 +1,882 @@
+{
+  "tiers": [
+    {
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "gives": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 2.0,
+              "wants": [
+                {
+                  "item": "minecraft:clay_ball",
+                  "price_multiplier": 0.05,
+                  "quantity": 10.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:brick",
+                  "quantity": 10.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 1.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_exp_required": 0
+    },
+    {
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "gives": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 10.0,
+              "wants": [
+                {
+                  "item": "minecraft:stone",
+                  "price_multiplier": 0.05,
+                  "quantity": 20.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:chiseled_stone_bricks",
+                  "quantity": 4.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 5.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_exp_required": 10
+    },
+    {
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "gives": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 20.0,
+              "wants": [
+                {
+                  "item": "minecraft:granite",
+                  "price_multiplier": 0.05,
+                  "quantity": 16.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 20.0,
+              "wants": [
+                {
+                  "item": "minecraft:andesite",
+                  "price_multiplier": 0.05,
+                  "quantity": 16.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 20.0,
+              "wants": [
+                {
+                  "item": "minecraft:diorite",
+                  "price_multiplier": 0.05,
+                  "quantity": 16.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:dripstone_block",
+                  "quantity": 4.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 10.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:polished_andesite",
+                  "quantity": 4.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 10.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:polished_diorite",
+                  "quantity": 4.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 10.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:polished_granite",
+                  "quantity": 4.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 10.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_exp_required": 70
+    },
+    {
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "gives": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 30.0,
+              "wants": [
+                {
+                  "item": "minecraft:quartz",
+                  "price_multiplier": 0.05,
+                  "quantity": 12.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:orange_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:white_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:blue_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:light_blue_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:gray_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:light_gray_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:black_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:red_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:pink_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:magenta_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:lime_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:green_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:cyan_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:purple_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:yellow_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:brown_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:orange_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:white_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:blue_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:light_blue_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:gray_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:light_gray_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:black_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:red_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:pink_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:magenta_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:lime_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:green_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:cyan_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:purple_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:yellow_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:brown_glazed_terracotta",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_exp_required": 150
+    },
+    {
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "gives": [
+                {
+                  "item": "minecraft:quartz_pillar",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 30.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:quartz_block",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 30.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_exp_required": 250
+    }
+  ]
+}

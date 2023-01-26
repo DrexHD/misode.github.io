@@ -115,6 +115,12 @@
       "schema": "loot_table"
     },
     {
+      "id": "villagerconfig",
+      "url": "villagerconfig",
+      "path": "villagerconfig",
+      "schema": "villagerconfig"
+    },
+    {
       "id": "predicate",
       "url": "predicate",
       "path": "predicates",

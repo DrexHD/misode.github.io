@@ -1,0 +1,680 @@
+{
+  "tiers": [
+    {
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "gives": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 2.0,
+              "wants": [
+                {
+                  "item": "minecraft:stick",
+                  "price_multiplier": 0.05,
+                  "quantity": 32.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:arrow",
+                  "quantity": 16.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 1.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:flint",
+                  "quantity": 10.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 1.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 1.0
+                },
+                {
+                  "item": "minecraft:gravel",
+                  "price_multiplier": 0.05,
+                  "quantity": 10.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_exp_required": 0
+    },
+    {
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "gives": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 10.0,
+              "wants": [
+                {
+                  "item": "minecraft:flint",
+                  "price_multiplier": 0.05,
+                  "quantity": 26.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:bow",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 5.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 2.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_exp_required": 10
+    },
+    {
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "gives": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 20.0,
+              "wants": [
+                {
+                  "item": "minecraft:string",
+                  "price_multiplier": 0.05,
+                  "quantity": 14.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "item": "minecraft:crossbow",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 10.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 3.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_exp_required": 70
+    },
+    {
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "gives": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 16.0,
+              "reward_exp": true,
+              "trader_exp": 30.0,
+              "wants": [
+                {
+                  "item": "minecraft:feather",
+                  "price_multiplier": 0.05,
+                  "quantity": 24.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "functions": [
+                    {
+                      "function": "minecraft:enchant_with_levels",
+                      "levels": {
+                        "type": "minecraft:uniform",
+                        "max": 19.0,
+                        "min": 5.0
+                      },
+                      "treasure": false
+                    }
+                  ],
+                  "item": "minecraft:bow",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 3.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": {
+                    "type": "minecraft:uniform",
+                    "max": 21.0,
+                    "min": 7.0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_exp_required": 150
+    },
+    {
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "gives": [
+                {
+                  "item": "minecraft:emerald",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 30.0,
+              "wants": [
+                {
+                  "item": "minecraft:tripwire_hook",
+                  "price_multiplier": 0.05,
+                  "quantity": 8.0
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "functions": [
+                    {
+                      "function": "minecraft:enchant_with_levels",
+                      "levels": {
+                        "type": "minecraft:uniform",
+                        "max": 19.0,
+                        "min": 5.0
+                      },
+                      "treasure": false
+                    }
+                  ],
+                  "item": "minecraft:crossbow",
+                  "quantity": 1.0
+                }
+              ],
+              "max_uses": 3.0,
+              "reward_exp": true,
+              "trader_exp": 15.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": {
+                    "type": "minecraft:uniform",
+                    "max": 22.0,
+                    "min": 8.0
+                  }
+                }
+              ]
+            },
+            {
+              "gives": [
+                {
+                  "choice": [
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:night_vision"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_night_vision"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:invisibility"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_invisibility"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:leaping"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_leaping"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:strong_leaping"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:fire_resistance"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_fire_resistance"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:swiftness"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_swiftness"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:strong_swiftness"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:slowness"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_slowness"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:strong_slowness"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:turtle_master"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_turtle_master"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:strong_turtle_master"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:water_breathing"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_water_breathing"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:healing"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:strong_healing"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:harming"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:strong_harming"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:poison"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_poison"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:strong_poison"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:regeneration"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_regeneration"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:strong_regeneration"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:strength"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_strength"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:strong_strength"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:weakness"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_weakness"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:slow_falling"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    },
+                    {
+                      "functions": [
+                        {
+                          "function": "minecraft:set_potion",
+                          "id": "minecraft:long_slow_falling"
+                        }
+                      ],
+                      "item": "minecraft:tipped_arrow",
+                      "quantity": 5.0
+                    }
+                  ]
+                }
+              ],
+              "max_uses": 12.0,
+              "reward_exp": true,
+              "trader_exp": 30.0,
+              "wants": [
+                {
+                  "item": "minecraft:emerald",
+                  "price_multiplier": 0.05,
+                  "quantity": 2.0
+                },
+                {
+                  "item": "minecraft:arrow",
+                  "price_multiplier": 0.05,
+                  "quantity": 5.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_exp_required": 250
+    }
+  ]
+}
