@@ -443,6 +443,7 @@ main > .controls {
 }
 
 .popup-preview {
+	overflow-y: auto;
 	position: fixed;
 	display: flex;
 	flex-direction: column;
