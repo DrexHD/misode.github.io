@@ -37,7 +37,7 @@ export const VillagerConfigPreview = ({ data }: PreviewProps) => {
 						<ItemDisplay item={wants0} slotDecoration={true} advancedTooltip={advancedTooltips} />
 					</div>
 					{wants1 != undefined && (
-						<div style={slotStyle(30, trades.length, index)}>
+						<div style={slotStyle(36, trades.length, index)}>
 							<ItemDisplay item={wants1!} slotDecoration={true} advancedTooltip={advancedTooltips} />
 						</div>
 					)}
@@ -74,13 +74,13 @@ export const VillagerConfigPreview = ({ data }: PreviewProps) => {
 
 const GUI_WIDTH = 89
 const GUI_HEIGHT = 20
-const ITEM_SIZE = 16
+const ITEM_SIZE = 18
 
 function slotStyle(x: number, trades: number, index: number) {
 	return {
 		left: `${x * 100 / GUI_WIDTH}%`,
-		top: `${(2 + (index * GUI_HEIGHT)) * 100 / (GUI_HEIGHT * trades)}%`,
-		width: `${ITEM_SIZE*100/GUI_WIDTH}%`,
-		height: `${ITEM_SIZE*100/GUI_HEIGHT/trades}%`,
+		top: `${index / trades * 100}%`,
+		width: `${ITEM_SIZE * 100 / GUI_WIDTH}%`,
+		height: `${ITEM_SIZE * 100 / GUI_HEIGHT / trades}%`,
 	}
 }
