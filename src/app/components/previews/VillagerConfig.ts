@@ -34,13 +34,31 @@ export function generateTrades(lootTable: any, options: LootOptions) {
 	const result: Trade[] = []
 	for (const tier of lootTable.tiers ?? []) {
 		for (const group of tier.groups ?? []) {
-			// TODO Only show group.num_to_select trades
+			const pool: Trade[] = []
 			for (const trade of group.trades ?? []) {
-				generateTrade(trade, consumed => result.push(consumed), ctx)
+				generateTrade(trade, consumed => pool.push(consumed), ctx)
 			}
+			fillRecipesFromPool(result, pool, group.num_to_select, ctx)
 		}
 	}
 	return result
+}
+
+function fillRecipesFromPool(result: Trade[], pool: Trade[], count: number, ctx: LootContext) {
+	const set = new Set<number>()
+	if (pool.length > count) {
+		while(set.size < count) {
+			set.add(ctx.random.nextInt(pool.length))
+		}
+	} else {
+		for (let i = 0; i < pool.length; i++) {
+			set.add(i)
+		}
+	}
+	for (const i of set.values()) {
+		result.push(pool[i])
+	}
+
 }
 
 function generateTrade(trade: any, consumer: TradeConsumer, ctx: LootContext) {
