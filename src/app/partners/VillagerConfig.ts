@@ -11,7 +11,8 @@ export function initVillagerConfig(schemas: SchemaRegistry, collections: Collect
       Mod(ObjectNode({
         groups: ListNode(
 			Reference(`${ID}:group`)
-		)
+		),
+		total_exp_required: NumberNode({ integer: true, min: 0 })
       }, { category: 'groups', context: 'trade_groups' }), {
         default: () => ({
           rolls: 1,
@@ -30,9 +31,9 @@ export function initVillagerConfig(schemas: SchemaRegistry, collections: Collect
 						}
 					]
 				}
-			],
-			total_exp_required: 0
-          }]
+			]
+          }],
+		  total_exp_required: 0
         })
       })
     )
@@ -42,8 +43,7 @@ export function initVillagerConfig(schemas: SchemaRegistry, collections: Collect
 		num_to_select: Reference('number_provider'),
 		trades: ListNode(
 			Reference(`${ID}:trade`)
-		),
-		total_exp_required: NumberNode({ integer: true, min: 0 })
+		)
   }))
 
 
