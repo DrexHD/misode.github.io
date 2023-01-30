@@ -88,7 +88,7 @@ export function initVillagerConfig(schemas: SchemaRegistry, collections: Collect
 		  return typeof v === 'object' && (keys?.length === 0 || (keys?.length === 1 && keys?.[0] === 'type'))
 		},
 		node: provider,
-		change: (v: any) => ({type: k})
+		change: () => ({type: k})
 	  })
 	})
 	return ChoiceNode(choices, { context, choiceContext: `${context}.type` })
