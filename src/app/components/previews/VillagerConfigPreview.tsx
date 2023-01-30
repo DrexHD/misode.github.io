@@ -30,19 +30,19 @@ export const VillagerConfigPreview = ({ data }: PreviewProps) => {
 
 	return <>
 		<div ref={overlay} class="preview-overlay">
-			{trades.map(({ wants0, wants1, gives }, index) =>
+			{trades.map(({ cost_a, cost_b, result }, index) =>
 				<>
 					<img src="/images/trade.png" alt="Trade background" class="pixelated" draggable={false} />
 					<div style={slotStyle(5, trades.length, index)}>
-						<ItemDisplay item={wants0} slotDecoration={true} advancedTooltip={advancedTooltips} />
+						<ItemDisplay item={cost_a} slotDecoration={true} advancedTooltip={advancedTooltips} />
 					</div>
-					{wants1 != undefined && (
+					{cost_b != undefined && (
 						<div style={slotStyle(36, trades.length, index)}>
-							<ItemDisplay item={wants1!} slotDecoration={true} advancedTooltip={advancedTooltips} />
+							<ItemDisplay item={cost_b!} slotDecoration={true} advancedTooltip={advancedTooltips} />
 						</div>
 					)}
 					<div style={slotStyle(68, trades.length, index)}>
-						<ItemDisplay item={gives} slotDecoration={true} advancedTooltip={advancedTooltips} />
+						<ItemDisplay item={result} slotDecoration={true} advancedTooltip={advancedTooltips} />
 					</div>
 				</>
 			)}

@@ -6,126 +6,127 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 6.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:leather"
+              },
               "max_uses": 16.0,
-              "reward_exp": true,
-              "trader_exp": 2.0,
-              "wants": [
-                {
-                  "item": "minecraft:leather",
-                  "price_multiplier": 0.05,
-                  "quantity": 6.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 2.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "add": true,
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 30.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 20.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    }
-                  ],
-                  "item": "minecraft:leather_leggings",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:emerald"
+              },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:leather_leggings"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 1.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": 3.0
-                },
-                {
-                  "item": "minecraft:leather_leggings",
-                  "price_multiplier": 0.2,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": true,
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 30.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 20.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  }
+                ],
+                "name": "minecraft:leather_leggings"
+              },
+              "reward_experience": true,
+              "trader_experience": 1.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "add": true,
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 30.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 20.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    }
-                  ],
-                  "item": "minecraft:leather_chestplate",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 7.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:emerald"
+              },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:leather_chestplate"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 1.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": 7.0
-                },
-                {
-                  "item": "minecraft:leather_chestplate",
-                  "price_multiplier": 0.2,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": true,
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 30.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 20.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  }
+                ],
+                "name": "minecraft:leather_chestplate"
+              },
+              "reward_experience": true,
+              "trader_experience": 1.0
             }
           ]
         }
@@ -138,126 +139,127 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 26.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:flint"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 10.0,
-              "wants": [
-                {
-                  "item": "minecraft:flint",
-                  "price_multiplier": 0.05,
-                  "quantity": 26.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 10.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "add": true,
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 30.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 20.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    }
-                  ],
-                  "item": "minecraft:leather_helmet",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:emerald"
+              },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:leather_helmet"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 5.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": 5.0
-                },
-                {
-                  "item": "minecraft:leather_helmet",
-                  "price_multiplier": 0.2,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": true,
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 30.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 20.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  }
+                ],
+                "name": "minecraft:leather_helmet"
+              },
+              "reward_experience": true,
+              "trader_experience": 5.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "add": true,
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 30.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 20.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    }
-                  ],
-                  "item": "minecraft:leather_boots",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 4.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:emerald"
+              },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:leather_boots"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 5.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": 4.0
-                },
-                {
-                  "item": "minecraft:leather_boots",
-                  "price_multiplier": 0.2,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": true,
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 30.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 20.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  }
+                ],
+                "name": "minecraft:leather_boots"
+              },
+              "reward_experience": true,
+              "trader_experience": 5.0
             }
           ]
         }
@@ -270,74 +272,76 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 9.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:rabbit_hide"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 20.0,
-              "wants": [
-                {
-                  "item": "minecraft:rabbit_hide",
-                  "price_multiplier": 0.05,
-                  "quantity": 9.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 20.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "add": true,
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 30.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 20.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    }
-                  ],
-                  "item": "minecraft:leather_chestplate",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 7.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:emerald"
+              },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:leather_chestplate"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 1.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": 7.0
-                },
-                {
-                  "item": "minecraft:leather_chestplate",
-                  "price_multiplier": 0.2,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": true,
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 30.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 20.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  }
+                ],
+                "name": "minecraft:leather_chestplate"
+              },
+              "reward_experience": true,
+              "trader_experience": 1.0
             }
           ]
         }
@@ -350,74 +354,76 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 4.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:scute"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 30.0,
-              "wants": [
-                {
-                  "item": "minecraft:scute",
-                  "price_multiplier": 0.05,
-                  "quantity": 4.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 30.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "add": true,
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 30.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 20.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    }
-                  ],
-                  "item": "minecraft:leather_horse_armor",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 6.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:emerald"
+              },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:leather_horse_armor"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 15.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": 6.0
-                },
-                {
-                  "item": "minecraft:leather_horse_armor",
-                  "price_multiplier": 0.2,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": true,
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 30.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 20.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  }
+                ],
+                "name": "minecraft:leather_horse_armor"
+              },
+              "reward_experience": true,
+              "trader_experience": 15.0
             }
           ]
         }
@@ -430,74 +436,76 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:saddle",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 30.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": 6.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:saddle"
+              },
+              "reward_experience": true,
+              "trader_experience": 30.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "add": true,
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 30.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    },
-                    {
-                      "add": true,
-                      "conditions": [
-                        {
-                          "chance": 20.0,
-                          "condition": "minecraft:random_chance"
-                        }
-                      ],
-                      "dye": "random",
-                      "function": "minecraft:set_dye"
-                    }
-                  ],
-                  "item": "minecraft:leather_helmet",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:emerald"
+              },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:leather_helmet"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 30.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": 5.0
-                },
-                {
-                  "item": "minecraft:leather_helmet",
-                  "price_multiplier": 0.2,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": true,
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 30.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  },
+                  {
+                    "add": true,
+                    "conditions": [
+                      {
+                        "chance": 20.0,
+                        "condition": "minecraft:random_chance"
+                      }
+                    ],
+                    "function": "villagerconfig:set_dye"
+                  }
+                ],
+                "name": "minecraft:leather_helmet"
+              },
+              "reward_experience": true,
+              "trader_experience": 30.0
             }
           ]
         }

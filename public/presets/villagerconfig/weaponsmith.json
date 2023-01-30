@@ -6,73 +6,92 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
-              "max_uses": 16.0,
-              "reward_exp": true,
-              "trader_exp": 2.0,
-              "wants": [
-                {
-                  "item": "minecraft:coal",
-                  "price_multiplier": 0.05,
-                  "quantity": 15.0
-                }
-              ]
-            },
-            {
-              "gives": [
-                {
-                  "item": "minecraft:iron_axe",
-                  "quantity": 1.0
-                }
-              ],
-              "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 1.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": 3.0
-                }
-              ]
-            },
-            {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "function": "minecraft:enchant_with_levels",
-                      "levels": {
-                        "type": "minecraft:uniform",
-                        "max": 19.0,
-                        "min": 5.0
-                      },
-                      "treasure": false
-                    }
-                  ],
-                  "item": "minecraft:iron_sword",
-                  "quantity": 1.0
-                }
-              ],
-              "max_uses": 3.0,
-              "reward_exp": true,
-              "trader_exp": 1.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": {
-                    "type": "minecraft:uniform",
-                    "max": 21.0,
-                    "min": 7.0
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 15.0,
+                    "function": "minecraft:set_count"
                   }
+                ],
+                "name": "minecraft:coal"
+              },
+              "max_uses": 16.0,
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 2.0
+            },
+            {
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "max_uses": 12.0,
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:iron_axe"
+              },
+              "reward_experience": true,
+              "trader_experience": 1.0
+            },
+            {
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 2.0,
+                    "function": "minecraft:set_count"
+                  },
+                  {
+                    "add": true,
+                    "count": {
+                      "type": "villagerconfig:reference",
+                      "id": "enchantLevel"
+                    },
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:emerald"
+              },
+              "max_uses": 3.0,
+              "price_multiplier": 0.05,
+              "reference_providers": {
+                "enchantLevel": {
+                  "type": "minecraft:uniform",
+                  "max": 19.0,
+                  "min": 5.0
                 }
-              ]
+              },
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "function": "minecraft:enchant_with_levels",
+                    "levels": {
+                      "type": "villagerconfig:reference",
+                      "id": "enchantLevel"
+                    },
+                    "treasure": false
+                  }
+                ],
+                "name": "minecraft:iron_sword"
+              },
+              "reward_experience": true,
+              "trader_experience": 1.0
             }
           ]
         }
@@ -85,40 +104,46 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 4.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:iron_ingot"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 10.0,
-              "wants": [
-                {
-                  "item": "minecraft:iron_ingot",
-                  "price_multiplier": 0.05,
-                  "quantity": 4.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 10.0
             },
             {
-              "gives": [
-                {
-                  "item": "minecraft:bell",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 5.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": 36.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:bell"
+              },
+              "reward_experience": true,
+              "trader_experience": 5.0
             }
           ]
         }
@@ -131,22 +156,25 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 24.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:flint"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 20.0,
-              "wants": [
-                {
-                  "item": "minecraft:flint",
-                  "price_multiplier": 0.05,
-                  "quantity": 24.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 20.0
             }
           ]
         }
@@ -159,55 +187,71 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:diamond"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 30.0,
-              "wants": [
-                {
-                  "item": "minecraft:diamond",
-                  "price_multiplier": 0.05,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 30.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "function": "minecraft:enchant_with_levels",
-                      "levels": {
-                        "type": "minecraft:uniform",
-                        "max": 19.0,
-                        "min": 5.0
-                      },
-                      "treasure": false
-                    }
-                  ],
-                  "item": "minecraft:diamond_axe",
-                  "quantity": 1.0
-                }
-              ],
-              "max_uses": 3.0,
-              "reward_exp": true,
-              "trader_exp": 15.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": {
-                    "type": "minecraft:uniform",
-                    "max": 31.0,
-                    "min": 17.0
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 12.0,
+                    "function": "minecraft:set_count"
+                  },
+                  {
+                    "add": true,
+                    "count": {
+                      "type": "villagerconfig:reference",
+                      "id": "enchantLevel"
+                    },
+                    "function": "minecraft:set_count"
                   }
+                ],
+                "name": "minecraft:emerald"
+              },
+              "max_uses": 3.0,
+              "price_multiplier": 0.2,
+              "reference_providers": {
+                "enchantLevel": {
+                  "type": "minecraft:uniform",
+                  "max": 19.0,
+                  "min": 5.0
                 }
-              ]
+              },
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "function": "minecraft:enchant_with_levels",
+                    "levels": {
+                      "type": "villagerconfig:reference",
+                      "id": "enchantLevel"
+                    },
+                    "treasure": false
+                  }
+                ],
+                "name": "minecraft:diamond_axe"
+              },
+              "reward_experience": true,
+              "trader_experience": 15.0
             }
           ]
         }
@@ -220,37 +264,50 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "function": "minecraft:enchant_with_levels",
-                      "levels": {
-                        "type": "minecraft:uniform",
-                        "max": 19.0,
-                        "min": 5.0
-                      },
-                      "treasure": false
-                    }
-                  ],
-                  "item": "minecraft:diamond_sword",
-                  "quantity": 1.0
-                }
-              ],
-              "max_uses": 3.0,
-              "reward_exp": true,
-              "trader_exp": 30.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.2,
-                  "quantity": {
-                    "type": "minecraft:uniform",
-                    "max": 27.0,
-                    "min": 13.0
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 8.0,
+                    "function": "minecraft:set_count"
+                  },
+                  {
+                    "add": true,
+                    "count": {
+                      "type": "villagerconfig:reference",
+                      "id": "enchantLevel"
+                    },
+                    "function": "minecraft:set_count"
                   }
+                ],
+                "name": "minecraft:emerald"
+              },
+              "max_uses": 3.0,
+              "price_multiplier": 0.2,
+              "reference_providers": {
+                "enchantLevel": {
+                  "type": "minecraft:uniform",
+                  "max": 19.0,
+                  "min": 5.0
                 }
-              ]
+              },
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "function": "minecraft:enchant_with_levels",
+                    "levels": {
+                      "type": "villagerconfig:reference",
+                      "id": "enchantLevel"
+                    },
+                    "treasure": false
+                  }
+                ],
+                "name": "minecraft:diamond_sword"
+              },
+              "reward_experience": true,
+              "trader_experience": 30.0
             }
           ]
         }

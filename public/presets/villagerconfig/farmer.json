@@ -6,94 +6,109 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 20.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:wheat"
+              },
               "max_uses": 16.0,
-              "reward_exp": true,
-              "trader_exp": 2.0,
-              "wants": [
-                {
-                  "item": "minecraft:wheat",
-                  "price_multiplier": 0.05,
-                  "quantity": 20.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 2.0
             },
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 26.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:potato"
+              },
               "max_uses": 16.0,
-              "reward_exp": true,
-              "trader_exp": 2.0,
-              "wants": [
-                {
-                  "item": "minecraft:potato",
-                  "price_multiplier": 0.05,
-                  "quantity": 26.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 2.0
             },
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 22.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:carrot"
+              },
               "max_uses": 16.0,
-              "reward_exp": true,
-              "trader_exp": 2.0,
-              "wants": [
-                {
-                  "item": "minecraft:carrot",
-                  "price_multiplier": 0.05,
-                  "quantity": 22.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 2.0
             },
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 15.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:beetroot"
+              },
               "max_uses": 16.0,
-              "reward_exp": true,
-              "trader_exp": 2.0,
-              "wants": [
-                {
-                  "item": "minecraft:beetroot",
-                  "price_multiplier": 0.05,
-                  "quantity": 15.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 2.0
             },
             {
-              "gives": [
-                {
-                  "item": "minecraft:bread",
-                  "quantity": 6.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 16.0,
-              "reward_exp": true,
-              "trader_exp": 1.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 6.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:bread"
+              },
+              "reward_experience": true,
+              "trader_experience": 1.0
             }
           ]
         }
@@ -106,58 +121,67 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 6.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:pumpkin"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 10.0,
-              "wants": [
-                {
-                  "item": "minecraft:pumpkin",
-                  "price_multiplier": 0.05,
-                  "quantity": 6.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 10.0
             },
             {
-              "gives": [
-                {
-                  "item": "minecraft:pumpkin_pie",
-                  "quantity": 4.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 5.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 4.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:pumpkin_pie"
+              },
+              "reward_experience": true,
+              "trader_experience": 5.0
             },
             {
-              "gives": [
-                {
-                  "item": "minecraft:apple",
-                  "quantity": 4.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 16.0,
-              "reward_exp": true,
-              "trader_exp": 5.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 4.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:apple"
+              },
+              "reward_experience": true,
+              "trader_experience": 5.0
             }
           ]
         }
@@ -170,40 +194,46 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:cookie",
-                  "quantity": 18.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 10.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 3.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 18.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:cookie"
+              },
+              "reward_experience": true,
+              "trader_experience": 10.0
             },
             {
-              "gives": [
-                {
-                  "item": "minecraft:emerald",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 4.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:melon"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 20.0,
-              "wants": [
-                {
-                  "item": "minecraft:melon",
-                  "price_multiplier": 0.05,
-                  "quantity": 4.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "reward_experience": true,
+              "trader_experience": 20.0
             }
           ]
         }
@@ -216,196 +246,175 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:cake",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 15.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:cake"
+              },
+              "reward_experience": true,
+              "trader_experience": 15.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "effects": [
-                        {
-                          "type": "minecraft:night_vision",
-                          "duration": 100.0
-                        }
-                      ],
-                      "function": "minecraft:set_stew_effect"
-                    }
-                  ],
-                  "item": "minecraft:suspicious_stew",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 15.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "effects": [
+                      {
+                        "type": "minecraft:night_vision",
+                        "duration": 100.0
+                      }
+                    ],
+                    "function": "minecraft:set_stew_effect"
+                  }
+                ],
+                "name": "minecraft:suspicious_stew"
+              },
+              "reward_experience": true,
+              "trader_experience": 15.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "effects": [
-                        {
-                          "type": "minecraft:jump_boost",
-                          "duration": 160.0
-                        }
-                      ],
-                      "function": "minecraft:set_stew_effect"
-                    }
-                  ],
-                  "item": "minecraft:suspicious_stew",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 15.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "effects": [
+                      {
+                        "type": "minecraft:jump_boost",
+                        "duration": 160.0
+                      }
+                    ],
+                    "function": "minecraft:set_stew_effect"
+                  }
+                ],
+                "name": "minecraft:suspicious_stew"
+              },
+              "reward_experience": true,
+              "trader_experience": 15.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "effects": [
-                        {
-                          "type": "minecraft:weakness",
-                          "duration": 140.0
-                        }
-                      ],
-                      "function": "minecraft:set_stew_effect"
-                    }
-                  ],
-                  "item": "minecraft:suspicious_stew",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 15.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "effects": [
+                      {
+                        "type": "minecraft:weakness",
+                        "duration": 140.0
+                      }
+                    ],
+                    "function": "minecraft:set_stew_effect"
+                  }
+                ],
+                "name": "minecraft:suspicious_stew"
+              },
+              "reward_experience": true,
+              "trader_experience": 15.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "effects": [
-                        {
-                          "type": "minecraft:blindness",
-                          "duration": 120.0
-                        }
-                      ],
-                      "function": "minecraft:set_stew_effect"
-                    }
-                  ],
-                  "item": "minecraft:suspicious_stew",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 15.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "effects": [
+                      {
+                        "type": "minecraft:blindness",
+                        "duration": 120.0
+                      }
+                    ],
+                    "function": "minecraft:set_stew_effect"
+                  }
+                ],
+                "name": "minecraft:suspicious_stew"
+              },
+              "reward_experience": true,
+              "trader_experience": 15.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "effects": [
-                        {
-                          "type": "minecraft:poison",
-                          "duration": 280.0
-                        }
-                      ],
-                      "function": "minecraft:set_stew_effect"
-                    }
-                  ],
-                  "item": "minecraft:suspicious_stew",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 15.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "effects": [
+                      {
+                        "type": "minecraft:poison",
+                        "duration": 280.0
+                      }
+                    ],
+                    "function": "minecraft:set_stew_effect"
+                  }
+                ],
+                "name": "minecraft:suspicious_stew"
+              },
+              "reward_experience": true,
+              "trader_experience": 15.0
             },
             {
-              "gives": [
-                {
-                  "functions": [
-                    {
-                      "effects": [
-                        {
-                          "type": "minecraft:saturation",
-                          "duration": 7.0
-                        }
-                      ],
-                      "function": "minecraft:set_stew_effect"
-                    }
-                  ],
-                  "item": "minecraft:suspicious_stew",
-                  "quantity": 1.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 15.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 1.0
-                }
-              ]
+              "price_multiplier": 0.2,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "effects": [
+                      {
+                        "type": "minecraft:saturation",
+                        "duration": 7.0
+                      }
+                    ],
+                    "function": "minecraft:set_stew_effect"
+                  }
+                ],
+                "name": "minecraft:suspicious_stew"
+              },
+              "reward_experience": true,
+              "trader_experience": 15.0
             }
           ]
         }
@@ -418,40 +427,46 @@
           "num_to_select": 2,
           "trades": [
             {
-              "gives": [
-                {
-                  "item": "minecraft:golden_carrot",
-                  "quantity": 3.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 30.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 3.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:golden_carrot"
+              },
+              "reward_experience": true,
+              "trader_experience": 30.0
             },
             {
-              "gives": [
-                {
-                  "item": "minecraft:glistering_melon_slice",
-                  "quantity": 3.0
-                }
-              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
               "max_uses": 12.0,
-              "reward_exp": true,
-              "trader_exp": 30.0,
-              "wants": [
-                {
-                  "item": "minecraft:emerald",
-                  "price_multiplier": 0.05,
-                  "quantity": 4.0
-                }
-              ]
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:glistering_melon_slice"
+              },
+              "reward_experience": true,
+              "trader_experience": 30.0
             }
           ]
         }

@@ -1,4 +1,4 @@
-import { CollectionRegistry, ListNode, Mod, NumberNode, ObjectNode, Opt, Reference as RawReference, SchemaRegistry, StringNode as RawStringNode } from '@mcschema/core'
+import { BooleanNode, Case, ChoiceNode, CollectionRegistry, ListNode, MapNode, Mod, NestedNodeChildren, NodeChildren, NumberNode, ObjectNode, Opt, Reference as RawReference, ResourceType, SchemaRegistry, StringNode as RawStringNode, Switch } from '@mcschema/core'
 
 const ID = 'villagerconfig'
 
@@ -18,20 +18,6 @@ export function initVillagerConfig(schemas: SchemaRegistry, collections: Collect
           rolls: 1,
           groups: [{
             num_to_select: 2,
-            trades: [
-				{
-					wants: [
-						{
-							item: 'minecraft:emerald'
-						}
-					],
-					gives: [
-						{
-							item: 'minecraft:diamond'
-						}
-					]
-				}
-			]
           }],
 		  total_exp_required: 0
         })
@@ -47,53 +33,100 @@ export function initVillagerConfig(schemas: SchemaRegistry, collections: Collect
   }))
 
 
+  // TODO reward_experience default true
   schemas.register(`${ID}:trade`, ObjectNode({
-	wants: ListNode(
-		Reference(`${ID}:want_item`)
-	),
-	gives: ListNode(
-		Reference(`${ID}:trade_item`)
-	),
-	trader_exp: Reference('number_provider'),
-	max_uses: Reference('number_provider'),
-  }))
-
-  schemas.register(`${ID}:trade_item`, ObjectNode({
-	item: StringNode({ validator: 'resource', params: { pool: 'item' } }),
-	choice: Opt(ListNode(
-		Reference(`${ID}:choice_item`)
-	)),
-	quantity: Opt(Reference('number_provider')),
-	functions: Opt(ListNode(
-		Reference('loot_function')
-	))
-  }))
-
-  schemas.register(`${ID}:choice_item`, ObjectNode({
-	item: StringNode({ validator: 'resource', params: { pool: 'item' } }),
-	choice: Opt(ListNode(
-		Reference(`${ID}:choice_item`)
-	)),
-	quantity: Opt(Reference('number_provider')),
-	functions: Opt(ListNode(
-		Reference('loot_function')
-	)),
-    conditions: Opt(ListNode(
-		Reference('loot_condition')
-	  ))
-	}))
-
-  schemas.register(`${ID}:want_item`, ObjectNode({
-	item: StringNode({ validator: 'resource', params: { pool: 'item' } }),
-	choice: Opt(ListNode(
-		Reference(`${ID}:choice_item`)
-	)),
-	quantity: Opt(Reference('number_provider')),
+	cost_a: Reference('loot_entry'),
+	cost_b: Opt(Reference('loot_entry')),
+	result: Reference('loot_entry'),
 	price_multiplier: Opt(Reference('number_provider')),
-	functions: Opt(ListNode(
-		Reference('loot_function')
-	))
+	trader_exp: Opt(Reference('number_provider')),
+	max_uses: Opt(Reference('number_provider')),
+	reference_providers: Opt(MapNode(
+		StringNode(),
+		Reference('number_provider')
+	)),
+	reward_experience: Opt(BooleanNode())
   }))
+
+  // TODO rework
+  const ObjectWithType = (pool: ResourceType, directType: string, directPath: string, directDefault: string, objectDefault: string | null, context: string, cases: NestedNodeChildren) => {
+	let defaultCase: NodeChildren = {}
+	if (objectDefault) {
+	  Object.keys(cases[objectDefault]).forEach(k => {
+		defaultCase[k] = Mod(cases[objectDefault][k], {
+		  enabled: path => path.push('type').get() === undefined
+		})
+	  })
+	}
+	const provider = ObjectNode({
+	  type: Mod(Opt(StringNode({ validator: 'resource', params: { pool } })), {
+		hidden: () => true
+	  }),
+	  [Switch]: [{ push: 'type' }],
+	  [Case]: cases,
+	  ...defaultCase
+	}, { context, disableSwitchContext: true })
+
+	const choices: any[] = [{
+	  type: directType,
+	  node: cases[directDefault][directPath]
+	}]
+	if (objectDefault) {
+	  choices.push({
+		type: 'object',
+		priority: -1,
+		node: provider
+	  })
+	}
+	Object.keys(cases).forEach(k => {
+	  choices.push({
+		type: k,
+		match: (v: any) => {
+		  const type = 'minecraft:' + v?.type?.replace(/^minecraft:/, '')
+		  if (type === k) return true
+		  const keys = v ? Object.keys(v) : []
+		  return typeof v === 'object' && (keys?.length === 0 || (keys?.length === 1 && keys?.[0] === 'type'))
+		},
+		node: provider,
+		change: (v: any) => ({type: k})
+	  })
+	})
+	return ChoiceNode(choices, { context, choiceContext: `${context}.type` })
+  }
+
+  schemas.register('number_provider', ObjectWithType(
+    'loot_number_provider_type',
+    'number', 'value', 'minecraft:constant',
+    'minecraft:uniform',
+    'number_provider',
+    {
+      'minecraft:constant': {
+        value: NumberNode()
+      },
+      'minecraft:uniform': {
+        min: Reference('number_provider'),
+        max: Reference('number_provider')
+      },
+      'minecraft:binomial': {
+        n: Reference('number_provider'),
+        p: Reference('number_provider'),
+		test: NumberNode()
+      },
+      'minecraft:score': {
+        target: Reference('scoreboard_name_provider'),
+        score: StringNode({ validator: 'objective' }),
+        scale: Opt(NumberNode())
+      },
+	  'villagerconfig:add': {
+		addends: ListNode(Reference('number_provider'))
+	  },
+	  'villagerconfig:multiply': {
+		factors: ListNode(Reference('number_provider'))
+	  },
+	  'villagerconfig:reference': {
+		id: StringNode()
+	  }
+    }))
 
   collections.register('villagerconfig', [
 	'minecraft:armorer',
