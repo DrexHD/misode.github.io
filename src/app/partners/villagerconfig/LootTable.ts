@@ -2,14 +2,11 @@ import {
   BooleanNode,
   Case, CollectionRegistry, INode, ListNode,
   Mod, ModelPath, NodeChildren, NumberNode,
-  ObjectNode, Opt, Path, Reference as RawReference, SchemaRegistry, StringNode as RawStringNode, StringOrList,
-  Switch,
+  ObjectNode, Opt, Path, Reference as RawReference, SchemaRegistry, StringNode as RawStringNode, Switch,
   SwitchNode
 } from '@mcschema/core'
-import { ConditionCases, FunctionCases } from './Common.js'
-import {
-  LootConditions, LootContext, LootCopySources, LootEntitySources, LootFunctions, LootTableTypes
-} from './LootContext.js'
+import { FunctionCases } from './Common.js'
+import { LootContext, LootCopySources, LootEntitySources, LootFunctions, LootTableTypes } from './LootContext.js'
 
 const ID = 'villagerconfig'
 
@@ -19,7 +16,7 @@ export function initLootTableSchemas(schemas: SchemaRegistry, collections: Colle
 
   const conditions: NodeChildren = {
     conditions: Opt(ListNode(
-      Reference(`${ID}:loot_condition`)
+      Reference('loot_condition')
     ))
   }
 
@@ -49,8 +46,7 @@ export function initLootTableSchemas(schemas: SchemaRegistry, collections: Colle
     return SwitchNode(cases)
   }
 
-  const conditionIDSwtichNode = compileSwitchNode(LootConditions, 'loot_condition_type', type => StringNode({ validator: 'resource', params: { pool: type instanceof Array ? type : `loot_condition_type` } }))
-  const functionIDSwtichNode = compileSwitchNode(LootFunctions, `${ID}:loot_function_type`, type => StringNode({ validator: 'resource', params: { pool: type instanceof Array ? type : `${ID}:loot_function_type` } }))
+  const functionIDSwtichNode = compileSwitchNode(LootFunctions, `${ID}:loot_function_type`, type => StringNode({ enum: type }))
   const entitySourceSwtichNode = compileSwitchNode(LootEntitySources, 'entity_source', type => StringNode({ enum: type }))
   const copySourceSwtichNode = compileSwitchNode(LootCopySources, 'copy_source', type => StringNode({ enum: type}))
 
@@ -151,36 +147,6 @@ export function initLootTableSchemas(schemas: SchemaRegistry, collections: Colle
     default: () => ({
       function: 'minecraft:set_count',
       count: 1
-    })
-  }))
-
-  schemas.register(`${ID}:loot_condition`, Mod(ObjectNode({
-    condition: conditionIDSwtichNode,
-    [Switch]: [{ push: 'condition' }],
-    [Case]: ConditionCases(entitySourceSwtichNode)
-  }, { category: 'predicate', context: 'condition' }), {
-    default: () => ({
-      condition: 'minecraft:random_chance',
-      chance: 0.5
-    })
-  }))
-
-  schemas.register(`${ID}:attribute_modifier`, Mod(ObjectNode({
-    attribute: StringNode({ validator: 'resource', params: { pool: 'attribute' } }),
-    name: StringNode(),
-    amount: Reference(`${ID}:number_provider`),
-    operation: StringNode({ enum: ['addition', 'multiply_base', 'multiply_total'] }),
-    id: Opt(StringNode({ validator: 'uuid' })),
-    slot: StringOrList(
-      StringNode({ enum: 'slot' })
-    )
-  }, { context: 'attribute_modifier' }), {
-    default: () => ({
-      attribute: 'minecraft:generic.max_health',
-      name: '',
-      amount: 1,
-      operation: 'addition',
-      slot: 'mainhand'
     })
   }))
 }
