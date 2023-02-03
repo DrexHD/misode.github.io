@@ -23,7 +23,7 @@ export function initVillagerConfig(schemas: SchemaRegistry, collections: Collect
 		groups: ListNode(
 			Reference(`${ID}:group`)
 		)
-	}, { category: 'groups', context: 'trade_groups' }), {
+	}, { category: 'groups', context: `${ID}:tier` }), {
 		default: () => ({
 			rolls: 1,
 			groups: [{
