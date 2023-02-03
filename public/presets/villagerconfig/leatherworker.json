@@ -55,7 +55,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 30.0,
+                        "chance": 0.3,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -65,7 +65,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 20.0,
+                        "chance": 0.2,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -106,7 +106,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 30.0,
+                        "chance": 0.3,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -116,7 +116,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 20.0,
+                        "chance": 0.2,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -188,7 +188,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 30.0,
+                        "chance": 0.3,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -198,7 +198,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 20.0,
+                        "chance": 0.2,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -239,7 +239,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 30.0,
+                        "chance": 0.3,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -249,7 +249,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 20.0,
+                        "chance": 0.2,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -321,7 +321,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 30.0,
+                        "chance": 0.3,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -331,7 +331,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 20.0,
+                        "chance": 0.2,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -403,7 +403,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 30.0,
+                        "chance": 0.3,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -413,7 +413,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 20.0,
+                        "chance": 0.2,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -438,6 +438,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 6.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -485,7 +492,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 30.0,
+                        "chance": 0.3,
                         "condition": "minecraft:random_chance"
                       }
                     ],
@@ -495,7 +502,7 @@
                     "add": true,
                     "conditions": [
                       {
-                        "chance": 20.0,
+                        "chance": 0.2,
                         "condition": "minecraft:random_chance"
                       }
                     ],

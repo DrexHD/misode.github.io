@@ -111,7 +111,7 @@ export async function fetchPreset(versionId: VersionId, registry: string, id: st
 		let url
 		if (id.startsWith('immersive_weathering:')) {
 			url = `https://raw.githubusercontent.com/AstralOrdana/Immersive-Weathering/main/src/main/resources/data/immersive_weathering/block_growths/${id.slice(21)}.json`
-		} else if (registry.startsWith('villagerconfig')) {
+		} else if (registry.startsWith('trades')) {
 			url = `/presets/villagerconfig/${id}.json`
 		} else {
 			const type = ['atlases', 'blockstates', 'models', 'font'].includes(registry) ? 'assets' : 'data'

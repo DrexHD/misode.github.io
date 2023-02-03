@@ -73,14 +73,13 @@ function generateTrade(trade: any, ctx: LootContext): Trade {
 			ctx.numberProvider.set(key, computeFloat(value, ctx))
 		}
 	}
-	
 	let cost_a: ItemStack = new ItemStack(Identifier.parse('air'), 0)
 	let cost_b = undefined
 	let result: ItemStack = new ItemStack(Identifier.parse('air'), 0)
 	createItem(trade.result, item => result = item, ctx)
 	if (trade.cost_b != null) createItem(trade.cost_b, item => cost_b = item, ctx)
 	createItem(trade.cost_a, item => cost_a = item, ctx)
-	return {cost_a, cost_b, result}
+  return {cost_a, cost_b, result}
 }
 
 function generateTable(table: any, consumer: ItemConsumer, ctx: LootContext) {
@@ -261,32 +260,6 @@ const LootFunctions: Record<string, (params: any) => LootFunction> = {
       }
     }
   },
-  // TODO
-  'villagerconfig:enchant_randomly': ({ enchantments }) => (item, ctx) => {
-    const isBook = item.is('book')
-    if (enchantments === undefined || enchantments.length === 0) {
-      enchantments = Enchantment.REGISTRY.map((_, ench) => ench)
-        .filter(ench => ench.isDiscoverable && (isBook || Enchantment.canEnchant(item, ench)))
-        .map(e => e.id.toString())
-    }
-    if (enchantments.length > 0) {
-      const id = enchantments[ctx.random.nextInt(enchantments.length)]
-      const ench = Enchantment.REGISTRY.get(Identifier.parse(id))
-      if (ench === undefined) return
-      const lvl = ctx.random.nextInt(ench.maxLevel - ench.minLevel + 1) + ench.minLevel
-	  ctx.numberProvider.set("enchantmentLevel", lvl)
-	  ctx.numberProvider.set("treasureMultiplier", ench.isTreasure ? 2 : 1)
-      if (isBook) {
-        item.tag = new NbtCompound()
-        item.count = 1
-      }
-      enchantItem(item, { id, lvl })
-      if (isBook) {
-        item.id = Identifier.create('enchanted_book')
-      }
-    }
-  },
-  // TODO 'villagerconfig:set_dye'
   enchant_with_levels: ({ levels, treasure }) => (item, ctx) => {
     const enchants = selectEnchantments(ctx.random, item, computeInt(levels, ctx), treasure)
     const isBook = item.is('book')
@@ -358,6 +331,46 @@ const LootFunctions: Record<string, (params: any) => LootFunction> = {
       item.tag.set('Potion', new NbtString(Identifier.parse(id).toString()))
     }
   },
+  'villagerconfig:enchant_randomly': ({ include, exclude, trade_enchantments }) => (item, ctx) => {
+    let enchantmentIds: string[];
+    const isBook = item.is('book')
+
+    if (include === undefined || include.length === 0) {
+      enchantmentIds = Enchantment.REGISTRY.map((_, ench) => ench)
+      .filter(ench => ench.isDiscoverable && (isBook || Enchantment.canEnchant(item, ench)))
+      .map(e => e.id.toString())
+      if (exclude !== undefined && exclude.length !== 0) {
+        enchantmentIds = enchantmentIds.filter(ench => exclude.indexOf(ench) == -1)
+      }
+    } else {
+      enchantmentIds = include;
+    }
+    let enchantments: Enchantment[] = [];
+    for (const enchantmentId of enchantmentIds) {
+      const ench = Enchantment.REGISTRY.get(Identifier.parse(enchantmentId))
+      if (ench === undefined) continue;
+      if (trade_enchantments && !ench.isTradeable) continue
+      if (!isBook && !Enchantment.canEnchant(item, ench)) continue
+      enchantments.push(ench)
+    }
+
+    if (enchantments.length > 0) {
+      const ench = enchantments[ctx.random.nextInt(enchantments.length)]
+      const id = ench.id
+      const lvl = ctx.random.nextInt(ench.maxLevel - ench.minLevel + 1) + ench.minLevel
+      ctx.numberProvider.set("enchantmentLevel", lvl)
+      ctx.numberProvider.set("treasureMultiplier", ench.isTreasure ? 2 : 1)
+      if (isBook) {
+        item.tag = new NbtCompound()
+        item.count = 1
+      }
+      enchantItem(item, { id, lvl })
+      if (isBook) {
+        item.id = Identifier.create('enchanted_book')
+      }
+    }
+  },
+  // TODO 'villagerconfig:set_dye'
 }
 
 type LootCondition = (ctx: LootContext) => boolean
@@ -486,7 +499,7 @@ function computeInt(provider: any, ctx: LootContext): number {
 	case 'villagerconfig:multiply': {
 		let result = 1
 		for (const factor of provider.factors ?? []) {
-		  result += computeInt(factor, ctx)
+		  result *= computeInt(factor, ctx)
 		}
 		return result
 	}

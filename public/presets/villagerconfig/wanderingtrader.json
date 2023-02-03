@@ -8,6 +8,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 2.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 5.0,
@@ -29,6 +36,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 4.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 5.0,
@@ -50,6 +64,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 2.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 5.0,
@@ -71,6 +92,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 5.0,
@@ -92,6 +120,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -113,6 +148,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -134,6 +176,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 4.0,
@@ -155,6 +204,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -176,6 +232,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -197,6 +260,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -218,6 +288,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -239,6 +316,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -260,6 +344,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -281,6 +372,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -302,6 +400,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -323,6 +428,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -344,6 +456,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -365,6 +484,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -386,6 +512,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -407,6 +540,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -428,6 +568,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 7.0,
@@ -449,6 +596,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -470,6 +624,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -491,6 +652,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -512,6 +680,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -533,6 +708,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -554,6 +736,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -575,6 +764,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -596,6 +792,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -617,6 +820,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -638,6 +848,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -659,6 +876,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -680,6 +904,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -701,6 +932,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -722,6 +960,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -743,6 +988,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -764,6 +1016,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -785,6 +1044,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -806,6 +1072,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -827,6 +1100,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -848,6 +1128,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -869,6 +1156,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -890,6 +1184,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -911,6 +1212,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -932,6 +1240,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -953,6 +1268,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -974,6 +1296,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -995,6 +1324,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -1016,6 +1352,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -1037,6 +1380,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -1058,6 +1408,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -1079,6 +1436,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -1100,6 +1464,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -1121,6 +1492,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -1142,6 +1520,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -1163,6 +1548,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 12.0,
@@ -1184,6 +1576,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 5.0,
@@ -1205,6 +1604,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 5.0,
@@ -1226,6 +1632,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -1247,6 +1660,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 6.0,
@@ -1268,6 +1688,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 5.0,
@@ -1289,6 +1716,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 5.0,
@@ -1310,6 +1744,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 5.0,
@@ -1341,6 +1782,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 4.0,
@@ -1362,6 +1810,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 5.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 4.0,
@@ -1383,6 +1838,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 6.0,
@@ -1404,6 +1866,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 6.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 6.0,
@@ -1425,6 +1894,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 8.0,
@@ -1446,6 +1922,13 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 3.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
               "max_uses": 6.0,
