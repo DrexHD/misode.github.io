@@ -45,7 +45,7 @@ export function initVillagerConfig(schemas: SchemaRegistry, collections: Collect
 		cost_b: Opt(Reference(`${ID}:loot_entry`)),
 		result: Reference(`${ID}:loot_entry`),
 		price_multiplier: Opt(Reference(`${ID}:number_provider`)),
-		trader_exp: Opt(Reference(`${ID}:number_provider`)),
+		trader_experience: Reference(`${ID}:number_provider`),
 		max_uses: Opt(Reference(`${ID}:number_provider`)),
 		reference_providers: Opt(MapNode(
 			StringNode(),

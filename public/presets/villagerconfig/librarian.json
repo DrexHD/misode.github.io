@@ -46,16 +46,22 @@
                             {
                               "type": "minecraft:uniform",
                               "max": {
-                                "type": "villagerconfig:multiply",
-                                "factors": [
+                                "type": "villagerconfig:add",
+                                "addends": [
+                                  5.0,
                                   {
-                                    "type": "villagerconfig:reference",
-                                    "id": "enchantmentLevel"
-                                  },
-                                  10.0
+                                    "type": "villagerconfig:multiply",
+                                    "factors": [
+                                      {
+                                        "type": "villagerconfig:reference",
+                                        "id": "enchantmentLevel"
+                                      },
+                                      10.0
+                                    ]
+                                  }
                                 ]
                               },
-                              "min": 5.0
+                              "min": 0.0
                             },
                             {
                               "type": "villagerconfig:multiply",
@@ -174,16 +180,22 @@
                             {
                               "type": "minecraft:uniform",
                               "max": {
-                                "type": "villagerconfig:multiply",
-                                "factors": [
+                                "type": "villagerconfig:add",
+                                "addends": [
+                                  5.0,
                                   {
-                                    "type": "villagerconfig:reference",
-                                    "id": "enchantmentLevel"
-                                  },
-                                  10.0
+                                    "type": "villagerconfig:multiply",
+                                    "factors": [
+                                      {
+                                        "type": "villagerconfig:reference",
+                                        "id": "enchantmentLevel"
+                                      },
+                                      10.0
+                                    ]
+                                  }
                                 ]
                               },
-                              "min": 5.0
+                              "min": 0.0
                             },
                             {
                               "type": "villagerconfig:multiply",
@@ -302,16 +314,22 @@
                             {
                               "type": "minecraft:uniform",
                               "max": {
-                                "type": "villagerconfig:multiply",
-                                "factors": [
+                                "type": "villagerconfig:add",
+                                "addends": [
+                                  5.0,
                                   {
-                                    "type": "villagerconfig:reference",
-                                    "id": "enchantmentLevel"
-                                  },
-                                  10.0
+                                    "type": "villagerconfig:multiply",
+                                    "factors": [
+                                      {
+                                        "type": "villagerconfig:reference",
+                                        "id": "enchantmentLevel"
+                                      },
+                                      10.0
+                                    ]
+                                  }
                                 ]
                               },
-                              "min": 5.0
+                              "min": 0.0
                             },
                             {
                               "type": "villagerconfig:multiply",
@@ -430,16 +448,22 @@
                             {
                               "type": "minecraft:uniform",
                               "max": {
-                                "type": "villagerconfig:multiply",
-                                "factors": [
+                                "type": "villagerconfig:add",
+                                "addends": [
+                                  5.0,
                                   {
-                                    "type": "villagerconfig:reference",
-                                    "id": "enchantmentLevel"
-                                  },
-                                  10.0
+                                    "type": "villagerconfig:multiply",
+                                    "factors": [
+                                      {
+                                        "type": "villagerconfig:reference",
+                                        "id": "enchantmentLevel"
+                                      },
+                                      10.0
+                                    ]
+                                  }
                                 ]
                               },
-                              "min": 5.0
+                              "min": 0.0
                             },
                             {
                               "type": "villagerconfig:multiply",
