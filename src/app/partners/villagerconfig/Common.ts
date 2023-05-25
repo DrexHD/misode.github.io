@@ -126,7 +126,7 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
   ConditionCases = (entitySourceNode: INode<any> = StringNode({ enum: 'entity_source' })) => ({
     'minecraft:alternative': {
       terms: ListNode(
-        Reference(`${ID}:condition`)
+        Reference('condition')
       )
     },
     'minecraft:block_state_property': {
@@ -142,17 +142,17 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
     },
     'minecraft:entity_properties': {
       entity: entitySourceNode,
-      predicate: Reference(`entity_predicate`)
+      predicate: Reference('entity_predicate')
     },
     'minecraft:entity_scores': {
       entity: entitySourceNode,
       scores: MapNode(
         StringNode({ validator: 'objective' }),
-        Reference(`${ID}:int_range`)
+        Reference('int_range')
       )
     },
     'minecraft:inverted': {
-      term: Reference(`${ID}:condition`)
+      term: Reference('condition')
     },
     'minecraft:killed_by_player': {
       inverse: Opt(BooleanNode())
@@ -161,10 +161,10 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
       offsetX: Opt(NumberNode({ integer: true })),
       offsetY: Opt(NumberNode({ integer: true })),
       offsetZ: Opt(NumberNode({ integer: true })),
-      predicate: Reference(`${ID}:location_predicate`)
+      predicate: Reference('location_predicate')
     },
     'minecraft:match_tool': {
-      predicate: Reference(`${ID}:item_predicate`)
+      predicate: Reference('item_predicate')
     },
     'minecraft:random_chance': {
       chance: NumberNode({ min: 0, max: 1 })
@@ -183,12 +183,12 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
       )
     },
     'minecraft:time_check': {
-      value: Reference(`${ID}:int_range`),
+      value: Reference('int_range'),
       period: Opt(NumberNode({ integer: true }))
     },
     'minecraft:value_check': {
       value: Reference(`${ID}:number_provider`),
-      range: Reference(`${ID}:int_range`)
+      range: Reference('int_range')
     },
     'minecraft:weather_check': {
       raining: Opt(BooleanNode()),
@@ -254,7 +254,7 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
         entity: entitySourceNode
       },
       'minecraft:limit_count': {
-        limit: Reference(`${ID}:int_range`)
+        limit: Reference('int_range')
       },
       'minecraft:looting_enchant': {
         count: Reference(`${ID}:number_provider`),
@@ -262,7 +262,7 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
       },
       'minecraft:set_attributes': {
         modifiers: ListNode(
-          Reference(`${ID}:attribute_modifier`)
+          Reference('attribute_modifier')
         )
       },
       'minecraft:set_banner_pattern': {
@@ -306,13 +306,13 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
       'minecraft:set_lore': {
         entity: Opt(entitySourceNode),
         lore: ListNode(
-          Reference(`${ID}:text_component`)
+          Reference('text_component')
         ),
         replace: Opt(BooleanNode())
       },
       'minecraft:set_name': {
         entity: Opt(entitySourceNode),
-        name: Opt(Reference(`${ID}:text_component`))
+        name: Opt(Reference('text_component'))
       },
       'minecraft:set_nbt': {
         tag: StringNode({ validator: 'nbt', params: { registry: { category: 'minecraft:item' } } })
