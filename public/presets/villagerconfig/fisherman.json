@@ -3,7 +3,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -21,9 +21,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 2.0
             },
             {
@@ -42,9 +48,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 2.0
             },
             {
@@ -83,7 +95,6 @@
                 ],
                 "name": "minecraft:cooked_cod"
               },
-              "reward_experience": true,
               "trader_experience": 1.0
             },
             {
@@ -102,16 +113,8 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
-                "functions": [
-                  {
-                    "add": false,
-                    "count": 1.0,
-                    "function": "minecraft:set_count"
-                  }
-                ],
                 "name": "minecraft:cod_bucket"
               },
-              "reward_experience": true,
               "trader_experience": 1.0
             }
           ]
@@ -122,7 +125,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -140,9 +143,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 10.0
             },
             {
@@ -181,7 +190,6 @@
                 ],
                 "name": "minecraft:cooked_salmon"
               },
-              "reward_experience": true,
               "trader_experience": 5.0
             },
             {
@@ -196,20 +204,11 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
-                "functions": [
-                  {
-                    "add": false,
-                    "count": 1.0,
-                    "function": "minecraft:set_count"
-                  }
-                ],
                 "name": "minecraft:campfire"
               },
-              "reward_experience": true,
               "trader_experience": 5.0
             }
           ]
@@ -220,7 +219,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -238,9 +237,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 20.0
             },
             {
@@ -264,7 +269,6 @@
                 "name": "minecraft:emerald"
               },
               "max_uses": 3.0,
-              "price_multiplier": 0.2,
               "reference_providers": {
                 "enchantLevel": {
                   "type": "minecraft:uniform",
@@ -286,7 +290,6 @@
                 ],
                 "name": "minecraft:fishing_rod"
               },
-              "reward_experience": true,
               "trader_experience": 10.0
             }
           ]
@@ -297,7 +300,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -311,13 +314,18 @@
                 ],
                 "name": "minecraft:tropical_fish"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             }
           ]
@@ -328,7 +336,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -342,13 +350,18 @@
                 ],
                 "name": "minecraft:pufferfish"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             },
             {
@@ -497,13 +510,11 @@
                   }
                 ]
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             }
           ]

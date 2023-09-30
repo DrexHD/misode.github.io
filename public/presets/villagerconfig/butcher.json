@@ -3,7 +3,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -21,9 +21,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 2.0
             },
             {
@@ -42,9 +48,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 2.0
             },
             {
@@ -63,9 +75,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 2.0
             },
             {
@@ -80,20 +98,11 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
-                "functions": [
-                  {
-                    "add": false,
-                    "count": 1.0,
-                    "function": "minecraft:set_count"
-                  }
-                ],
                 "name": "minecraft:rabbit_stew"
               },
-              "reward_experience": true,
               "trader_experience": 1.0
             }
           ]
@@ -104,7 +113,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -122,9 +131,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 2.0
             },
             {
@@ -152,7 +167,6 @@
                 ],
                 "name": "minecraft:cooked_porkchop"
               },
-              "reward_experience": true,
               "trader_experience": 5.0
             },
             {
@@ -180,7 +194,6 @@
                 ],
                 "name": "minecraft:cooked_chicken"
               },
-              "reward_experience": true,
               "trader_experience": 5.0
             }
           ]
@@ -191,7 +204,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -209,9 +222,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 20.0
             },
             {
@@ -230,9 +249,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 20.0
             }
           ]
@@ -243,7 +268,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -257,13 +282,18 @@
                 ],
                 "name": "minecraft:dried_kelp_block"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             }
           ]
@@ -274,7 +304,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -288,13 +318,18 @@
                 ],
                 "name": "minecraft:sweet_berries"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             }
           ]

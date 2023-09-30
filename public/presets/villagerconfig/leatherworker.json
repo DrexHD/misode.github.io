@@ -3,7 +3,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -21,9 +21,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 2.0
             },
             {
@@ -38,12 +44,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "cost_b": {
-                "type": "minecraft:item",
-                "name": "minecraft:leather_leggings"
-              },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
                 "functions": [
@@ -74,7 +74,6 @@
                 ],
                 "name": "minecraft:leather_leggings"
               },
-              "reward_experience": true,
               "trader_experience": 1.0
             },
             {
@@ -89,12 +88,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "cost_b": {
-                "type": "minecraft:item",
-                "name": "minecraft:leather_chestplate"
-              },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
                 "functions": [
@@ -125,7 +118,6 @@
                 ],
                 "name": "minecraft:leather_chestplate"
               },
-              "reward_experience": true,
               "trader_experience": 1.0
             }
           ]
@@ -136,7 +128,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -150,13 +142,18 @@
                 ],
                 "name": "minecraft:flint"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 10.0
             },
             {
@@ -171,12 +168,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "cost_b": {
-                "type": "minecraft:item",
-                "name": "minecraft:leather_helmet"
-              },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
                 "functions": [
@@ -207,7 +198,6 @@
                 ],
                 "name": "minecraft:leather_helmet"
               },
-              "reward_experience": true,
               "trader_experience": 5.0
             },
             {
@@ -222,12 +212,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "cost_b": {
-                "type": "minecraft:item",
-                "name": "minecraft:leather_boots"
-              },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
                 "functions": [
@@ -258,7 +242,6 @@
                 ],
                 "name": "minecraft:leather_boots"
               },
-              "reward_experience": true,
               "trader_experience": 5.0
             }
           ]
@@ -269,7 +252,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -283,13 +266,18 @@
                 ],
                 "name": "minecraft:rabbit_hide"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 20.0
             },
             {
@@ -304,12 +292,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "cost_b": {
-                "type": "minecraft:item",
-                "name": "minecraft:leather_chestplate"
-              },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
                 "functions": [
@@ -340,7 +322,6 @@
                 ],
                 "name": "minecraft:leather_chestplate"
               },
-              "reward_experience": true,
               "trader_experience": 1.0
             }
           ]
@@ -351,7 +332,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -365,13 +346,18 @@
                 ],
                 "name": "minecraft:scute"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             },
             {
@@ -386,12 +372,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "cost_b": {
-                "type": "minecraft:item",
-                "name": "minecraft:leather_horse_armor"
-              },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
                 "functions": [
@@ -422,7 +402,6 @@
                 ],
                 "name": "minecraft:leather_horse_armor"
               },
-              "reward_experience": true,
               "trader_experience": 15.0
             }
           ]
@@ -433,7 +412,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -447,20 +426,10 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
-                "functions": [
-                  {
-                    "add": false,
-                    "count": 1.0,
-                    "function": "minecraft:set_count"
-                  }
-                ],
                 "name": "minecraft:saddle"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             },
             {
@@ -475,12 +444,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "cost_b": {
-                "type": "minecraft:item",
-                "name": "minecraft:leather_helmet"
-              },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
                 "functions": [
@@ -511,7 +474,6 @@
                 ],
                 "name": "minecraft:leather_helmet"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             }
           ]

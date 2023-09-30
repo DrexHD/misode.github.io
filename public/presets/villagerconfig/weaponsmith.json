@@ -3,7 +3,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -21,9 +21,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 2.0
             },
             {
@@ -38,20 +44,10 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
-                "functions": [
-                  {
-                    "add": false,
-                    "count": 1.0,
-                    "function": "minecraft:set_count"
-                  }
-                ],
                 "name": "minecraft:iron_axe"
               },
-              "reward_experience": true,
               "trader_experience": 1.0
             },
             {
@@ -97,7 +93,6 @@
                 ],
                 "name": "minecraft:iron_sword"
               },
-              "reward_experience": true,
               "trader_experience": 1.0
             }
           ]
@@ -108,7 +103,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -122,13 +117,18 @@
                 ],
                 "name": "minecraft:iron_ingot"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 10.0
             },
             {
@@ -143,20 +143,10 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
-                "functions": [
-                  {
-                    "add": false,
-                    "count": 1.0,
-                    "function": "minecraft:set_count"
-                  }
-                ],
                 "name": "minecraft:bell"
               },
-              "reward_experience": true,
               "trader_experience": 5.0
             }
           ]
@@ -167,7 +157,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -181,13 +171,18 @@
                 ],
                 "name": "minecraft:flint"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 20.0
             }
           ]
@@ -198,10 +193,15 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
+                "type": "minecraft:item",
+                "name": "minecraft:diamond"
+              },
+              "price_multiplier": 0.05,
+              "result": {
                 "type": "minecraft:item",
                 "functions": [
                   {
@@ -210,15 +210,8 @@
                     "function": "minecraft:set_count"
                   }
                 ],
-                "name": "minecraft:diamond"
-              },
-              "max_uses": 12.0,
-              "price_multiplier": 0.05,
-              "result": {
-                "type": "minecraft:item",
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             },
             {
@@ -242,7 +235,6 @@
                 "name": "minecraft:emerald"
               },
               "max_uses": 3.0,
-              "price_multiplier": 0.2,
               "reference_providers": {
                 "enchantLevel": {
                   "type": "minecraft:uniform",
@@ -264,7 +256,6 @@
                 ],
                 "name": "minecraft:diamond_axe"
               },
-              "reward_experience": true,
               "trader_experience": 15.0
             }
           ]
@@ -275,7 +266,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -298,7 +289,6 @@
                 "name": "minecraft:emerald"
               },
               "max_uses": 3.0,
-              "price_multiplier": 0.2,
               "reference_providers": {
                 "enchantLevel": {
                   "type": "minecraft:uniform",
@@ -320,7 +310,6 @@
                 ],
                 "name": "minecraft:diamond_sword"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             }
           ]

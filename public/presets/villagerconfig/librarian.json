@@ -3,7 +3,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -21,9 +21,15 @@
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 2.0
             },
             {
@@ -86,8 +92,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
                 "functions": [
@@ -98,7 +102,6 @@
                 ],
                 "name": "minecraft:book"
               },
-              "reward_experience": true,
               "trader_experience": 1.0
             },
             {
@@ -113,20 +116,11 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
-                "functions": [
-                  {
-                    "add": false,
-                    "count": 1.0,
-                    "function": "minecraft:set_count"
-                  }
-                ],
                 "name": "minecraft:bookshelf"
               },
-              "reward_experience": true,
               "trader_experience": 1.0
             }
           ]
@@ -137,7 +131,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -151,13 +145,18 @@
                 ],
                 "name": "minecraft:book"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 10.0
             },
             {
@@ -220,8 +219,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
                 "functions": [
@@ -232,7 +229,6 @@
                 ],
                 "name": "minecraft:book"
               },
-              "reward_experience": true,
               "trader_experience": 5.0
             },
             {
@@ -247,20 +243,11 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
-                "functions": [
-                  {
-                    "add": false,
-                    "count": 1.0,
-                    "function": "minecraft:set_count"
-                  }
-                ],
                 "name": "minecraft:lantern"
               },
-              "reward_experience": true,
               "trader_experience": 5.0
             }
           ]
@@ -271,7 +258,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -285,13 +272,18 @@
                 ],
                 "name": "minecraft:ink_sac"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 20.0
             },
             {
@@ -354,8 +346,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
                 "functions": [
@@ -366,7 +356,6 @@
                 ],
                 "name": "minecraft:book"
               },
-              "reward_experience": true,
               "trader_experience": 10.0
             },
             {
@@ -381,7 +370,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
@@ -394,7 +382,6 @@
                 ],
                 "name": "minecraft:glass"
               },
-              "reward_experience": true,
               "trader_experience": 10.0
             }
           ]
@@ -405,7 +392,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -419,13 +406,18 @@
                 ],
                 "name": "minecraft:writable_book"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
                 "name": "minecraft:emerald"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             },
             {
@@ -488,8 +480,6 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
-              "price_multiplier": 0.2,
               "result": {
                 "type": "minecraft:item",
                 "functions": [
@@ -500,7 +490,6 @@
                 ],
                 "name": "minecraft:book"
               },
-              "reward_experience": true,
               "trader_experience": 15.0
             },
             {
@@ -515,20 +504,11 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
-                "functions": [
-                  {
-                    "add": false,
-                    "count": 1.0,
-                    "function": "minecraft:set_count"
-                  }
-                ],
                 "name": "minecraft:clock"
               },
-              "reward_experience": true,
               "trader_experience": 15.0
             },
             {
@@ -543,20 +523,11 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
-                "functions": [
-                  {
-                    "add": false,
-                    "count": 1.0,
-                    "function": "minecraft:set_count"
-                  }
-                ],
                 "name": "minecraft:compass"
               },
-              "reward_experience": true,
               "trader_experience": 15.0
             }
           ]
@@ -567,7 +538,7 @@
     {
       "groups": [
         {
-          "num_to_select": 2,
+          "num_to_select": 2.0,
           "trades": [
             {
               "cost_a": {
@@ -581,20 +552,11 @@
                 ],
                 "name": "minecraft:emerald"
               },
-              "max_uses": 12.0,
               "price_multiplier": 0.05,
               "result": {
                 "type": "minecraft:item",
-                "functions": [
-                  {
-                    "add": false,
-                    "count": 1.0,
-                    "function": "minecraft:set_count"
-                  }
-                ],
                 "name": "minecraft:name_tag"
               },
-              "reward_experience": true,
               "trader_experience": 30.0
             }
           ]
