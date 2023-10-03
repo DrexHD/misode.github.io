@@ -1,7 +1,7 @@
 import { Enchantment, Identifier, ItemStack, LegacyRandom, Random } from 'deepslate/core'
 import { NbtCompound, NbtInt, NbtList, NbtShort, NbtString, NbtTag, NbtType } from 'deepslate/nbt'
-import type { VersionId } from '../../services/Schemas.js'
 import { clamp, getWeightedRandom, isObject } from '../../Utils.js'
+import type { VersionId } from '../../services/Schemas.js'
 
 export interface SlottedItem {
   slot: number,
@@ -11,7 +11,8 @@ export interface SlottedItem {
 export interface Trade {
 	cost_a: ItemStack,
 	cost_b?: ItemStack,
-	result: ItemStack
+	result: ItemStack,
+  conditions: any
 }
 
 type ItemConsumer = (item: ItemStack) => void
@@ -51,7 +52,9 @@ export function generateTrades(lootTable: any, options: LootOptions) {
 }
 
 function fillRecipesFromPool(result: Trade[], pool: Trade[], count: number, ctx: LootContext) {
+  pool = pool.filter(trade => composeConditions(trade.conditions ?? [])(ctx))
 	const set = new Set<number>()
+
 	if (pool.length > count) {
 		while(set.size < count) {
 			set.add(ctx.random.nextInt(pool.length))
@@ -79,7 +82,9 @@ function generateTrade(trade: any, ctx: LootContext): Trade {
 	createItem(trade.result, item => result = item, ctx)
 	if (trade.cost_b != null) createItem(trade.cost_b, item => cost_b = item, ctx)
 	createItem(trade.cost_a, item => cost_a = item, ctx)
-  return {cost_a, cost_b, result}
+  let conditions = undefined
+  if (trade.conditions != null) conditions = trade.conditions
+  return {cost_a, cost_b, result, conditions }
 }
 
 function generateTable(table: any, consumer: ItemConsumer, ctx: LootContext) {
@@ -331,10 +336,12 @@ const LootFunctions: Record<string, (params: any) => LootFunction> = {
       item.tag.set('Potion', new NbtString(Identifier.parse(id).toString()))
     }
   },
-  'villagerconfig:enchant_randomly': ({ include, exclude, trade_enchantments }) => (item, ctx) => {
+  'villagerconfig:enchant_randomly': ({ include, exclude, trade_enchantments, min_level, max_level }) => (item, ctx) => {
     let enchantmentIds: string[];
     const isBook = item.is('book')
-
+    if (min_level === undefined) min_level = 0
+    if (max_level === undefined) max_level = 2147483647
+    
     if (include === undefined || include.length === 0) {
       enchantmentIds = Enchantment.REGISTRY.map((_, ench) => ench)
       .filter(ench => ench.isDiscoverable && (isBook || Enchantment.canEnchant(item, ench)))
@@ -357,7 +364,9 @@ const LootFunctions: Record<string, (params: any) => LootFunction> = {
     if (enchantments.length > 0) {
       const ench = enchantments[ctx.random.nextInt(enchantments.length)]
       const id = ench.id
-      const lvl = ctx.random.nextInt(ench.maxLevel - ench.minLevel + 1) + ench.minLevel
+      let lvl = ctx.random.nextInt(ench.maxLevel - ench.minLevel + 1) + ench.minLevel
+      lvl = clamp(lvl, min_level, max_level)
+
       ctx.numberProvider.set("enchantmentLevel", lvl)
       ctx.numberProvider.set("treasureMultiplier", ench.isTreasure ? 2 : 1)
       if (isBook) {

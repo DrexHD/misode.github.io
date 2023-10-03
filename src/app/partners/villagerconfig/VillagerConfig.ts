@@ -1,4 +1,4 @@
-import { BooleanNode, CollectionRegistry, ListNode, MapNode, Mod, NumberNode, ObjectNode, Opt, Reference as RawReference, SchemaRegistry, StringNode as RawStringNode } from '@mcschema/core'
+import { BooleanNode, CollectionRegistry, ListNode, MapNode, Mod, NumberNode, ObjectNode, Opt, Reference as RawReference, StringNode as RawStringNode, SchemaRegistry } from '@mcschema/core'
 import { initCommonSchemas } from './Common.js'
 import { initLootTableSchemas } from './LootTable.js'
 
@@ -47,6 +47,7 @@ export function initVillagerConfig(schemas: SchemaRegistry, collections: Collect
 		price_multiplier: Opt(Reference(`${ID}:number_provider`)),
 		trader_experience: Reference(`${ID}:number_provider`),
 		max_uses: Opt(Reference(`${ID}:number_provider`)),
+		conditions: Opt(ListNode(Reference('loot_condition'))),
 		reference_providers: Opt(MapNode(
 			StringNode(),
 			Reference(`${ID}:number_provider`)
