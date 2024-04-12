@@ -335,7 +335,9 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
         exclude: Opt(ListNode(
           StringNode({ validator: 'resource', params: { pool: 'enchantment' } })
         )),
-        trade_enchantments: Opt(BooleanNode())
+        trade_enchantments: Opt(BooleanNode()),
+        min_level: Opt(NumberNode({ integer: true })),
+        max_level: Opt(NumberNode({ integer: true }))
       },
       'villagerconfig:set_dye': {
         dye_colors: Opt(ListNode(
