@@ -4,7 +4,7 @@ import { useState } from 'preact/hooks'
 import { useModel } from '../../hooks/index.js'
 import type { VersionId } from '../../services/index.js'
 import { checkVersion } from '../../services/index.js'
-import { BiomeSourcePreview, BlockStatePreview, DecoratorPreview, DensityFunctionPreview, LootTablePreview, ModelPreview, NoisePreview, NoiseSettingsPreview, StructureSetPreview, VillagerConfigPreview } from '../previews/index.js'
+import { BiomeSourcePreview, BlockStatePreview, DecoratorPreview, DensityFunctionPreview, LootTablePreview, ModelPreview, NoisePreview, NoiseSettingsPreview, RecipePreview, StructureSetPreview, VillagerConfigPreview } from '../previews/index.js'
 
 export const HasPreview = ['loot_table', 'recipe', 'villagerconfig', 'dimension', 'worldgen/density_function', 'worldgen/noise', 'worldgen/noise_settings', 'worldgen/configured_feature', 'worldgen/placed_feature', 'worldgen/structure_set', 'block_definition', 'model']
 
