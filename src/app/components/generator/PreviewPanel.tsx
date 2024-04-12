@@ -6,7 +6,7 @@ import type { VersionId } from '../../services/index.js'
 import { checkVersion } from '../../services/index.js'
 import { BiomeSourcePreview, BlockStatePreview, DecoratorPreview, DensityFunctionPreview, LootTablePreview, ModelPreview, NoisePreview, NoiseSettingsPreview, StructureSetPreview, VillagerConfigPreview } from '../previews/index.js'
 
-export const HasPreview = ['loot_table', 'villagerconfig', 'dimension', 'worldgen/density_function', 'worldgen/noise', 'worldgen/noise_settings', 'worldgen/configured_feature', 'worldgen/placed_feature', 'worldgen/structure_set', 'block_definition', 'model']
+export const HasPreview = ['loot_table', 'recipe', 'villagerconfig', 'dimension', 'worldgen/density_function', 'worldgen/noise', 'worldgen/noise_settings', 'worldgen/configured_feature', 'worldgen/placed_feature', 'worldgen/structure_set', 'block_definition', 'model']
 
 type PreviewPanelProps = {
 	model: DataModel | undefined,
@@ -30,10 +30,14 @@ export function PreviewPanel({ model, version, id, shown }: PreviewPanelProps) {
 		return <LootTablePreview {...{ model, version, shown, data }} />
 	}
 
+	if (id === 'recipe') {
+		return <RecipePreview {...{ model, version, shown, data }} />
+	}
+
 	if (id === 'villagerconfig') {
 		return <VillagerConfigPreview {...{ model, version, shown, data }} />
 	}
-
+	
 	if (id === 'dimension' && model.get(new Path(['generator', 'type']))?.endsWith('noise')) {
 		return <BiomeSourcePreview {...{ model, version, shown, data }} />
 	}
