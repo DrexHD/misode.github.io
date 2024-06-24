@@ -1,9 +1,8 @@
-import { BooleanNode, ChoiceNode, CollectionRegistry, NumberNode, ObjectNode, Opt, Reference as RawReference, StringNode as RawStringNode, SchemaRegistry } from "@mcschema/core"
+import { BooleanNode, ChoiceNode, CollectionRegistry, NumberNode, ObjectNode, Opt, StringNode as RawStringNode, SchemaRegistry } from "@mcschema/core"
 
 const ID = "melius_commands"
 
 export function initCommon(schemas: SchemaRegistry, collections: CollectionRegistry) {
-	const Reference = RawReference.bind(undefined, schemas)
 	const StringNode = RawStringNode.bind(undefined, collections)
 
 	schemas.register(`${ID}:action`, ChoiceNode(
