@@ -171,7 +171,20 @@
       "id": "villagerconfig",
       "url": "villagerconfig",
       "path": "trades",
+      "tags": ["partners"],
       "schema": "villagerconfig"
+    },
+    {
+      "id": "melius_commands/commands",
+      "url": "melius-commands/commands",
+      "tags": ["partners"],
+      "schema": "melius_commands:literal"
+    },
+    {
+      "id": "melius_commands/modifiers",
+      "url": "melius-commands/modifiers",
+      "tags": ["partners"],
+      "schema": "melius_commands:matcher"
     },
     {
       "id": "predicate",
