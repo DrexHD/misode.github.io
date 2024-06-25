@@ -187,6 +187,12 @@
       "schema": "melius_commands:matcher"
     },
     {
+      "id": "predicate_api",
+      "url": "predicate_api",
+      "tags": ["partners"],
+      "schema": "predicate_api"
+    },
+    {
       "id": "predicate",
       "url": "predicate",
       "schema": "predicate",

@@ -79,6 +79,7 @@
   "generator.villagerconfig": "VillagerConfig Trades",
   "generator.melius_commands/commands": "Melius Commands | Commands",
   "generator.melius_commands/modifiers": "Melius Commands | Modifiers",
+  "generator.predicate_api": "Predicate API",
   "generator.ohthetreesyoullgrow.configured_feature": "OTTYG Feature",
   "generator.pack_mcmeta": "Pack.mcmeta",
   "generator.painting_variant": "Painting Variant",
