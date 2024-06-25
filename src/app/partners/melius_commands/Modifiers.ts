@@ -32,30 +32,30 @@ export function initModifiers(schemas: SchemaRegistry, collections: CollectionRe
 		[Case]: {
 			'command:strict': {
 				commands: stringOrStringList,
-				execution_modifiers: Reference(`${ID}:execution_modifier`)
+				execution_modifiers: ListNode(Reference(`${ID}:execution_modifier`))
 			},
 			'command:starts_with': {
 				commands: stringOrStringList,
-				execution_modifiers: Reference(`${ID}:execution_modifier`)
+				execution_modifiers: ListNode(Reference(`${ID}:execution_modifier`))
 			},
 			'command:regex': {
 				regexes: stringOrStringList,
-				execution_modifiers: Reference(`${ID}:execution_modifier`)
+				execution_modifiers: ListNode(Reference(`${ID}:execution_modifier`))
 			},
 			'node:strict': {
 				paths: stringOrStringList,
 				requirement_modifier: Opt(Reference(`${ID}:requirement_modifier`)),
-				execution_modifiers: Opt(Reference(`${ID}:execution_modifier`))
+				execution_modifiers: Opt(ListNode(Reference(`${ID}:execution_modifier`)))
 			},
 			'node:starts_with': {
 				paths: stringOrStringList,
 				requirement_modifier: Opt(Reference(`${ID}:requirement_modifier`)),
-				execution_modifiers: Opt(Reference(`${ID}:execution_modifier`))
+				execution_modifiers: Opt(ListNode(Reference(`${ID}:execution_modifier`)))
 			},
 			'node:regex': {
 				regexes: stringOrStringList,
 				requirement_modifier: Opt(Reference(`${ID}:requirement_modifier`)),
-				execution_modifiers: Opt(Reference(`${ID}:execution_modifier`))
+				execution_modifiers: Opt(ListNode(Reference(`${ID}:execution_modifier`)))
 			},
 		}
 	}))
