@@ -336,7 +336,7 @@ const LootFunctions: Record<string, (params: any) => LootFunction> = {
       item.tag.set('Potion', new NbtString(Identifier.parse(id).toString()))
     }
   },
-  'villagerconfig:enchant_randomly': ({ include, exclude, trade_enchantments, min_level, max_level }) => (item, ctx) => {
+  'villagerconfig:enchant_randomly': ({ include, exclude, min_level, max_level }) => (item, ctx) => {
     let enchantmentIds: string[];
     const isBook = item.is('book')
     if (min_level === undefined) min_level = 0
@@ -356,7 +356,6 @@ const LootFunctions: Record<string, (params: any) => LootFunction> = {
     for (const enchantmentId of enchantmentIds) {
       const ench = Enchantment.REGISTRY.get(Identifier.parse(enchantmentId))
       if (ench === undefined) continue;
-      if (trade_enchantments && !ench.isTradeable) continue
       if (!isBook && !Enchantment.canEnchant(item, ench)) continue
       enchantments.push(ench)
     }

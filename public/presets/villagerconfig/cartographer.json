@@ -108,7 +108,7 @@
                 "type": "minecraft:item",
                 "functions": [
                   {
-                    "decoration": "monument",
+                    "decoration": "minecraft:monument",
                     "destination": "minecraft:on_ocean_explorer_maps",
                     "function": "minecraft:exploration_map",
                     "search_radius": 100
@@ -117,7 +117,8 @@
                     "function": "minecraft:set_name",
                     "name": {
                       "translate": "filled_map.monument"
-                    }
+                    },
+                    "target": "item_name"
                   }
                 ],
                 "name": "minecraft:map"
@@ -181,7 +182,45 @@
                     "function": "minecraft:set_name",
                     "name": {
                       "translate": "filled_map.mansion"
-                    }
+                    },
+                    "target": "item_name"
+                  }
+                ],
+                "name": "minecraft:map"
+              },
+              "trader_experience": 10.0
+            },
+            {
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 12.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:emerald"
+              },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:compass"
+              },
+              "result": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "decoration": "minecraft:trial_chambers",
+                    "destination": "minecraft:on_trial_chambers_maps",
+                    "function": "minecraft:exploration_map",
+                    "search_radius": 100
+                  },
+                  {
+                    "function": "minecraft:set_name",
+                    "name": {
+                      "translate": "filled_map.trial_chambers"
+                    },
+                    "target": "item_name"
                   }
                 ],
                 "name": "minecraft:map"

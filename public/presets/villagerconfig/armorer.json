@@ -342,8 +342,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:diamond_leggings"
@@ -386,8 +385,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:diamond_boots"
@@ -440,8 +438,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:diamond_helmet"
@@ -484,8 +481,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:diamond_chestplate"

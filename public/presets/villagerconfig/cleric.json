@@ -188,7 +188,7 @@
                     "function": "minecraft:set_count"
                   }
                 ],
-                "name": "minecraft:scute"
+                "name": "minecraft:turtle_scute"
               },
               "price_multiplier": 0.05,
               "result": {

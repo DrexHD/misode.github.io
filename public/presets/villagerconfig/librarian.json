@@ -35,10 +35,6 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
-                "name": "minecraft:book"
-              },
-              "cost_b": {
-                "type": "minecraft:item",
                 "functions": [
                   {
                     "add": false,
@@ -92,12 +88,16 @@
                 ],
                 "name": "minecraft:emerald"
               },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:book"
+              },
               "result": {
                 "type": "minecraft:item",
                 "functions": [
                   {
                     "function": "villagerconfig:enchant_randomly",
-                    "trade_enchantments": true
+                    "include": "#minecraft:tradeable"
                   }
                 ],
                 "name": "minecraft:book"
@@ -162,10 +162,6 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
-                "name": "minecraft:book"
-              },
-              "cost_b": {
-                "type": "minecraft:item",
                 "functions": [
                   {
                     "add": false,
@@ -219,12 +215,16 @@
                 ],
                 "name": "minecraft:emerald"
               },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:book"
+              },
               "result": {
                 "type": "minecraft:item",
                 "functions": [
                   {
                     "function": "villagerconfig:enchant_randomly",
-                    "trade_enchantments": true
+                    "include": "#minecraft:tradeable"
                   }
                 ],
                 "name": "minecraft:book"
@@ -289,10 +289,6 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
-                "name": "minecraft:book"
-              },
-              "cost_b": {
-                "type": "minecraft:item",
                 "functions": [
                   {
                     "add": false,
@@ -346,12 +342,16 @@
                 ],
                 "name": "minecraft:emerald"
               },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:book"
+              },
               "result": {
                 "type": "minecraft:item",
                 "functions": [
                   {
                     "function": "villagerconfig:enchant_randomly",
-                    "trade_enchantments": true
+                    "include": "#minecraft:tradeable"
                   }
                 ],
                 "name": "minecraft:book"
@@ -423,10 +423,6 @@
             {
               "cost_a": {
                 "type": "minecraft:item",
-                "name": "minecraft:book"
-              },
-              "cost_b": {
-                "type": "minecraft:item",
                 "functions": [
                   {
                     "add": false,
@@ -480,12 +476,16 @@
                 ],
                 "name": "minecraft:emerald"
               },
+              "cost_b": {
+                "type": "minecraft:item",
+                "name": "minecraft:book"
+              },
               "result": {
                 "type": "minecraft:item",
                 "functions": [
                   {
                     "function": "villagerconfig:enchant_randomly",
-                    "trade_enchantments": true
+                    "include": "#minecraft:tradeable"
                   }
                 ],
                 "name": "minecraft:book"

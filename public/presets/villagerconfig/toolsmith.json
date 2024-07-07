@@ -230,8 +230,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:iron_axe"
@@ -274,8 +273,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:iron_shovel"
@@ -318,8 +316,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:iron_pickaxe"
@@ -410,8 +407,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:diamond_axe"
@@ -454,8 +450,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:diamond_shovel"
@@ -508,8 +503,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:diamond_pickaxe"

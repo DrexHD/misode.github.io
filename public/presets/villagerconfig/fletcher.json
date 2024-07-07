@@ -280,8 +280,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:bow"
@@ -361,8 +360,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:crossbow"
@@ -947,6 +945,66 @@
                       {
                         "function": "minecraft:set_potion",
                         "id": "minecraft:long_slow_falling"
+                      }
+                    ],
+                    "name": "minecraft:tipped_arrow"
+                  },
+                  {
+                    "type": "minecraft:item",
+                    "functions": [
+                      {
+                        "add": false,
+                        "count": 5.0,
+                        "function": "minecraft:set_count"
+                      },
+                      {
+                        "function": "minecraft:set_potion",
+                        "id": "minecraft:wind_charged"
+                      }
+                    ],
+                    "name": "minecraft:tipped_arrow"
+                  },
+                  {
+                    "type": "minecraft:item",
+                    "functions": [
+                      {
+                        "add": false,
+                        "count": 5.0,
+                        "function": "minecraft:set_count"
+                      },
+                      {
+                        "function": "minecraft:set_potion",
+                        "id": "minecraft:weaving"
+                      }
+                    ],
+                    "name": "minecraft:tipped_arrow"
+                  },
+                  {
+                    "type": "minecraft:item",
+                    "functions": [
+                      {
+                        "add": false,
+                        "count": 5.0,
+                        "function": "minecraft:set_count"
+                      },
+                      {
+                        "function": "minecraft:set_potion",
+                        "id": "minecraft:oozing"
+                      }
+                    ],
+                    "name": "minecraft:tipped_arrow"
+                  },
+                  {
+                    "type": "minecraft:item",
+                    "functions": [
+                      {
+                        "add": false,
+                        "count": 5.0,
+                        "function": "minecraft:set_count"
+                      },
+                      {
+                        "function": "minecraft:set_potion",
+                        "id": "minecraft:infested"
                       }
                     ],
                     "name": "minecraft:tipped_arrow"

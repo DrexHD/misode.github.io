@@ -284,8 +284,7 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    },
-                    "treasure": false
+                    }
                   }
                 ],
                 "name": "minecraft:fishing_rod"
@@ -365,150 +364,193 @@
               "trader_experience": 30.0
             },
             {
-              "cost_a": {
-                "type": "minecraft:alternatives",
-                "children": [
-                  {
-                    "type": "minecraft:item",
-                    "conditions": [
-                      {
-                        "condition": "minecraft:entity_properties",
-                        "entity": "this",
-                        "predicate": {
-                          "nbt": "{VillagerData:{type:\"minecraft:desert\"}}"
-                        }
-                      }
-                    ],
-                    "functions": [
-                      {
-                        "add": false,
-                        "count": 1.0,
-                        "function": "minecraft:set_count"
-                      }
-                    ],
-                    "name": "minecraft:jungle_boat"
-                  },
-                  {
-                    "type": "minecraft:item",
-                    "conditions": [
-                      {
-                        "condition": "minecraft:entity_properties",
-                        "entity": "this",
-                        "predicate": {
-                          "nbt": "{VillagerData:{type:\"minecraft:jungle\"}}"
-                        }
-                      }
-                    ],
-                    "functions": [
-                      {
-                        "add": false,
-                        "count": 1.0,
-                        "function": "minecraft:set_count"
-                      }
-                    ],
-                    "name": "minecraft:jungle_boat"
-                  },
-                  {
-                    "type": "minecraft:item",
-                    "conditions": [
-                      {
-                        "condition": "minecraft:entity_properties",
-                        "entity": "this",
-                        "predicate": {
-                          "nbt": "{VillagerData:{type:\"minecraft:plains\"}}"
-                        }
-                      }
-                    ],
-                    "functions": [
-                      {
-                        "add": false,
-                        "count": 1.0,
-                        "function": "minecraft:set_count"
-                      }
-                    ],
-                    "name": "minecraft:oak_boat"
-                  },
-                  {
-                    "type": "minecraft:item",
-                    "conditions": [
-                      {
-                        "condition": "minecraft:entity_properties",
-                        "entity": "this",
-                        "predicate": {
-                          "nbt": "{VillagerData:{type:\"minecraft:savanna\"}}"
-                        }
-                      }
-                    ],
-                    "functions": [
-                      {
-                        "add": false,
-                        "count": 1.0,
-                        "function": "minecraft:set_count"
-                      }
-                    ],
-                    "name": "minecraft:acacia_boat"
-                  },
-                  {
-                    "type": "minecraft:item",
-                    "conditions": [
-                      {
-                        "condition": "minecraft:entity_properties",
-                        "entity": "this",
-                        "predicate": {
-                          "nbt": "{VillagerData:{type:\"minecraft:snow\"}}"
-                        }
-                      }
-                    ],
-                    "functions": [
-                      {
-                        "add": false,
-                        "count": 1.0,
-                        "function": "minecraft:set_count"
-                      }
-                    ],
-                    "name": "minecraft:spruce_boat"
-                  },
-                  {
-                    "type": "minecraft:item",
-                    "conditions": [
-                      {
-                        "condition": "minecraft:entity_properties",
-                        "entity": "this",
-                        "predicate": {
-                          "nbt": "{VillagerData:{type:\"minecraft:swamp\"}}"
-                        }
-                      }
-                    ],
-                    "functions": [
-                      {
-                        "add": false,
-                        "count": 1.0,
-                        "function": "minecraft:set_count"
-                      }
-                    ],
-                    "name": "minecraft:dark_oak_boat"
-                  },
-                  {
-                    "type": "minecraft:item",
-                    "conditions": [
-                      {
-                        "condition": "minecraft:entity_properties",
-                        "entity": "this",
-                        "predicate": {
-                          "nbt": "{VillagerData:{type:\"minecraft:taiga\"}}"
-                        }
-                      }
-                    ],
-                    "functions": [
-                      {
-                        "add": false,
-                        "count": 1.0,
-                        "function": "minecraft:set_count"
-                      }
-                    ],
-                    "name": "minecraft:spruce_boat"
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "nbt": "{VillagerData:{type:\"minecraft:plains\"}}"
                   }
-                ]
+                }
+              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:oak_boat"
+              },
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "trader_experience": 30.0
+            },
+            {
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "nbt": "{VillagerData:{type:\"minecraft:taiga\"}}"
+                  }
+                }
+              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:spruce_boat"
+              },
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "trader_experience": 30.0
+            },
+            {
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "nbt": "{VillagerData:{type:\"minecraft:snow\"}}"
+                  }
+                }
+              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:spruce_boat"
+              },
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "trader_experience": 30.0
+            },
+            {
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "nbt": "{VillagerData:{type:\"minecraft:desert\"}}"
+                  }
+                }
+              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:jungle_boat"
+              },
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "trader_experience": 30.0
+            },
+            {
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "nbt": "{VillagerData:{type:\"minecraft:jungle\"}}"
+                  }
+                }
+              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:jungle_boat"
+              },
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "trader_experience": 30.0
+            },
+            {
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "nbt": "{VillagerData:{type:\"minecraft:savanna\"}}"
+                  }
+                }
+              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:acacia_boat"
+              },
+              "price_multiplier": 0.05,
+              "result": {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald"
+              },
+              "trader_experience": 30.0
+            },
+            {
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "nbt": "{VillagerData:{type:\"minecraft:swamp\"}}"
+                  }
+                }
+              ],
+              "cost_a": {
+                "type": "minecraft:item",
+                "functions": [
+                  {
+                    "add": false,
+                    "count": 1.0,
+                    "function": "minecraft:set_count"
+                  }
+                ],
+                "name": "minecraft:dark_oak_boat"
               },
               "price_multiplier": 0.05,
               "result": {
