@@ -284,7 +284,8 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    }
+                    },
+                    "options": "#minecraft:on_traded_equipment"
                   }
                 ],
                 "name": "minecraft:fishing_rod"

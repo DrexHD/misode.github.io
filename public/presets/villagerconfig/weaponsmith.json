@@ -87,7 +87,8 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    }
+                    },
+                    "options": "#minecraft:on_traded_equipment"
                   }
                 ],
                 "name": "minecraft:iron_sword"
@@ -249,7 +250,8 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    }
+                    },
+                    "options": "#minecraft:on_traded_equipment"
                   }
                 ],
                 "name": "minecraft:diamond_axe"
@@ -302,7 +304,8 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    }
+                    },
+                    "options": "#minecraft:on_traded_equipment"
                   }
                 ],
                 "name": "minecraft:diamond_sword"

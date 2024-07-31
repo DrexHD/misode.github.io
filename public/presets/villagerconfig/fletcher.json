@@ -280,7 +280,8 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    }
+                    },
+                    "options": "#minecraft:on_traded_equipment"
                   }
                 ],
                 "name": "minecraft:bow"
@@ -360,7 +361,8 @@
                     "levels": {
                       "type": "villagerconfig:reference",
                       "id": "enchantLevel"
-                    }
+                    },
+                    "options": "#minecraft:on_traded_equipment"
                   }
                 ],
                 "name": "minecraft:crossbow"
