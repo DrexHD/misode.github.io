@@ -336,46 +336,25 @@ const LootFunctions: Record<string, (params: any) => LootFunction> = {
       item.tag.set('Potion', new NbtString(Identifier.parse(id).toString()))
     }
   },
-  'villagerconfig:enchant_randomly': ({ include, exclude, min_level, max_level }) => (item, ctx) => {
-    let enchantmentIds: string[];
-    const isBook = item.is('book')
-    if (min_level === undefined) min_level = 0
-    if (max_level === undefined) max_level = 2147483647
+  'villagerconfig:enchant_randomly': ({ min_level, max_level }) => (item, ctx) => {
+    // TODO Parse tags and preview valid enchantments
     
-    if (include === undefined || include.length === 0) {
-      enchantmentIds = Enchantment.REGISTRY.map((_, ench) => ench)
-      .filter(ench => ench.isDiscoverable && (isBook || Enchantment.canEnchant(item, ench)))
-      .map(e => e.id.toString())
-      if (exclude !== undefined && exclude.length !== 0) {
-        enchantmentIds = enchantmentIds.filter(ench => exclude.indexOf(ench) == -1)
-      }
-    } else {
-      enchantmentIds = include;
-    }
-    let enchantments: Enchantment[] = [];
-    for (const enchantmentId of enchantmentIds) {
-      const ench = Enchantment.REGISTRY.get(Identifier.parse(enchantmentId))
-      if (ench === undefined) continue;
-      if (!isBook && !Enchantment.canEnchant(item, ench)) continue
-      enchantments.push(ench)
-    }
+    if (min_level === undefined) min_level = 0
+    if (max_level === undefined) max_level = 5
 
-    if (enchantments.length > 0) {
-      const ench = enchantments[ctx.random.nextInt(enchantments.length)]
-      const id = ench.id
-      let lvl = ctx.random.nextInt(ench.maxLevel - ench.minLevel + 1) + ench.minLevel
-      lvl = clamp(lvl, min_level, max_level)
+    let lvl = ctx.random.nextInt(max_level - min_level + 1) + min_level
+    ctx.numberProvider.set("enchantmentLevel", lvl)
+    ctx.numberProvider.set("treasureMultiplier", ctx.random.nextInt(1) + 1)
 
-      ctx.numberProvider.set("enchantmentLevel", lvl)
-      ctx.numberProvider.set("treasureMultiplier", ench.isTreasure ? 2 : 1)
-      if (isBook) {
-        item.tag = new NbtCompound()
-        item.count = 1
-      }
-      enchantItem(item, { id, lvl })
-      if (isBook) {
-        item.id = Identifier.create('enchanted_book')
-      }
+    const isBook = item.is('book')
+    const listKey = isBook ? 'StoredEnchantments' : 'Enchantments'
+    if (isBook) {
+      item.tag = new NbtCompound()
+      item.count = 1
+    }
+    item.tag.set(listKey, new NbtList())
+    if (isBook) {
+      item.id = Identifier.create('enchanted_book')
     }
   },
   // TODO 'villagerconfig:set_dye'
