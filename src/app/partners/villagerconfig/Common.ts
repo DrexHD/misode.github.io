@@ -298,7 +298,7 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
       predicate: Reference('item_predicate')
     },
     'minecraft:random_chance': {
-      chance: Reference('number_provider')
+      chance: Reference(`${ID}:number_provider`),
     },
     'minecraft:random_chance_with_enchanted_bonus': {
       enchantment: StringNode({ validator: 'resource', params: { pool: 'enchantment' } }),
@@ -320,7 +320,7 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
       period: Opt(NumberNode({ integer: true }))
     },
     'minecraft:value_check': {
-      value: Reference('number_provider'),
+      value: Reference(`${ID}:number_provider`),
       range: Reference('int_range')
     },
     'minecraft:weather_check': {
@@ -381,12 +381,12 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
         only_compatible: Opt(BooleanNode()),
       },
       'minecraft:enchant_with_levels': {
-        levels: Reference('number_provider'),
+        levels: Reference(`${ID}:number_provider`),
         options: Opt(Tag({ resource: 'enchantment' })),
       },
       'minecraft:enchanted_count_increase': {
         enchantment: StringNode({ validator: 'resource', params: { pool: 'enchantment' }}),
-        count: Reference('number_provider'),
+        count: Reference(`${ID}:number_provider`),
         limit: Opt(NumberNode({ integer: true }))
       },
       'minecraft:exploration_map': {
@@ -442,23 +442,23 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
         )
       },
       'minecraft:set_count': {
-        count: Reference('number_provider'),
+        count: Reference(`${ID}:number_provider`),
         add: Opt(BooleanNode())
       },
       'minecraft:set_custom_data': {
         tag: Reference('custom_data_component'),
       },
       'minecraft:set_custom_model_data': {
-        value: Reference('number_provider'),
+        value: Reference(`${ID}:number_provider`),
       },
       'minecraft:set_damage': {
-        damage: Reference('number_provider'),
+        damage: Reference(`${ID}:number_provider`),
         add: Opt(BooleanNode())
       },
       'minecraft:set_enchantments': {
         enchantments: MapNode(
           StringNode({ validator: 'resource', params: { pool: 'enchantment' } }),
-          Reference('number_provider')
+          Reference(`${ID}:number_provider`),
         ),
         add: Opt(BooleanNode())
       },
@@ -505,19 +505,19 @@ export function initCommonSchemas(schemas: SchemaRegistry, collections: Collecti
         name: Opt(Reference('text_component'))
       },
       'minecraft:set_ominous_bottle_amplifier': {
-        amplifier: Reference('number_provider'),
+        amplifier: Reference(`${ID}:number_provider`),
       },
       'minecraft:set_potion': {
         id: StringNode({ validator: 'resource', params: { pool: 'potion' } })
       },
       'minecraft:ominous_bottle_amplifier': {
-        amplifier: Reference('number_provider')
+        amplifier: Reference(`${ID}:number_provider`),
       },
       'minecraft:set_stew_effect': {
         effects: Opt(ListNode(
           ObjectNode({
             type: StringNode({ validator: 'resource', params: { pool: 'mob_effect' } }),
-            duration: Reference('number_provider')
+            duration: Reference(`${ID}:number_provider`),
           })
         ))
       },
