@@ -332,7 +332,7 @@
                     "effects": [
                       {
                         "type": "minecraft:night_vision",
-                        "duration": 100.0
+                        "duration": 5.0
                       }
                     ],
                     "function": "minecraft:set_stew_effect"
@@ -354,7 +354,7 @@
                     "effects": [
                       {
                         "type": "minecraft:jump_boost",
-                        "duration": 160.0
+                        "duration": 8.0
                       }
                     ],
                     "function": "minecraft:set_stew_effect"
@@ -376,7 +376,7 @@
                     "effects": [
                       {
                         "type": "minecraft:weakness",
-                        "duration": 140.0
+                        "duration": 7.0
                       }
                     ],
                     "function": "minecraft:set_stew_effect"
@@ -398,7 +398,7 @@
                     "effects": [
                       {
                         "type": "minecraft:blindness",
-                        "duration": 120.0
+                        "duration": 6.0
                       }
                     ],
                     "function": "minecraft:set_stew_effect"
@@ -420,7 +420,7 @@
                     "effects": [
                       {
                         "type": "minecraft:poison",
-                        "duration": 280.0
+                        "duration": 14.0
                       }
                     ],
                     "function": "minecraft:set_stew_effect"
