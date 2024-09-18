@@ -178,13 +178,13 @@
       "id": "melius_commands/commands",
       "url": "melius-commands/commands",
       "tags": ["partners"],
-      "schema": "melius_commands:literal"
+      "schema": "melius_commands:commands"
     },
     {
       "id": "melius_commands/modifiers",
       "url": "melius-commands/modifiers",
       "tags": ["partners"],
-      "schema": "melius_commands:matcher"
+      "schema": "melius_commands:modifiers"
     },
     {
       "id": "predicate_api",

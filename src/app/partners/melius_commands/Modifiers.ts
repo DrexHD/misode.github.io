@@ -26,6 +26,19 @@ export function initModifiers(schemas: SchemaRegistry, collections: CollectionRe
 		}
 	])
 
+	schemas.register(`${ID}:modifiers`, ChoiceNode(
+        [
+            {
+                type: 'object',
+                node: Reference(`${ID}:matcher`)
+            },
+            {
+                type: 'list',
+                node: ListNode(Reference(`${ID}:matcher`))
+            }
+        ]
+    ))
+
 	schemas.register(`${ID}:matcher`, ObjectNode({
 		type: RawStringNode(undefined, { enum: matcher_types }),
 		[Switch]: [{ push: 'type' }],
