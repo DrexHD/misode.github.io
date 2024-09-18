@@ -29,7 +29,8 @@ export function initCommands(schemas: SchemaRegistry, collections: CollectionReg
         literals: Opt(ListNode(Reference(`${ID}:literal`))),
         arguments: Opt(ListNode(Reference(`${ID}:argument`))),
         require: Opt(Reference(`predicate_api`)),
-        executes: Opt(ListNode(Reference(`${ID}:action`)))
+        executes: Opt(ListNode(Reference(`${ID}:action`))),
+        redirect: Opt(StringNode())
     }))
 
     schemas.register(`${ID}:argument`, ObjectNode({
@@ -38,7 +39,8 @@ export function initCommands(schemas: SchemaRegistry, collections: CollectionReg
         literals: Opt(ListNode(Reference(`${ID}:literal`))),
         arguments: Opt(ListNode(Reference(`${ID}:argument`))),
         require: Opt(Reference(`predicate_api`)),
-        executes: Opt(ListNode(Reference(`${ID}:action`)))
+        executes: Opt(ListNode(Reference(`${ID}:action`))),
+        redirect: Opt(StringNode())
     }))
 
     collections.register(`${ID}:argument_type`, [
@@ -48,6 +50,9 @@ export function initCommands(schemas: SchemaRegistry, collections: CollectionReg
         'brigadier:integer',
         'brigadier:long',
         'brigadier:string',
+        'brigadier:string single_word',
+        'brigadier:string quotable_phrase',
+        'brigadier:string greedy_phrase',
         'minecraft:angle',
         'minecraft:block_pos',
         'minecraft:block_predicate',
@@ -57,6 +62,10 @@ export function initCommands(schemas: SchemaRegistry, collections: CollectionReg
         'minecraft:component',
         'minecraft:dimension',
         'minecraft:entity',
+        'minecraft:entity entity',
+        'minecraft:entity entities',
+        'minecraft:entity player',
+        'minecraft:entity players',
         'minecraft:entity_anchor',
         'minecraft:float_range',
         'minecraft:function',
