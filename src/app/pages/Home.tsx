@@ -1,13 +1,13 @@
 import { useMemo } from 'preact/hooks'
 import contributors from '../../contributors.json'
-import { Store } from '../Store.js'
-import { shuffle } from '../Utils.js'
 import { Card, ChangelogEntry, Footer, GeneratorCard, Giscus, ToolCard, ToolGroup } from '../components/index.js'
 import { WhatsNewTime } from '../components/whatsnew/WhatsNewTime.jsx'
 import { useLocale, useTitle } from '../contexts/index.js'
 import { useAsync } from '../hooks/useAsync.js'
 import { useMediaQuery } from '../hooks/useMediaQuery.js'
 import { fetchChangelogs, fetchVersions, fetchWhatsNew } from '../services/DataFetcher.js'
+import { Store } from '../Store.js'
+import { shuffle } from '../Utils.js'
 
 const MIN_FAVORITES = 2
 const MAX_FAVORITES = 5
@@ -31,13 +31,11 @@ export function Home({}: Props) {
 					<Changelog />
 					<Versions />
 					<Tools />
-					<Guides />
 				</> : /* desktop */ <>
 					<div class="card-column">
 						<PopularGenerators />
 						<Changelog />
 						<Versions />
-						<Guides />
 					</div>
 					{!smallScreen && <div class="card-column">
 						<FavoriteGenerators />
@@ -58,6 +56,7 @@ function PopularGenerators() {
 	return <ToolGroup title={locale('generators.popular')} link="/generators/">
 		<GeneratorCard minimal id="loot_table" />
 		<GeneratorCard minimal id="advancement" />
+		<GeneratorCard minimal id="recipe" />
 		<GeneratorCard minimal id="villagerconfig" />
 		<ToolCard title={locale('worldgen')} link="/worldgen/" titleIcon="worldgen" />
 		<ToolCard title={locale('generators.all')} link="/generators/" titleIcon="arrow_right" />
@@ -85,16 +84,13 @@ function FavoriteGenerators() {
 	</ToolGroup>
 }
 
-function Guides() {
-	const { locale } = useLocale()
-
-	return <ToolGroup title={locale('guides')} link="/guides/" titleIcon="arrow_right" />
-}
-
 function Tools() {
 	const { locale } = useLocale()
 
 	return <ToolGroup title={locale('tools')}>
+		<ToolCard title="Converter" icon="convert"
+			link="/convert/"
+			desc="Turn /give commands into loot tables" />
 		<ToolCard title="Customized Worlds" icon="customized"
 			link="/customized/"
 			desc="Create data packs to customize your world" />
@@ -107,9 +103,6 @@ function Tools() {
 		<ToolCard title="Transformation preview"
 			link="/transformation/"
 			desc="Visualize transformations for display entities" />
-		<ToolCard title="Data Pack Upgrader"
-			link="https://misode.github.io/upgrader/"
-			desc="Convert your data packs from 1.16 to 1.20" />
 		<ToolCard title="Template Placer"
 			link="https://misode.github.io/template-placer/"
 			desc="Automatically place all the structure pieces in your world" />
@@ -138,7 +131,12 @@ function Changelog() {
 	const hugeScreen = useMediaQuery('(min-width: 960px)')
 
 	const { value: changes } = useAsync(fetchChangelogs, [])
-	const latestChanges = useMemo(() => changes?.sort((a, b) => b.order - a.order).slice(0, 2), [changes])
+	const latestChanges = useMemo(() => {
+		return changes
+			?.sort((a, b) => b.order - a.order)
+			.filter(c => !(c.tags.includes('pack') && c.tags.includes('breaking')))
+			.slice(0, 2)
+	}, [changes])
 
 	return <ToolGroup title={locale('changelog')} link="/changelog/" titleIcon="git_commit">
 		{latestChanges?.map(change => <ChangelogEntry minimal={!hugeScreen} short={true} change={change} />)}

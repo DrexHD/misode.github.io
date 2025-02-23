@@ -1,14 +1,13 @@
-import { DataModel } from '@mcschema/core'
 import { useEffect, useRef, useState } from 'preact/hooks'
 import { useLocale, useVersion } from '../../contexts/index.js'
-import { randomSeed } from '../../Utils.js'
+import { randomSeed, safeJsonParse } from '../../Utils.js'
 import { Btn, BtnMenu, NumberInput } from '../index.js'
 import { ItemDisplay } from '../ItemDisplay.jsx'
 import type { PreviewProps } from './index.js'
 import type { Trade } from './VillagerConfig.js'
 import { generateTrades } from './VillagerConfig.js'
 
-export const VillagerConfigPreview = ({ data }: PreviewProps) => {
+export const VillagerConfigPreview = ({ docAndNode }: PreviewProps) => {
 	const { locale } = useLocale()
 	const { version } = useVersion()
 	const [seed, setSeed] = useState(randomSeed())
@@ -20,13 +19,13 @@ export const VillagerConfigPreview = ({ data }: PreviewProps) => {
 
 	const [trades, setTrades] = useState<Trade[]>([])
 
-	const table = DataModel.unwrapLists(data)
-	const state = JSON.stringify(table)
+	const text = docAndNode.doc.getText()
+	const table = safeJsonParse(text) ?? {}
 	useEffect(() => {
 		const trades = generateTrades(table, { version, seed, luck, daytime, weather})
 		console.log('Generated trades', trades)
 		setTrades(trades)
-	}, [version, seed, luck, daytime, weather, state])
+	}, [version, seed, luck, daytime, weather])
 
 	return <>
 		<div ref={overlay} class="preview-overlay">

@@ -1,15 +1,20 @@
-import { DataModel } from '@mcschema/core'
 import { useMemo, useRef, useState } from 'preact/hooks'
 import { useLocale, useVersion } from '../../contexts/index.js'
-import { clamp, randomSeed } from '../../Utils.js'
+import { useAsync } from '../../hooks/useAsync.js'
+import { checkVersion, fetchAllPresets, fetchItemComponents } from '../../services/index.js'
+import { clamp, jsonToNbt, randomSeed, safeJsonParse } from '../../Utils.js'
 import { Btn, BtnMenu, NumberInput } from '../index.js'
 import { ItemDisplay } from '../ItemDisplay.jsx'
+import { ItemDisplay1204 } from '../ItemDisplay1204.jsx'
 import type { PreviewProps } from './index.js'
 import { generateLootTable } from './LootTable.js'
+import { generateLootTable as generateLootTable1204 } from './LootTable1204.js'
 
-export const LootTablePreview = ({ data }: PreviewProps) => {
+export const LootTablePreview = ({ docAndNode }: PreviewProps) => {
 	const { locale } = useLocale()
 	const { version } = useVersion()
+	const use1204 = !checkVersion(version, '1.20.5')
+
 	const [seed, setSeed] = useState(randomSeed())
 	const [luck, setLuck] = useState(0)
 	const [daytime, setDaytime] = useState(0)
@@ -18,18 +23,52 @@ export const LootTablePreview = ({ data }: PreviewProps) => {
 	const [advancedTooltips, setAdvancedTooltips] = useState(true)
 	const overlay = useRef<HTMLDivElement>(null)
 
-	const table = DataModel.unwrapLists(data)
-	const state = JSON.stringify(table)
+	const { value: dependencies, loading } = useAsync(() => {
+		return Promise.all([
+			fetchAllPresets(version, 'tag/item'),
+			fetchAllPresets(version, 'loot_table'),
+			use1204 ? Promise.resolve(undefined) : fetchItemComponents(version),
+			checkVersion(version, '1.21') ? fetchAllPresets(version, 'enchantment') : Promise.resolve(undefined),
+			checkVersion(version, '1.21') ? fetchAllPresets(version, 'tag/enchantment') : Promise.resolve(undefined),
+		])
+	}, [version])
+
+	const text = docAndNode.doc.getText()
 	const items = useMemo(() => {
-		return generateLootTable(table, { version, seed, luck, daytime, weather, stackMixer: mixItems ? 'container' : 'default' })
-	}, [version, seed, luck, daytime, weather, mixItems, state])
+		if (dependencies === undefined || loading) {
+			return []
+		}
+		const [itemTags, lootTables, itemComponents, enchantments, enchantmentTags] = dependencies
+		const table = safeJsonParse(text) ?? {}
+		if (use1204) {
+			return generateLootTable1204(table, {
+				version, seed, luck, daytime, weather,
+				stackMixer: mixItems ? 'container' : 'default',
+				getItemTag: (id) => (itemTags.get(id.replace(/^minecraft:/, '')) as any)?.values ?? [],
+				getLootTable: (id) => lootTables.get(id.replace(/^minecraft:/, '')),
+				getPredicate: () => undefined,
+			})
+		}
+		return generateLootTable(table, {
+			version, seed, luck, daytime, weather,
+			stackMixer: mixItems ? 'container' : 'default',
+			getItemTag: (id) => (itemTags.get(id.replace(/^minecraft:/, '')) as any)?.values ?? [],
+			getLootTable: (id) => lootTables.get(id.replace(/^minecraft:/, '')),
+			getPredicate: () => undefined,
+			getEnchantments: () => enchantments ?? new Map(),
+			getEnchantmentTag: (id) => (enchantmentTags?.get(id.replace(/^minecraft:/, '')) as any)?.values ?? [],
+			getItemComponents: (id) => new Map([...(itemComponents?.get(id.toString()) ?? new Map()).entries()].map(([k, v]) => [k, jsonToNbt(v)])),
+		})
+	}, [version, seed, luck, daytime, weather, mixItems, text, dependencies, loading])
 
 	return <>
 		<div ref={overlay} class="preview-overlay">
 			<img src="/images/container.png" alt="Container background" class="pixelated" draggable={false} />
 			{items.map(({ slot, item }) =>
 				<div key={slot} style={slotStyle(slot)}>
-					<ItemDisplay item={item} slotDecoration={true} advancedTooltip={advancedTooltips} />
+					{use1204 ?
+						<ItemDisplay1204 item={item as any} slotDecoration={true} advancedTooltip={advancedTooltips} /> :
+						<ItemDisplay item={item as any} slotDecoration={true} advancedTooltip={advancedTooltips} />}
 				</div>
 			)}
 		</div>

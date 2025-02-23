@@ -1,6 +1,7 @@
-import { NbtByte, NbtCompound, NbtDouble, NbtInt, NbtList, NbtString, NbtTag } from 'deepslate'
+import { NbtTag } from 'deepslate'
 import yaml from 'js-yaml'
 import { Store } from '../Store.js'
+import { jsonToNbt, message, safeJsonParse } from '../Utils.js'
 
 const INDENTS: Record<string, number | string | undefined> = {
 	'2_spaces': 2,
@@ -9,65 +10,47 @@ const INDENTS: Record<string, number | string | undefined> = {
 	minified: undefined,
 }
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-let commentJson: typeof import('comment-json') | null = null
-
 const FORMATS: Record<string, {
-	parse: (v: string) => Promise<unknown>,
-	stringify: (v: unknown, indentation: string | number | undefined) => string,
+	parse: (source: string) => string,
+	stringify: (source: string, indent: string | number | undefined) => string,
 }> = {
 	json: {
-		parse: async (v) => {
+		parse: (s) => s,
+		stringify: (s, i) => {
 			try {
-				return JSON.parse(v)
+				const data = JSON.parse(s)
+				return JSON.stringify(data, null, i)
 			} catch (e) {
-				commentJson = await import('comment-json')
-				return commentJson.parse(v)
+				console.warn(`Failed to format JSON output. Falling back to source. ${message(e)}`)
+				return s
 			}
 		},
-		stringify: (v, i) => (commentJson ?? JSON).stringify(v, null, i) + '\n',
 	},
 	snbt: {
-		parse: async (v) => NbtTag.fromString(v).toSimplifiedJson(),
-		stringify: (v, _i) => jsonToNbt(v).toPrettyString(),
+		parse: (s) => JSON.stringify(NbtTag.fromString(s).toSimplifiedJson(), null, 2),
+		stringify: (s, i) => {
+			const tag = jsonToNbt(safeJsonParse(s) ?? {})
+			if (i === undefined) {
+				return tag.toString()
+			}
+			return tag.toPrettyString(typeof i === 'number' ? ' '.repeat(i) : i)
+		},
 	},
 	yaml: {
-		parse: async (v) => yaml.load(v),
-		stringify: (v, i) => yaml.dump(v, {
+		parse: (s) => JSON.stringify(yaml.load(s), null, 2),
+		stringify: (s, i) => yaml.dump(safeJsonParse(s) ?? {}, {
 			flowLevel: i === undefined ? 0 : -1,
 			indent: typeof i === 'string' ? 4 : i,
 		}),
 	},
 }
 
-function jsonToNbt(value: unknown): NbtTag {
-	if (typeof value === 'string') {
-		return new NbtString(value)
-	}
-	if (typeof value === 'number') {
-		return Number.isInteger(value) ? new NbtInt(value) : new NbtDouble(value)
-	}
-	if (typeof value === 'boolean') {
-		return new NbtByte(value)
-	}
-	if (Array.isArray(value)) {
-		return new NbtList(value.map(jsonToNbt))
-	}
-	if (typeof value === 'object' && value !== null) {
-		return new NbtCompound(
-			new Map(Object.entries(value ?? {})
-				.map(([k, v]) => [k, jsonToNbt(v)]))
-		)
-	}
-	throw new Error(`Could not convert ${value} to NBT`)
+export function stringifySource(source: string, format?: string, indent?: string) {
+	return FORMATS[format ?? Store.getFormat()].stringify(source, INDENTS[indent ?? Store.getIndent()])
 }
 
-export function stringifySource(data: unknown, format?: string, indent?: string) {
-	return FORMATS[format ?? Store.getFormat()].stringify(data, INDENTS[indent ?? Store.getIndent()])
-}
-
-export async function parseSource(data: string, format: string) {
-	return await FORMATS[format].parse(data)
+export async function parseSource(source: string, format: string) {
+	return FORMATS[format].parse(source)
 }
 
 export function getSourceIndent(indent: string) {
@@ -80,4 +63,28 @@ export function getSourceIndents() {
 
 export function getSourceFormats() {
 	return Object.keys(FORMATS)
+}
+
+export function sortData(data: any): any {
+	if (typeof data !== 'object' || data === null) {
+		return data
+	}
+	if (Array.isArray(data)) {
+		return data.map(sortData)
+	}
+	const ordered = Object.create(null)
+	for (const symbol of Object.getOwnPropertySymbols(data)) {
+		ordered[symbol] = data[symbol]
+	}
+	const orderedKeys = Object.keys(data).sort(customOrder)
+	for (const key of orderedKeys) {
+		ordered[key] = sortData(data[key])
+	}
+	return ordered
+}
+
+const priority = ['type', 'parent']
+function customOrder(a: string, b: string) {
+	return (priority.indexOf(a) + 1 || Infinity) - (priority.indexOf(b) + 1 || Infinity)
+		|| a.localeCompare(b)
 }

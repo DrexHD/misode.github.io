@@ -1,13 +1,13 @@
 import type { ItemStack } from 'deepslate/core'
-import { Identifier } from 'deepslate/core'
-import { useEffect, useRef, useState } from 'preact/hooks'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'preact/hooks'
 import { useVersion } from '../contexts/Version.jsx'
 import { useAsync } from '../hooks/useAsync.js'
+import { fetchItemComponents } from '../services/index.js'
+import { ResolvedItem } from '../services/ResolvedItem.js'
 import { renderItem } from '../services/Resources.js'
-import { getCollections } from '../services/Schemas.js'
+import { jsonToNbt } from '../Utils.js'
 import { ItemTooltip } from './ItemTooltip.jsx'
 import { Octicon } from './Octicon.jsx'
-import { itemHasGlint } from './previews/LootTable.js'
 
 interface Props {
 	item: ItemStack,
@@ -16,6 +16,7 @@ interface Props {
 	advancedTooltip?: boolean,
 }
 export function ItemDisplay({ item, slotDecoration, tooltip, advancedTooltip }: Props) {
+	const { version } = useVersion()
 	const el = useRef<HTMLDivElement>(null)
 	const [tooltipOffset, setTooltipOffset] = useState<[number, number]>([0, 0])
 	const [tooltipSwap, setTooltipSwap] = useState(false)
@@ -33,10 +34,20 @@ export function ItemDisplay({ item, slotDecoration, tooltip, advancedTooltip }: 
 		return () => el.current?.removeEventListener('mousemove', onMove)
 	}, [])
 
-	const maxDamage = item.getItem().durability
+	const { value: baseComponents } = useAsync(() => fetchItemComponents(version), [version])
+	const itemResolver = useCallback((item: ItemStack) => {
+		const base = baseComponents?.get(item.id.toString()) ?? new Map()
+		return new ResolvedItem(item, new Map([...base.entries()].map(([k, v]) => [k, jsonToNbt(v)])))
+	}, [baseComponents])
+	const resolvedItem = useMemo(() => {
+		return itemResolver(item)
+	}, [item, itemResolver])
+
+	const maxDamage = resolvedItem.getMaxDamage()
+	const damage = resolvedItem.getDamage()
 
 	return <div class="item-display" ref={el}>
-		<ItemItself item={item} />
+		<RenderedItem item={resolvedItem} baseComponents={baseComponents} />
 		{item.count !== 1 && <>
 			<svg class="item-count" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMinYMid meet">
 				<text x="95" y="93" font-size="50" textAnchor="end" fontFamily="MinecraftSeven" fill="#373737">{item.count}</text>
@@ -44,53 +55,39 @@ export function ItemDisplay({ item, slotDecoration, tooltip, advancedTooltip }: 
 			</svg>
 		</>}
 		{slotDecoration && <>
-			{(maxDamage && item.tag.getNumber('Damage') > 0) && <svg class="item-durability" width="100%" height="100%" viewBox="0 0 18 18">
+			{(maxDamage > 0 && damage > 0) && <svg class="item-durability" width="100%" height="100%" viewBox="0 0 18 18">
 				<rect x="3" y="14" width="13" height="2" fill="#000" />
-				<rect x="3" y="14" width={`${(maxDamage - item.tag.getNumber('Damage')) / maxDamage * 13}`} height="1" fill={`hsl(${(maxDamage - item.tag.getNumber('Damage')) / maxDamage * 120}deg, 100%, 50%)`} />
+				<rect x="3" y="14" width={`${(maxDamage - damage) / maxDamage * 13}`} height="1" fill={`hsl(${(maxDamage - damage) / maxDamage * 120}deg, 100%, 50%)`} />
 			</svg>}
 			<div class="item-slot-overlay"></div>
 		</>}
-		{tooltip !== false && <div class="item-tooltip" style={tooltipOffset && {
+		{tooltip !== false && !resolvedItem.has('hide_tooltip') && <div class="item-tooltip" style={tooltipOffset && {
 			left: (tooltipSwap ? undefined : `${tooltipOffset[0]}px`),
 			right: (tooltipSwap ? `${tooltipOffset[0]}px` : undefined),
 			top: `${tooltipOffset[1]}px`,
 		}}>
-			<ItemTooltip item={item} advanced={advancedTooltip} />
+			<ItemTooltip item={resolvedItem} advanced={advancedTooltip} resolver={itemResolver} />
 		</div>}
 	</div>
 }
 
-function ItemItself({ item }: Props) {
-	const { version } = useVersion()
-
-	const hasGlint = itemHasGlint(item)
-
-	if (item.id.namespace !== Identifier.DEFAULT_NAMESPACE) {
-		return Octicon.package
-	}
-
-	const { value: collections } = useAsync(() => getCollections(version), [])
-
-	if (collections === undefined) {
-		return null
-	}
-
-	const modelPath = `item/${item.id.path}`
-	if (collections.get('model').includes('minecraft:' + modelPath)) {
-		return <RenderedItem item={item} hasGlint={hasGlint} />
-	}
-
-	return Octicon.package
+interface ResolvedProps extends Props {
+	item: ResolvedItem
+	baseComponents: Map<string, Map<string, unknown>> | undefined
 }
-
-function RenderedItem({ item, hasGlint }: Props & { hasGlint: boolean }) {
+function RenderedItem({ item, baseComponents }: ResolvedProps) {
 	const { version } = useVersion()
-	const { value: src } = useAsync(() => renderItem(version, item), [version, item])
+	const { value: src } = useAsync(async () => {
+		if (!baseComponents) {
+			return undefined
+		}
+		return renderItem(version, item, baseComponents)
+	}, [version, item, baseComponents])
 
 	if (src) {
 		return <>
 			<img src={src} alt={item.id.toString()} class="model" draggable={false} />
-			{hasGlint && <div class="item-glint" style={{'--mask-image': `url("${src}")`}}></div>}
+			{item.hasFoil() && <div class="item-glint" style={{'--mask-image': `url("${src}")`}}></div>}
 		</>
 	}
 

@@ -1,12 +1,12 @@
-import { DataModel } from '@mcschema/core'
 import type { Voxel } from 'deepslate/render'
 import { clampedMap, VoxelRenderer } from 'deepslate/render'
 import type { mat3, mat4 } from 'gl-matrix'
 import { useCallback, useEffect, useRef, useState } from 'preact/hooks'
-import { getProjectData, useLocale, useProject, useVersion } from '../../contexts/index.js'
+import { getWorldgenProjectData, useLocale, useProject, useVersion } from '../../contexts/index.js'
 import { useAsync } from '../../hooks/useAsync.js'
+import { useLocalStorage } from '../../hooks/useLocalStorage.js'
 import { Store } from '../../Store.js'
-import { iterateWorld2D, randomSeed } from '../../Utils.js'
+import { iterateWorld2D, randomSeed, safeJsonParse } from '../../Utils.js'
 import { Btn, BtnMenu, NumberInput } from '../index.js'
 import type { ColormapType } from './Colormap.js'
 import { getColormap } from './Colormap.js'
@@ -17,25 +17,26 @@ import { InteractiveCanvas2D } from './InteractiveCanvas2D.jsx'
 import { InteractiveCanvas3D } from './InteractiveCanvas3D.jsx'
 
 const MODES = ['side', 'top', '3d'] as const
-type Mode = typeof MODES[number]
 
-export const DensityFunctionPreview = ({ data, shown }: PreviewProps) => {
+export const DensityFunctionPreview = ({ docAndNode, shown }: PreviewProps) => {
 	const { locale } = useLocale()
 	const { project } = useProject()
 	const { version } = useVersion()
-	const [mode, setMode] = useState<Mode>('side')
+	const [mode, setMode] = useLocalStorage('misode_density_function_mode', 'side')
 	const voxelMode = mode === '3d'
 	const topDown = mode === 'top'
 	const [seed, setSeed] = useState(randomSeed())
 	const [minY] = useState(0)
 	const [height] = useState(256)
-	const serializedData = JSON.stringify(data)
+
+	const text = docAndNode.doc.getText()
 
 	const { value: df } = useAsync(async () => {
-		await DEEPSLATE.loadVersion(version, getProjectData(project))
-		const df = DEEPSLATE.loadDensityFunction(DataModel.unwrapLists(data), minY, height, seed)
+		const projectData = await getWorldgenProjectData(project)
+		await DEEPSLATE.loadVersion(version, projectData)
+		const df = DEEPSLATE.loadDensityFunction(safeJsonParse(text) ?? {}, minY, height, seed)
 		return df
-	}, [version, project, minY, height, seed, serializedData])
+	}, [version, project, minY, height, seed, text])
 
 	// === 2D ===
 	const imageData = useRef<ImageData>()
@@ -130,7 +131,7 @@ export const DensityFunctionPreview = ({ data, shown }: PreviewProps) => {
 				<span>{locale(topDown ? 'y' : 'z')}</span>
 				<NumberInput value={offset} onChange={setOffset} />
 			</div>}
-			<BtnMenu icon="package">
+			<BtnMenu label={locale(`mode.${mode}`)}>
 				{MODES.map(m => <Btn label={locale(`mode.${m}`)} active={mode == m} onClick={() => setMode(m)} />)}
 			</BtnMenu>
 			<Btn icon="sync" tooltip={locale('generate_new_seed')}
