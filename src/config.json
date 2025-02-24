@@ -190,29 +190,30 @@
       "wiki": "https://minecraft.wiki/w/Loot_table"
     },
     {
-      "id": "villagerconfig",
+      "id": "villagerconfig:trade_table",
       "url": "villagerconfig",
       "path": "trades",
       "tags": ["partners"],
-      "schema": "villagerconfig"
+      "dependency": "villagerconfig"
     },
     {
-      "id": "melius_commands/commands",
+      "id": "melius_commands:commands",
       "url": "melius-commands/commands",
       "tags": ["partners"],
-      "schema": "melius_commands:commands"
+      "dependency": "melius_commands",
+      "additionalDependencies": ["predicate_api"]
     },
     {
-      "id": "melius_commands/modifiers",
+      "id": "melius_commands:modifiers",
       "url": "melius-commands/modifiers",
       "tags": ["partners"],
-      "schema": "melius_commands:modifiers"
+      "dependency": "melius_commands"
     },
     {
-      "id": "predicate_api",
+      "id": "predicate_api:root",
       "url": "predicate_api",
       "tags": ["partners"],
-      "schema": "predicate_api"
+      "dependency": "predicate_api"
     },
     {
       "id": "predicate",

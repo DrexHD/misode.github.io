@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'preact/hooks'
+import { useMemo, useRef, useState } from 'preact/hooks'
 import { useLocale, useVersion } from '../../contexts/index.js'
-import { randomSeed, safeJsonParse } from '../../Utils.js'
+import { useAsync } from '../../hooks/useAsync.js'
+import { fetchAllPresets, fetchItemComponents } from '../../services/DataFetcher.js'
+import { jsonToNbt, randomSeed, safeJsonParse } from '../../Utils.js'
 import { Btn, BtnMenu, NumberInput } from '../index.js'
 import { ItemDisplay } from '../ItemDisplay.jsx'
 import type { PreviewProps } from './index.js'
-import type { Trade } from './VillagerConfig.js'
 import { generateTrades } from './VillagerConfig.js'
 
 export const VillagerConfigPreview = ({ docAndNode }: PreviewProps) => {
@@ -14,18 +15,41 @@ export const VillagerConfigPreview = ({ docAndNode }: PreviewProps) => {
 	const [luck, setLuck] = useState(0)
 	const [daytime, setDaytime] = useState(0)
 	const [weather, setWeather] = useState('clear')
+	const [mixItems, setMixItems] = useState(true)
 	const [advancedTooltips, setAdvancedTooltips] = useState(true)
 	const overlay = useRef<HTMLDivElement>(null)
 
-	const [trades, setTrades] = useState<Trade[]>([])
+	const { value: dependencies, loading } = useAsync(() => {
+		return Promise.all([
+			fetchAllPresets(version, 'tag/item'),
+			fetchAllPresets(version, 'loot_table'),
+			fetchItemComponents(version),
+			fetchAllPresets(version, 'enchantment'),
+			fetchAllPresets(version, 'tag/enchantment'),
+		])
+	}, [version])
 
 	const text = docAndNode.doc.getText()
 	const table = safeJsonParse(text) ?? {}
-	useEffect(() => {
-		const trades = generateTrades(table, { version, seed, luck, daytime, weather})
-		console.log('Generated trades', trades)
-		setTrades(trades)
-	}, [version, seed, luck, daytime, weather])
+	const trades = useMemo(() => {
+		if (dependencies === undefined || loading) {
+			return []
+		}
+		const [itemTags, lootTables, itemComponents, enchantments, enchantmentTags] = dependencies
+
+		return generateTrades(table, {
+			version, seed, luck, daytime, weather,
+			stackMixer: mixItems ? 'container' : 'default',
+			getItemTag: (id) => (itemTags.get(id.replace(/^minecraft:/, '')) as any)?.values ?? [],
+			getLootTable: (id) => lootTables.get(id.replace(/^minecraft:/, '')),
+			getPredicate: () => undefined,
+			getEnchantments: () => enchantments ?? new Map(),
+			getEnchantmentTag: (id) => (enchantmentTags?.get(id.replace(/^minecraft:/, '')) as any)?.values ?? [],
+			getItemComponents: (id) => new Map([...(itemComponents?.get(id.toString()) ?? new Map()).entries()].map(([k, v]) => [k, jsonToNbt(v)])),
+			numberProvider: new Map<string, number>(),
+		})
+
+	}, [version, seed, luck, daytime, weather, mixItems, text, dependencies, loading])
 
 	return <>
 		<div ref={overlay} class="preview-overlay">
@@ -64,7 +88,8 @@ export const VillagerConfigPreview = ({ docAndNode }: PreviewProps) => {
 							<option value={v}>{locale(`preview.weather.${v}`)}</option>)}
 					</select>
 				</div>
-				<Btn icon={advancedTooltips ? 'square_fill' : 'square'} label="Advanced tooltips" onClick={e => { setAdvancedTooltips(!advancedTooltips); e.stopPropagation() }} />
+				<Btn icon={mixItems ? 'square_fill' : 'square'} label="Fill container randomly" onClick={e => {setMixItems(!mixItems); e.stopPropagation()}} />
+				<Btn icon={advancedTooltips ? 'square_fill' : 'square'} label="Advanced tooltips" onClick={e => {setAdvancedTooltips(!advancedTooltips); e.stopPropagation()}} />
 			</BtnMenu>
 			<Btn icon="sync" tooltip={locale('generate_new_seed')} onClick={() => setSeed(randomSeed())} />
 		</div>

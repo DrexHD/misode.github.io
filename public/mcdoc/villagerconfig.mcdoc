@@ -1,0 +1,69 @@
+use ::java::data::util::NumberProvider
+use ::java::data::loot::LootPoolEntry
+use ::java::data::loot::LootCondition
+use ::java::server::util::ColorString
+
+dispatch minecraft:resource[villagerconfig:trade_table] to struct TradeTable {
+	tiers: [TradeTier]
+}
+
+struct TradeTier {
+	/// How much trader experience is required to unlock this tier.
+	total_exp_required: int @ 0..,
+	groups: [TradeGroup]
+}
+
+struct TradeGroup {
+	/// How many trades will be selected from this group
+	num_to_select: NumberProvider<int @ 1..>,
+	trades: [BehaviorTrade],
+}
+
+struct BehaviorTrade {
+	/// The first item that the player must give to the villager to trade.
+	cost_a: LootPoolEntry,
+	/// An optional second item that the player must give to the villager to trade.
+	cost_b?: LootPoolEntry,
+	/// The item that the villager will give to the player in exchange for the cost items.
+	result: LootPoolEntry,
+	price_multiplier?: NumberProvider,
+	trader_experience?: NumberProvider<int @ 0..>,
+	/// The number of times the trade can be used before it is disabled.
+	max_uses?: NumberProvider<int @ 0..>,
+	conditions?: [LootCondition],
+	reference_providers?: struct {
+		[string]: NumberProvider,
+	},
+	reward_experience?: boolean
+}
+
+struct Conditions {
+	conditions?: [LootCondition],
+}
+
+// custom villagerconfig registry entries
+dispatch minecraft:loot_function[villagerconfig:enchant_randomly] to struct VillagerConfigEnchantRandomly {
+	include?: [#[id="enchantment"] string],
+	exclude?: [#[id="enchantment"] string],
+	min_level?: NumberProvider<int @ 0..>,
+	max_level?: NumberProvider<int @ 0..>,
+	...Conditions
+}
+
+dispatch minecraft:loot_function[villagerconfig:set_dye] to struct VillagerConfigSetDye {
+	dye_colors?: [ColorString],
+	add?: boolean,
+	...Conditions
+}
+
+dispatch minecraft:number_provider[villagerconfig:add] to struct VillagerConfigAdd {
+	addends: [NumberProvider],
+}
+
+dispatch minecraft:number_provider[villagerconfig:multiply] to struct VillagerConfigMultiply {
+	factors: [NumberProvider],
+}
+
+dispatch minecraft:number_provider[villagerconfig:reference] to struct VillagerConfigReference {
+	id: string,
+}

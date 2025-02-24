@@ -79,6 +79,16 @@ export async function fetchRegistries(versionId: VersionId) {
 		for (const id in data) {
 			result.set(id, data[id].map((e: string) => 'minecraft:' + e))
 		}
+
+		// villagerconfig custom registry entries
+		result.get('loot_function_type')?.push('villagerconfig:enchant_randomly')
+		result.get('loot_function_type')?.push('villagerconfig:set_dye')
+		result.get('loot_number_provider_type')?.push('villagerconfig:add')
+		result.get('loot_number_provider_type')?.push('villagerconfig:multiply')
+		result.get('loot_number_provider_type')?.push('villagerconfig:reference')
+
+		result.set('villagerconfig:trade_table', result.get('villager_profession')!)
+
 		return result
 	} catch (e) {
 		throw new Error(`Error occurred while fetching registries: ${message(e)}`)

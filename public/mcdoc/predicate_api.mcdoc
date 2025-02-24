@@ -1,0 +1,119 @@
+use ::java::data::advancement::predicate::EntityPredicate
+
+dispatch minecraft:resource[predicate_api:root] to PredicateApi
+
+dispatch predicate_api:condition[all] to struct {
+	values: PredicateApi
+}
+
+dispatch predicate_api:condition[any] to struct {
+	values: PredicateApi
+}
+
+dispatch predicate_api:condition[equal] to struct {
+	value_1: Choice,
+	value_2: Choice,
+}
+
+dispatch predicate_api:condition[less_than] to struct {
+	value_1: Choice,
+	value_2: Choice,
+}
+
+dispatch predicate_api:condition[less_or_equal] to struct {
+	value_1: Choice,
+	value_2: Choice,
+}
+
+dispatch predicate_api:condition[more_than] to struct {
+	value_1: Choice,
+	value_2: Choice,
+}
+
+dispatch predicate_api:condition[more_or_equal] to struct {
+	value_1: Choice,
+	value_2: Choice,
+}
+
+dispatch predicate_api:condition[negate] to struct {
+	value: PredicateApi,
+}
+
+dispatch predicate_api:condition[operator] to struct {
+	operator: int @ 0..4,
+}
+
+dispatch predicate_api:condition[statistic] to struct {
+	stat_type: #[id="stat_type"] string,
+	key: minecraft:statistic_type[[stat_type]],
+}
+
+dispatch predicate_api:condition[entity] to struct {
+	value: EntityPredicate,
+}
+
+dispatch predicate_api:condition[permission] to struct {
+	permission: string,
+	operator?: int @ 0..4
+}
+
+dispatch predicate_api:condition[permission_option] to struct {
+	option: string,
+}
+
+dispatch predicate_api:condition[placeholder] to struct {
+	placeholder: string,
+	raw?: boolean,
+}
+
+dispatch predicate_api:condition[has_entity] to struct {}
+
+dispatch predicate_api:condition[has_player] to struct {}
+
+dispatch predicate_api:condition[has_world] to struct {}
+
+dispatch predicate_api:condition[has_game_profile] to struct {}
+
+dispatch predicate_api:condition[starts_with] to struct {
+	input: Choice,
+	argument: Choice
+}
+
+dispatch predicate_api:condition[ends_with] to struct {
+	input: Choice,
+	argument: Choice
+}
+
+type Choice = (
+	string |
+	int |
+	PredicateApi
+)
+
+struct PredicateApi {
+	type: ConditionType,
+	...predicate_api:condition[[type]],
+}
+
+enum(string) ConditionType {
+	All = "all",
+	Any = "any",
+	Equal = "equal",
+	LessThan = "less_than",
+	LessOrEqual = "less_or_equal",
+	MoreThan = "more_than",
+	MoreOrEqual = "more_or_equal",
+	Negate = "negate",
+	Operator = "operator",
+	Statistic = "statistic",
+	Entity = "entity",
+	Permission = "permission",
+	PermissionOption = "permission_option",
+	Placeholder = "placeholder",
+	HasEntity = "has_entity",
+	HasPlayer = "has_player",
+	HasWorld = "has_world",
+	HasGameProfile = "has_game_profile",
+	StartsWith = "starts_with",
+	EndsWith = "ends_with",
+}

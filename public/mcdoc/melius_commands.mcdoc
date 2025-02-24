@@ -1,0 +1,126 @@
+dispatch minecraft:resource[melius_commands:commands] to Literal
+dispatch minecraft:resource[melius_commands:modifiers] to (Matcher | [Matcher])
+
+struct Literal {
+	id: string,
+	literals?: [Literal],
+	arguments?: [Argument],
+	require?: minecraft:resource[predicate_api:root],
+	executes?: [Action],
+	redirect?: string,
+}
+
+struct Argument {
+	id: string,
+	type: ArgumentType,
+	literals?: [Literal],
+	arguments?: [Argument],
+	require?: minecraft:resource[predicate_api:root],
+	executes?: [Action],
+	redirect?: string,
+}
+
+type Action = (
+	string |
+	struct {
+		command: string,
+		as_console?: boolean,
+		silent?: boolean,
+		op_level?: int @ 0..4,
+	} |
+)
+
+type ArgumentType = #[id="command_argument_type"] string
+
+struct Matcher {
+	type: MatcherTypes,
+	...melius_commands:matcher_types[[type]],
+}
+
+struct ExecutionModifier {
+	type: ExecutionModifierTypes,
+	...melius_commands:execution_modifier_type[[type]],
+}
+
+struct RequirementModifier {
+	type: RequirementTypes,
+	...melius_commands:requirement_types[[type]],
+}
+
+enum(string) MatcherTypes {
+	CommandStrict = "command:strict",
+	CommandStartsWith = "command:starts_with",
+	CommandRegex = "command:regex",
+	NodeStrict = "node:strict",
+	NodeStartsWith = "node:starts_with",
+	NodeRegex = "node:regex",
+}
+
+dispatch melius_commands:matcher_types[command:strict] to struct {
+	commands: (string | [string]),
+	execution_modifiers: [ExecutionModifier],
+}
+
+dispatch melius_commands:matcher_types[command:starts_with] to struct {
+	commands: (string | [string]),
+	execution_modifiers: [ExecutionModifier],
+}
+
+dispatch melius_commands:matcher_types[command:regex] to struct {
+	regexes: (string | [string]),
+	execution_modifiers: [ExecutionModifier],
+}
+
+dispatch melius_commands:matcher_types[node:strict] to struct {
+	commands: (string | [string]),
+	requirement_modifier?: [RequirementModifier],
+	execution_modifiers?: [ExecutionModifier],
+}
+
+dispatch melius_commands:matcher_types[node:starts_with] to struct {
+	commands: (string | [string]),
+	requirement_modifier?: [RequirementModifier],
+	execution_modifiers?: [ExecutionModifier],
+}
+
+dispatch melius_commands:matcher_types[node:regex] to struct {
+	regexes: (string | [string]),
+	requirement_modifier?: [RequirementModifier],
+	execution_modifiers?: [ExecutionModifier],
+}
+
+enum(string) RequirementTypes {
+	And = "requirement:and",
+	Or = "requirement:or",
+	Replace = "requirement:replace",
+}
+
+dispatch melius_commands:requirement_types[requirement:and] to struct {
+	predicate: minecraft:resource[predicate_api:root],
+}
+
+dispatch melius_commands:requirement_types[requirement:or] to struct {
+	predicate: minecraft:resource[predicate_api:root],
+}
+
+dispatch melius_commands:requirement_types[requirement:replace] to struct {
+	predicate: minecraft:resource[predicate_api:root],
+}
+
+enum(string) ExecutionModifierTypes {
+	Add = "predicate:add",
+	Cooldown = "cooldown:set",
+}
+
+dispatch melius_commands:execution_modifier_type[predicate:add] to struct {
+	predicate: minecraft:resource[predicate_api:root],
+	failure?: (Action | [Action])
+}
+
+dispatch melius_commands:execution_modifier_type[cooldown:set] to struct {
+	/// This is used to store the cooldown. If other commands use the same id they will share the cooldown
+	id: string,
+	/// How many seconds the command should be on cooldown
+	seconds: int,
+	failure?: (Action | [Action])
+}

@@ -100,9 +100,13 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 		}
 		// TODO: clear the dependencies that are not used
 		// Right now if you do this, the mcdoc breaks when switching back to the dependency later
+		const dependencies = gen.additionalDependencies ?? []
 		if (gen.dependency) {
-			const dependency = await fetchDependencyMcdoc(gen.dependency)
-			const dependencyUri = `${DEPENDENCY_URI}${gen.dependency}.mcdoc`
+			dependencies.push(gen.dependency)
+		}
+		for (const dep of dependencies) {
+			const dependency = await fetchDependencyMcdoc(dep)
+			const dependencyUri = `${DEPENDENCY_URI}${dep}.mcdoc`
 			await service.writeFile(dependencyUri, dependency)
 		}
 		if (text !== undefined) {
