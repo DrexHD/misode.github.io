@@ -1,6 +1,6 @@
 import { useMemo } from 'preact/hooks'
 import contributors from '../../contributors.json'
-import { Card, ChangelogEntry, Footer, GeneratorCard, Giscus, ToolCard, ToolGroup } from '../components/index.js'
+import { Card, ChangelogEntry, Footer, GeneratorCard, ToolCard, ToolGroup } from '../components/index.js'
 import { WhatsNewTime } from '../components/whatsnew/WhatsNewTime.jsx'
 import { useLocale, useTitle } from '../contexts/index.js'
 import { useAsync } from '../hooks/useAsync.js'
@@ -25,27 +25,27 @@ export function Home({}: Props) {
 		<div class="legacy-container">
 			<div class="card-group">
 				{smallScreen ? /* mobile */ <>
-					<PopularGenerators />
-					<FavoriteGenerators />
-					<WhatsNew />
-					<Changelog />
-					<Versions />
-					<Tools />
+					<CustomGenerators />
+					{/* <FavoriteGenerators /> */}
+					{/* <WhatsNew /> */}
+					{/* <Changelog /> */}
+					{/* <Versions /> */}
+					{/* <Tools /> */}
 				</> : /* desktop */ <>
 					<div class="card-column">
-						<PopularGenerators />
-						<Changelog />
-						<Versions />
+						<CustomGenerators />
+						{/* <Changelog /> */}
+						{/* <Versions /> */}
 					</div>
 					{!smallScreen && <div class="card-column">
-						<FavoriteGenerators />
-						<WhatsNew />
-						<Tools />
+						{/* <FavoriteGenerators /> */}
+						{/* <WhatsNew /> */}
+						{/* <Tools /> */}
 					</div>}
 				</>}
 			</div>
-			<Contributors />
-			<Giscus />
+			{/* <Contributors />
+			<Giscus /> */}
 			<Footer />
 		</div>
 	</main>
@@ -57,10 +57,19 @@ function PopularGenerators() {
 		<GeneratorCard minimal id="loot_table" />
 		<GeneratorCard minimal id="advancement" />
 		<GeneratorCard minimal id="recipe" />
-		<GeneratorCard minimal id="villagerconfig" />
 		<ToolCard title={locale('worldgen')} link="/worldgen/" titleIcon="worldgen" />
 		<ToolCard title={locale('generators.all')} link="/generators/" titleIcon="arrow_right" />
 		<ToolCard title={locale('generators.partners')} link="/partners/" titleIcon="arrow_right" />
+	</ToolGroup>
+}
+
+function CustomGenerators() {
+	const { locale } = useLocale()
+	return <ToolGroup title={locale('generators.custom')}>
+		<GeneratorCard minimal id="villagerconfig:trade_table" />
+		<GeneratorCard minimal id="melius_commands:commands" />
+		<GeneratorCard minimal id="melius_commands:modifiers" />
+		<GeneratorCard minimal id="predicate_api:root" />
 	</ToolGroup>
 }
 

@@ -10,7 +10,7 @@ export function Footer({ donate }: Props) {
 
 	return <footer>
 		<p>
-			<span>{locale('developed_by')} <a href="https://github.com/misode" target="_blank" rel="noreferrer">Misode</a></span>
+			<span>{locale('developed_by')} <a href="https://github.com/misode" target="_blank" rel="noreferrer">Misode</a> {locale('modified_by')} <a href="https://github.com/DrexHD" target="_blank" rel="noreferrer">DrexHD</a></span>
 		</p>
 		{donate !== false && <p class="donate">
 			{Octicon.heart}
