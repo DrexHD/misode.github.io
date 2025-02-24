@@ -68,7 +68,7 @@ function GeneratorTitle({ title, gen }: GeneratorTitleProps) {
 
 	const getGenerators = useCallback((search: string, close: () => void) => {
 		let results = config.generators
-			.filter(g => !g.dependency)
+			.filter(g => g.drex)
 			.map(g => ({ ...g, name: locale(`generator.${g.id}`).toLowerCase() }))
 		results = searchGenerators(results, search)
 		if (results.length === 0) {

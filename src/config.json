@@ -194,26 +194,30 @@
       "url": "villagerconfig",
       "path": "trades",
       "tags": ["partners"],
-      "dependency": "villagerconfig"
+      "dependency": "villagerconfig",
+      "drex": true
     },
     {
       "id": "melius_commands:commands",
       "url": "melius-commands/commands",
       "tags": ["partners"],
       "dependency": "melius_commands",
-      "additionalDependencies": ["predicate_api"]
+      "additionalDependencies": ["predicate_api"],
+      "drex": true
     },
     {
       "id": "melius_commands:modifiers",
       "url": "melius-commands/modifiers",
       "tags": ["partners"],
-      "dependency": "melius_commands"
+      "dependency": "melius_commands",
+      "drex": true
     },
     {
       "id": "predicate_api:root",
       "url": "predicate_api",
       "tags": ["partners"],
-      "dependency": "predicate_api"
+      "dependency": "predicate_api",
+      "drex": true
     },
     {
       "id": "predicate",

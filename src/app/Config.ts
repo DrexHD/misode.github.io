@@ -25,6 +25,7 @@ export interface ConfigGenerator {
 	aliases?: string[],
 	dependency?: string,
 	additionalDependencies?: string[],
+	drex?: boolean,
 	minVersion?: string,
 	maxVersion?: string,
 	wiki?: string,
