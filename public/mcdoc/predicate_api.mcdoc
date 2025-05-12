@@ -66,9 +66,13 @@ dispatch predicate_api:condition[placeholder] to struct {
 	raw?: boolean,
 }
 
-dispatch predicate_api:condition[has_entity] to struct {}
+dispatch predicate_api:condition[always_true] to struct {}
+
+dispatch predicate_api:condition[always_false] to struct {}
 
 dispatch predicate_api:condition[has_player] to struct {}
+
+dispatch predicate_api:condition[has_entity] to struct {}
 
 dispatch predicate_api:condition[has_world] to struct {}
 
@@ -98,6 +102,8 @@ struct PredicateApi {
 enum(string) ConditionType {
 	All = "all",
 	Any = "any",
+	AlwaysTrue = "always_true",
+	AlwaysFalse = "always_false",
 	Equal = "equal",
 	LessThan = "less_than",
 	LessOrEqual = "less_or_equal",
@@ -110,8 +116,8 @@ enum(string) ConditionType {
 	Permission = "permission",
 	PermissionOption = "permission_option",
 	Placeholder = "placeholder",
-	HasEntity = "has_entity",
 	HasPlayer = "has_player",
+	HasEntity = "has_entity",
 	HasWorld = "has_world",
 	HasGameProfile = "has_game_profile",
 	StartsWith = "starts_with",
