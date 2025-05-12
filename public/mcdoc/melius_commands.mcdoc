@@ -92,13 +92,13 @@ dispatch melius_commands:matcher_types[command:regex] to struct {
 }
 
 dispatch melius_commands:matcher_types[node:strict] to struct {
-	commands: (string | [string]),
+	paths: (string | [string]),
 	requirement_modifier?: [RequirementModifier],
 	execution_modifiers?: [ExecutionModifier],
 }
 
 dispatch melius_commands:matcher_types[node:starts_with] to struct {
-	commands: (string | [string]),
+	paths: (string | [string]),
 	requirement_modifier?: [RequirementModifier],
 	execution_modifiers?: [ExecutionModifier],
 }
