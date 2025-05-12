@@ -40,7 +40,7 @@ type UnknownFile = {
 
 export const DRAFT_PROJECT: ProjectMeta = {
 	name: 'Drafts',
-	namespace: 'draft',
+	namespace: 'minecraft',
 	storage: {
 		type: 'indexeddb',
 		rootUri: DRAFTS_URI,
