@@ -204,6 +204,7 @@
     {
       "id": "melius_commands:commands",
       "url": "melius-commands/commands",
+      "path": "commands",
       "tags": ["partners"],
       "dependency": "melius_commands",
       "additionalDependencies": ["predicate_api"],

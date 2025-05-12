@@ -1,0 +1,6 @@
+{
+	"id": "discord",
+	"executes": [
+		"tellraw @s [{\"text\":\"DISCORD: \",\"bold\":true,\"color\":\"blue\"},{\"text\":\"discord.gg\/example\",\"italic\":true,\"bold\":false,\"color\":\"gray\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"https:\/\/discord.com\/invite\/example\"},\"hoverEvent\":{\"action\":\"show_text\",\"contents\":[{\"text\":\"Click to join!\",\"color\":\"aqua\"}]}}]"
+	]
+}

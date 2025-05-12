@@ -1,0 +1,34 @@
+{
+  "id": "gm",
+  "require": {
+    "type": "permission",
+    "permission": "minecraft.gamemode",
+    "operator": 2
+  },
+  "literals": [
+    {
+      "id": "0",
+      "executes": [
+        "gamemode survival"
+      ]
+    },
+    {
+      "id": "1",
+      "executes": [
+        "gamemode creative"
+      ]
+    },
+    {
+      "id": "2",
+      "executes": [
+        "gamemode adventure"
+      ]
+    },
+    {
+      "id": "3",
+      "executes": [
+        "gamemode spectator"
+      ]
+    }
+  ]
+}

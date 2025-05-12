@@ -89,6 +89,9 @@ export async function fetchRegistries(versionId: VersionId) {
 
 		result.set('villagerconfig:trade_table', result.get('villager_profession')!)
 
+		
+		result.set('melius_commands:commands', ["gm", "time", "weather", "clearchat", "discord", "example", "placeholders"])
+
 		return result
 	} catch (e) {
 		throw new Error(`Error occurred while fetching registries: ${message(e)}`)
@@ -152,6 +155,8 @@ export async function fetchPreset(versionId: VersionId, registry: string, id: st
 			url = `https://raw.githubusercontent.com/AstralOrdana/Immersive-Weathering/main/src/main/resources/data/immersive_weathering/block_growths/${id.slice(21)}.json`
 		} else if (registry.startsWith('trades')) {
 			url = `/presets/villagerconfig/${id}.json`
+		} else if (registry.startsWith('commands')) {
+			url = `/presets/melius_commands/commands/${id}.json`
 		} else {
 			const type = ['atlases', 'blockstates', 'items', 'font', 'lang', 'models', 'equipment', 'post_effect'].includes(registry) ? 'assets' : 'data'
 			url = `${mcmeta(version, type)}/${type}/minecraft/${registry}/${id}.json`

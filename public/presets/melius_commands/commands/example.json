@@ -1,0 +1,59 @@
+{
+	"id": "example",
+	"require": {
+		"type": "permission",
+		"permission": "example",
+		"operator": 2
+	},
+	"literals": [
+		{
+			"id": "reward",
+			"arguments": [
+				{
+					"id": "targets",
+					"type": "minecraft:entity players",
+					"executes": [
+						"tellraw ${targets} {\"text\":\"You have been rewarded an apple!\",\"italic\":true,\"color\":\"gray\"}",
+						"give ${targets} apple"
+					],
+					"arguments": [
+						{
+							"id": "count",
+							"type": "brigadier:integer 1 64",
+							"executes": [
+								"tellraw ${targets} {\"text\":\"You have been rewarded ${count} apples!\",\"italic\":true,\"color\":\"gray\"}",
+								"give ${targets} apple ${count}"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "checkerboard",
+			"arguments": [
+				{
+					"id": "first_block",
+					"type": "minecraft:block_state",
+					"arguments": [
+						{
+							"id": "second_block",
+							"type": "minecraft:block_state",
+							"executes": [
+								"setblock ~ ~-1 ~ ${first_block}",
+								"setblock ~1 ~-1 ~ ${second_block}",
+								"setblock ~-1 ~-1 ~ ${second_block}",
+								"setblock ~ ~-1 ~1 ${second_block}",
+								"setblock ~ ~-1 ~-1 ${second_block}",
+								"setblock ~1 ~-1 ~1 ${first_block}",
+								"setblock ~1 ~-1 ~-1 ${first_block}",
+								"setblock ~-1 ~-1 ~1 ${first_block}",
+								"setblock ~-1 ~-1 ~-1 ${first_block}"
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

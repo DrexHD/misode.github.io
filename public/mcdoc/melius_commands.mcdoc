@@ -1,4 +1,4 @@
-dispatch minecraft:resource[melius_commands:commands] to Literal
+dispatch minecraft:resource[melius_commands:commands] to (Literal | [Literal])
 dispatch minecraft:resource[melius_commands:modifiers] to (Matcher | [Matcher])
 
 struct Literal {
