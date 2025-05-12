@@ -213,6 +213,7 @@
     {
       "id": "melius_commands:modifiers",
       "url": "melius-commands/modifiers",
+      "path": "command_modifiers",
       "tags": ["partners"],
       "dependency": "melius_commands",
       "drex": true

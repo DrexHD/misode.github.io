@@ -89,8 +89,9 @@ export async function fetchRegistries(versionId: VersionId) {
 
 		result.set('villagerconfig:trade_table', result.get('villager_profession')!)
 
-		
+		// add presets
 		result.set('melius_commands:commands', ["gm", "time", "weather", "clearchat", "discord", "example", "placeholders"])
+		result.set('melius_commands:modifiers', ["me", "overworld", "remove_all", "say"])
 
 		return result
 	} catch (e) {
@@ -157,6 +158,8 @@ export async function fetchPreset(versionId: VersionId, registry: string, id: st
 			url = `/presets/villagerconfig/${id}.json`
 		} else if (registry.startsWith('commands')) {
 			url = `/presets/melius_commands/commands/${id}.json`
+		} else if (registry.startsWith('command_modifiers')) {
+			url = `/presets/melius_commands/modifiers/${id}.json`
 		} else {
 			const type = ['atlases', 'blockstates', 'items', 'font', 'lang', 'models', 'equipment', 'post_effect'].includes(registry) ? 'assets' : 'data'
 			url = `${mcmeta(version, type)}/${type}/minecraft/${registry}/${id}.json`
