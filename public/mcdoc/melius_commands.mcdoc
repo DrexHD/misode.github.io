@@ -3,34 +3,54 @@ dispatch minecraft:resource[melius_commands:modifiers] to (Matcher | [Matcher])
 
 struct Literal {
 	id: string,
+	/// A list of literal children nodes
 	literals?: [Literal],
+	/// A list of argument children nodes
 	arguments?: [Argument],
+	/// Requirement to view or execute this and child commands
 	require?: minecraft:resource[predicate_api:root],
+	/// List of commands that should be executed
 	executes?: [Action],
+	/// If specified the command will copy execution, requirements and children from the specified node.
+  	/// This can effectively create an alias for another command
 	redirect?: string,
 }
 
 struct Argument {
+	/// The argument id. This can be used in the execution block with ${id}
 	id: string,
+	/// Command argument type
+	/// Sometimes followed by an argument describing the type
+	/// Check out [arguments documentation](https://github.com/DrexHD/MeliusCommands/blob/1.21.5/ARGUMENTS.md) for more info
 	type: ArgumentType,
+	/// A list of literal children nodes
 	literals?: [Literal],
+	/// A list of argument children nodes
 	arguments?: [Argument],
+	/// Requirement to view or execute this and child commands
 	require?: minecraft:resource[predicate_api:root],
+	/// List of commands that should be executed
 	executes?: [Action],
+	/// If specified the command will copy execution, requirements and children from the specified node.
+  	/// This can effectively create an alias for another command
 	redirect?: string,
 }
 
 type Action = (
 	string |
 	struct {
+		/// The command to execute
 		command: string,
+		/// Execute the command as console (with player context)
 		as_console?: boolean,
+		/// Hide any command feedback
 		silent?: boolean,
+		/// Change the operator level used to execute the command
 		op_level?: int @ 0..4,
 	} |
 )
 
-type ArgumentType = #[id="command_argument_type"] string
+type ArgumentType = string
 
 struct Matcher {
 	type: MatcherTypes,
