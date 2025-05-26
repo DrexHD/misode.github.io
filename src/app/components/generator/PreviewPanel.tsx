@@ -5,9 +5,9 @@ import { useVersion } from '../../contexts/Version.jsx'
 import { checkVersion } from '../../services/index.js'
 import { safeJsonParse } from '../../Utils.js'
 import { ErrorPanel } from '../ErrorPanel.jsx'
-import { BiomeSourcePreview, BlockStatePreview, DecoratorPreview, DensityFunctionPreview, ItemModelPreview, LootTablePreview, ModelPreview, NoisePreview, NoiseSettingsPreview, RecipePreview, StructureSetPreview, VillagerConfigPreview } from '../previews/index.js'
+import { BiomeSourcePreview, BlockStatePreview, DecoratorPreview, DensityFunctionPreview, DialogPreview, ItemModelPreview, LootTablePreview, ModelPreview, NoisePreview, NoiseSettingsPreview, RecipePreview, StructureSetPreview, VillagerConfigPreview } from '../previews/index.js'
 
-export const HasPreview = ['loot_table', 'recipe', 'villagerconfig:trade_table', 'dimension', 'worldgen/density_function', 'worldgen/noise', 'worldgen/noise_settings', 'worldgen/configured_feature', 'worldgen/placed_feature', 'worldgen/structure_set', 'block_definition', 'item_definition', 'model']
+export const HasPreview = ['loot_table', 'recipe', 'dialog', 'dimension', 'worldgen/density_function', 'worldgen/noise', 'worldgen/noise_settings', 'worldgen/configured_feature', 'worldgen/placed_feature', 'worldgen/structure_set', 'block_definition', 'item_definition', 'model', 'villagerconfig:trade_table']
 
 type PreviewPanelProps = {
 	id: string,
@@ -50,8 +50,8 @@ export function PreviewContent({ id, docAndNode, shown }: PreviewContentProps) {
 		return <RecipePreview {...{ docAndNode, shown }} />
 	}
 
-	if (id === 'villagerconfig:trade_table') {
-		return <VillagerConfigPreview {...{ docAndNode, shown }} />
+	if (id === 'dialog') {
+		return <DialogPreview {...{ docAndNode, shown }} />
 	}
 
 	if (id === 'dimension' && safeJsonParse(docAndNode.doc.getText())?.generator?.type?.endsWith('noise')) {
@@ -88,6 +88,10 @@ export function PreviewContent({ id, docAndNode, shown }: PreviewContentProps) {
 
 	if (id === 'model') {
 		return <ModelPreview {...{ docAndNode, shown }} />
+	}
+
+	if (id === 'villagerconfig:trade_table') {
+		return <VillagerConfigPreview {...{ docAndNode, shown }} />
 	}
 
 	return <></>

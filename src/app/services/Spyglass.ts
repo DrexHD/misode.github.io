@@ -257,7 +257,7 @@ export class SpyglassService {
 			return `${UNSAVED_URI}pack.mcmeta`
 		}
 		const pack = gen.tags?.includes('assets') ? 'assets' : 'data'
-		return `${UNSAVED_URI}${pack}/draft/${genPath(gen, this.version)}/draft.json`
+		return `${UNSAVED_URI}${pack}/draft/${genPath(gen, this.version)}/draft${gen.ext ?? '.json'}`
 	}
 
 	public watchFile(uri: string, handler: (docAndNode: core.DocAndNode) => void) {
@@ -409,7 +409,7 @@ const initialize: core.ProjectInitializer = async (ctx) => {
 
 	registerAttributes(meta, release, versions)
 
-	json.initialize(ctx)
+	json.getInitializer()(ctx)
 	je.json.initialize(ctx)
 	je.mcf.initialize(ctx, summary.commands, release)
 	nbt.initialize(ctx)
