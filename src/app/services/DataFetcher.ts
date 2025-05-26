@@ -2,7 +2,7 @@ import config from '../Config.js'
 import { Store } from '../Store.js'
 import { message } from '../Utils.js'
 import type { VersionId } from './Versions.js'
-import { checkVersion } from './Versions.js'
+import { checkVersion, DEFAULT_VERSION } from './Versions.js'
 
 const CACHE_NAME = 'misode-v2'
 const CACHE_LATEST_VERSION = 'cached_latest_version'
@@ -17,6 +17,8 @@ const changesUrl = 'https://raw.githubusercontent.com/misode/technical-changes'
 const fixesUrl = 'https://raw.githubusercontent.com/misode/mcfixes'
 const versionDiffUrl = 'https://mcmeta-diff.misode.workers.dev'
 const whatsNewUrl = 'https://whats-new.misode.workers.dev'
+
+const villagerConfigPresetVersions = ['1.21.1', '1.21.4', '1.21.5']
 
 type McmetaTypes = 'summary' | 'data' | 'data-json' | 'assets' | 'assets-json' | 'registries' | 'atlas'
 
@@ -155,7 +157,18 @@ export async function fetchPreset(versionId: VersionId, registry: string, id: st
 		if (id.startsWith('immersive_weathering:')) {
 			url = `https://raw.githubusercontent.com/AstralOrdana/Immersive-Weathering/main/src/main/resources/data/immersive_weathering/block_growths/${id.slice(21)}.json`
 		} else if (registry.startsWith('trades')) {
-			url = `/presets/villagerconfig/${id}.json`
+			let presetVersion = DEFAULT_VERSION as string
+			const currentIndex = config.versions.findIndex(v => v.id === versionId)
+			for (let i = currentIndex; i < config.versions.length; i++) {
+				const version = config.versions[i]
+				let versionId = version.ref ?? version.id
+				if (villagerConfigPresetVersions.includes(versionId)) {
+					presetVersion = version.ref ?? version.id
+					break
+				}
+			}
+			console.debug(`[fetchVCPreset] ${versionId} -> ${presetVersion}`)
+			url = `https://raw.githubusercontent.com/DrexHD/VillagerConfig/refs/heads/main/versions/${presetVersion}/vanilla/data/minecraft/trades/${id}.json`
 		} else if (registry.startsWith('commands')) {
 			url = `/presets/melius_commands/commands/${id}.json`
 		} else if (registry.startsWith('command_modifiers')) {
