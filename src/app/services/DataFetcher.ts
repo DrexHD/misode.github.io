@@ -18,7 +18,7 @@ const fixesUrl = 'https://raw.githubusercontent.com/misode/mcfixes'
 const versionDiffUrl = 'https://mcmeta-diff.misode.workers.dev'
 const whatsNewUrl = 'https://whats-new.misode.workers.dev'
 
-const villagerConfigPresetVersions = ['1.21.1', '1.21.4', '1.21.5']
+const villagerConfigPresetVersions = ['1.21.1', '1.21.4', '1.21.6']
 
 type McmetaTypes = 'summary' | 'data' | 'data-json' | 'assets' | 'assets-json' | 'registries' | 'atlas'
 
@@ -168,7 +168,7 @@ export async function fetchPreset(versionId: VersionId, registry: string, id: st
 				}
 			}
 			console.debug(`[fetchVCPreset] ${versionId} -> ${presetVersion}`)
-			url = `https://raw.githubusercontent.com/DrexHD/VillagerConfig/refs/heads/main/versions/${presetVersion}/vanilla/data/minecraft/trades/${id}.json`
+			url = `https://raw.githubusercontent.com/DrexHD/VillagerConfig/refs/heads/main/fabric/versions/${presetVersion}/vanilla/data/minecraft/trades/${id}.json`
 		} else if (registry.startsWith('commands')) {
 			url = `/presets/melius_commands/commands/${id}.json`
 		} else if (registry.startsWith('command_modifiers')) {
