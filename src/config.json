@@ -204,6 +204,7 @@
       "path": "trades",
       "tags": ["partners"],
       "dependency": "villagerconfig",
+      "additionalDependencies": ["villagerconfig_loot"],
       "drex": true
     },
     {

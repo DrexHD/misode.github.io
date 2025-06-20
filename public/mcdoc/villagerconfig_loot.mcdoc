@@ -1,0 +1,59 @@
+// This file is a copy of https://github.com/SpyglassMC/vanilla-mcdoc/blob/main/java/data/loot/mod.mcdoc
+// where minecraft:loot_pool_entry entries were changed to use LootPoolEntryBase instead of SingletonPoolEntry
+// because villagerconfig doesn't care about quality and weight. 
+use ::java::data::util::NumberProvider
+use ::java::data::loot::CompositePoolEntry
+use ::java::data::loot::DynamicDrops
+use ::java::data::loot::LootPoolEntry
+use ::java::data::loot::LootPoolEntryBase
+use ::java::data::loot::LootTable
+use ::java::data::loot::LootEntryType
+use ::java::data::loot::LootCondition
+
+dispatch villagerconfig:loot_pool_entry[empty] to LootPoolEntryBase
+
+/// Gets block specific drops.
+dispatch villagerconfig:loot_pool_entry[dynamic] to struct DynamicPoolEntry {
+	name: #[id] DynamicDrops,
+	...LootPoolEntryBase,
+}
+
+/// Adds a single item.
+dispatch villagerconfig:loot_pool_entry[item] to struct ItemPoolEntry {
+	name: (
+		#[until="1.21.2"] #[id="item"] string |
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
+	),
+	...LootPoolEntryBase,
+}
+
+/// Adds the contents of another loot table.
+dispatch villagerconfig:loot_pool_entry[loot_table] to struct LootTablePoolEntry {
+	#[until="1.20.5"]
+	name: #[id="loot_table"] string,
+	#[since="1.20.5"]
+	value: (
+		#[id="loot_table"] string |
+		LootTable |
+	),
+	...LootPoolEntryBase,
+}
+
+
+/// Adds the contents of an item tag.
+dispatch villagerconfig:loot_pool_entry[tag] to struct TagPoolEntry {
+	name: #[id(registry="item",tags="implicit")] string,
+	/// If `true`, drops a random item from the tag. If `false`, drops all items in the tag.
+	expand: boolean,
+	...LootPoolEntryBase,
+}
+
+
+/// Tests conditions of the child entries and executes the first that can run.
+dispatch villagerconfig:loot_pool_entry[alternatives] to CompositePoolEntry
+
+/// Executes all child entries when own conditions pass.
+dispatch villagerconfig:loot_pool_entry[group] to CompositePoolEntry
+
+/// Executes child entries until the first one that can't run due to conditions.
+dispatch villagerconfig:loot_pool_entry[sequence] to CompositePoolEntry

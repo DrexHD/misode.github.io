@@ -1,5 +1,6 @@
 use ::java::data::util::NumberProvider
 use ::java::data::loot::LootPoolEntry
+use ::java::data::loot::LootEntryType
 use ::java::data::loot::LootCondition
 use ::java::server::util::ColorString
 
@@ -19,13 +20,22 @@ struct TradeGroup {
 	trades: [BehaviorTrade],
 }
 
+// see villagerconfig_loot.mcdoc
+struct VC_LootPoolEntry {
+	type: (
+		#[until="1.16"] #[id] LootEntryType |
+		#[since="1.16"] #[id="loot_pool_entry_type"] string |
+	),
+	...villagerconfig:loot_pool_entry[[type]],
+}
+
 struct BehaviorTrade {
 	/// The first item that the player must give to the villager to trade.
-	cost_a: LootPoolEntry,
+	cost_a: VC_LootPoolEntry,
 	/// An optional second item that the player must give to the villager to trade.
-	cost_b?: LootPoolEntry,
+	cost_b?: VC_LootPoolEntry,
 	/// The item that the villager will give to the player in exchange for the cost items.
-	result: LootPoolEntry,
+	result: VC_LootPoolEntry,
 	price_multiplier?: NumberProvider,
 	trader_experience?: NumberProvider<int @ 0..>,
 	/// The number of times the trade can be used before it is disabled.
