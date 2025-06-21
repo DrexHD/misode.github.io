@@ -1,9 +1,10 @@
+import { toPng } from 'html-to-image'
 import { useMemo, useRef, useState } from 'preact/hooks'
 import { useLocale, useVersion } from '../../contexts/index.js'
 import { useAsync } from '../../hooks/useAsync.js'
 import { fetchAllPresets, fetchItemComponents } from '../../services/DataFetcher.js'
 import { jsonToNbt, randomSeed, safeJsonParse } from '../../Utils.js'
-import { Btn, BtnMenu, NumberInput } from '../index.js'
+import { Btn, BtnMenu } from '../index.js'
 import { ItemDisplay } from '../ItemDisplay.jsx'
 import type { PreviewProps } from './index.js'
 import { generateTrades } from './VillagerConfig.js'
@@ -73,22 +74,37 @@ export const VillagerConfigPreview = ({ docAndNode }: PreviewProps) => {
 		</div>
 		<div class="controls preview-controls">
 			<BtnMenu icon="gear" tooltip={locale('settings')} >
-				<div class="btn btn-input" onClick={e => e.stopPropagation()}>
-					<span>{locale('preview.luck')}</span>
-					<NumberInput value={luck} onChange={setLuck} />
-				</div>
-				<div class="btn btn-input" onClick={e => e.stopPropagation()}>
-					<span>{locale('preview.daytime')}</span>
-					<NumberInput value={daytime} onChange={setDaytime} />
-				</div>
-				<div class="btn btn-input" onClick={e => e.stopPropagation()}>
-					<span>{locale('preview.weather')}</span>
-					<select value={weather} onChange={e => setWeather((e.target as HTMLSelectElement).value)} >
-						{['clear', 'rain', 'thunder'].map(v =>
-							<option value={v}>{locale(`preview.weather.${v}`)}</option>)}
-					</select>
-				</div>
-				<Btn icon={mixItems ? 'square_fill' : 'square'} label="Fill container randomly" onClick={e => {setMixItems(!mixItems); e.stopPropagation()}} />
+				<Btn icon="download" label="Export as PNG" onClick={async e => {
+					e.stopPropagation();
+					if (!overlay.current) return;
+
+					// Clone the overlay to ensure all content is rendered
+					const clonedOverlay = overlay.current.cloneNode(true) as HTMLDivElement;
+					clonedOverlay.style.overflow = 'visible';
+					clonedOverlay.style.height = 'auto';
+					clonedOverlay.style.maxHeight = 'none';
+
+					// Ensure pixelated class is applied to all images
+					clonedOverlay.querySelectorAll('img').forEach(img => {
+						img.style.imageRendering = 'pixelated';
+					});
+
+					document.body.appendChild(clonedOverlay);
+
+					try {
+						const dataUrl = await toPng(clonedOverlay);
+						
+						const link = document.createElement('a');
+						link.download = 'preview.png';
+						link.href = dataUrl;
+						link.click();
+					} catch (error) {
+						console.error('Failed to export as PNG:', error);
+					} finally {
+						// Clean up the cloned overlay
+						document.body.removeChild(clonedOverlay);
+					}
+				}} />
 				<Btn icon={advancedTooltips ? 'square_fill' : 'square'} label="Advanced tooltips" onClick={e => {setAdvancedTooltips(!advancedTooltips); e.stopPropagation()}} />
 			</BtnMenu>
 			<Btn icon="sync" tooltip={locale('generate_new_seed')} onClick={() => setSeed(randomSeed())} />

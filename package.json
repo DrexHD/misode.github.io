@@ -32,6 +32,7 @@
     "diff": "^7.0.0",
     "highlight.js": "^11.5.1",
     "howler": "^2.2.3",
+    "html-to-image": "^1.11.1",
     "js-yaml": "^3.14.1",
     "lz-string": "^1.4.4",
     "marked": "^4.0.10",
