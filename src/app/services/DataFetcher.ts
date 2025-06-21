@@ -89,7 +89,8 @@ export async function fetchRegistries(versionId: VersionId) {
 		result.get('loot_number_provider_type')?.push('villagerconfig:multiply')
 		result.get('loot_number_provider_type')?.push('villagerconfig:reference')
 
-		result.set('villagerconfig:trade_table', result.get('villager_profession')!)
+		const villagerPresets = [...result.get('villager_profession')!, 'wanderingtrader']
+		result.set('villagerconfig:trade_table', villagerPresets)
 
 		// add presets
 		result.set('melius_commands:commands', ["gm", "time", "weather", "clearchat", "discord", "example", "placeholders"])
@@ -529,7 +530,7 @@ const PATCHES: (() => Promise<void>)[] = [
 
 async function applyPatches() {
 	const start = parseInt(localStorage.getItem(CACHE_PATCH) ?? '0')
-	for (let i = start + 1; i <= PATCHES.length; i +=1) {
+	for (let i = start + 1; i <= PATCHES.length; i += 1) {
 		const patch = PATCHES[i - 1]
 		if (patch) {
 			await patch()
