@@ -192,8 +192,15 @@
     {
       "id": "1.21.6",
       "ref": "1.21.7",
-      "name": "1.21.6 — 1.21.7",
+      "name": "1.21.6 — 1.21.8",
       "pack_format": 81,
+      "show": true
+    },
+    {
+      "id": "1.21.9",
+      "dynamic": true,
+      "name": "1.21.9",
+      "pack_format": 83,
       "show": true
     }
   ],
@@ -981,6 +988,33 @@
       "id": "pixelmon:npc_preset",
       "url": "pixelmon/npc/preset",
       "path": "pixelmon/npc/preset",
+      "tags": ["partners"],
+      "dependency": "pixelmon",
+      "wiki": "https://pixelmonmod.com/wiki/",
+      "minVersion": "1.21.1"
+    },
+    {
+      "id": "pixelmon:pokedex_trigger",
+      "url": "pixelmon/pokemon/pokedex/trigger",
+      "path": "pixelmon/pokemon/pokedex/trigger",
+      "tags": ["partners"],
+      "dependency": "pixelmon",
+      "wiki": "https://pixelmonmod.com/wiki/",
+      "minVersion": "1.21.1"
+    },
+    {
+      "id": "pixelmon:pokedex_region",
+      "url": "pixelmon/pokemon/pokedex/region",
+      "path": "pixelmon/pokemon/pokedex/region",
+      "tags": ["partners"],
+      "dependency": "pixelmon",
+      "wiki": "https://pixelmonmod.com/wiki/",
+      "minVersion": "1.21.1"
+    },
+    {
+      "id": "pixelmon:pokedex",
+      "url": "pixelmon/pokemon/pokedex/pokedex",
+      "path": "pixelmon/pokemon/pokedex/pokedex",
       "tags": ["partners"],
       "dependency": "pixelmon",
       "wiki": "https://pixelmonmod.com/wiki/",
