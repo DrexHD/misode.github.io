@@ -1,5 +1,5 @@
 // This file is a copy of https://github.com/SpyglassMC/vanilla-mcdoc/blob/main/java/data/loot/mod.mcdoc
-// where minecraft:loot_pool_entry entries were changed to use LootPoolEntryBase instead of SingletonPoolEntry
+// where minecraft:loot_pool_entry entries were changed to use VC_SingletonPoolEntry instead of SingletonPoolEntry
 // because villagerconfig doesn't care about quality and weight. 
 use ::java::data::util::NumberProvider
 use ::java::data::loot::CompositePoolEntry
@@ -9,13 +9,19 @@ use ::java::data::loot::LootPoolEntryBase
 use ::java::data::loot::LootTable
 use ::java::data::loot::LootEntryType
 use ::java::data::loot::LootCondition
+use ::java::data::loot::LootFunction
 
-dispatch villagerconfig:loot_pool_entry[empty] to LootPoolEntryBase
+dispatch villagerconfig:loot_pool_entry[empty] to VC_SingletonPoolEntry
+
+struct VC_SingletonPoolEntry {
+	...LootPoolEntryBase,
+	functions?: [LootFunction],
+}
 
 /// Gets block specific drops.
 dispatch villagerconfig:loot_pool_entry[dynamic] to struct DynamicPoolEntry {
 	name: #[id] DynamicDrops,
-	...LootPoolEntryBase,
+	...VC_SingletonPoolEntry,
 }
 
 /// Adds a single item.
@@ -24,7 +30,7 @@ dispatch villagerconfig:loot_pool_entry[item] to struct ItemPoolEntry {
 		#[until="1.21.2"] #[id="item"] string |
 		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
 	),
-	...LootPoolEntryBase,
+	...VC_SingletonPoolEntry,
 }
 
 /// Adds the contents of another loot table.
@@ -36,7 +42,7 @@ dispatch villagerconfig:loot_pool_entry[loot_table] to struct LootTablePoolEntry
 		#[id="loot_table"] string |
 		LootTable |
 	),
-	...LootPoolEntryBase,
+	...VC_SingletonPoolEntry,
 }
 
 
@@ -45,7 +51,7 @@ dispatch villagerconfig:loot_pool_entry[tag] to struct TagPoolEntry {
 	name: #[id(registry="item",tags="implicit")] string,
 	/// If `true`, drops a random item from the tag. If `false`, drops all items in the tag.
 	expand: boolean,
-	...LootPoolEntryBase,
+	...VC_SingletonPoolEntry,
 }
 
 
