@@ -18,7 +18,7 @@ const fixesUrl = 'https://raw.githubusercontent.com/misode/mcfixes'
 const versionDiffUrl = 'https://mcmeta-diff.misode.workers.dev'
 const whatsNewUrl = 'https://whats-new.misode.workers.dev'
 
-const villagerConfigPresetVersions = ['1.21.1', '1.21.4', '1.21.8']
+const villagerConfigPresetVersions = ['1.21.1', '1.21.4', '1.21.8', '1.21.10']
 
 type McmetaTypes = 'summary' | 'data' | 'data-json' | 'assets' | 'assets-json' | 'registries' | 'atlas'
 
