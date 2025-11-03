@@ -198,9 +198,16 @@
     },
     {
       "id": "1.21.9",
+      "ref": "1.21.10",
+      "name": "1.21.9 — 1.21.10",
+      "pack_format": 88,
+      "show": true
+    },
+    {
+      "id": "1.21.11",
       "dynamic": true,
-      "name": "1.21.9",
-      "pack_format": 83,
+      "name": "1.21.11",
+      "pack_format": 90,
       "show": true
     }
   ],
