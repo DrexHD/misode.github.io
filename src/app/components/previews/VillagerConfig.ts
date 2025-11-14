@@ -59,7 +59,7 @@ export function generateTrades(lootTable: any, options: LootOptions) {
 			for (const trade of group.trades ?? []) {
 				pool.push(generateTrade(trade, ctx))
 			}
-			fillRecipesFromPool(result, pool, group.num_to_select, ctx)
+			fillRecipesFromPool(result, pool, computeInt(group.num_to_select, ctx), ctx)
 		}
 	}
 	return result
