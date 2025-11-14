@@ -2,16 +2,18 @@ import { toPng } from 'html-to-image'
 import { useMemo, useRef, useState } from 'preact/hooks'
 import { useLocale, useVersion } from '../../contexts/index.js'
 import { useAsync } from '../../hooks/useAsync.js'
-import { fetchAllPresets, fetchItemComponents } from '../../services/DataFetcher.js'
+import { checkVersion, fetchAllPresets, fetchItemComponents } from '../../services/index.js'
 import { jsonToNbt, randomSeed, safeJsonParse } from '../../Utils.js'
 import { Btn, BtnMenu } from '../index.js'
 import { ItemDisplay } from '../ItemDisplay.jsx'
+import { ItemDisplay1204 } from '../ItemDisplay1204.jsx'
 import type { PreviewProps } from './index.js'
 import { generateTrades } from './VillagerConfig.js'
 
 export const VillagerConfigPreview = ({ docAndNode }: PreviewProps) => {
 	const { locale } = useLocale()
 	const { version } = useVersion()
+	const use1204 = !checkVersion(version, '1.20.5')
 	const [seed, setSeed] = useState(randomSeed())
 	const [luck, setLuck] = useState(0)
 	const [daytime, setDaytime] = useState(0)
@@ -24,20 +26,20 @@ export const VillagerConfigPreview = ({ docAndNode }: PreviewProps) => {
 		return Promise.all([
 			fetchAllPresets(version, 'tag/item'),
 			fetchAllPresets(version, 'loot_table'),
-			fetchItemComponents(version),
-			fetchAllPresets(version, 'enchantment'),
-			fetchAllPresets(version, 'tag/enchantment'),
+			use1204 ? Promise.resolve(undefined) : fetchItemComponents(version),
+			checkVersion(version, '1.21') ? fetchAllPresets(version, 'enchantment') : Promise.resolve(undefined),
+			checkVersion(version, '1.21') ? fetchAllPresets(version, 'tag/enchantment') : Promise.resolve(undefined),
 		])
 	}, [version])
 
 	const text = docAndNode.doc.getText()
-	const table = safeJsonParse(text) ?? {}
 	const trades = useMemo(() => {
 		if (dependencies === undefined || loading) {
 			return []
 		}
 		const [itemTags, lootTables, itemComponents, enchantments, enchantmentTags] = dependencies
-
+		
+		const table = safeJsonParse(text) ?? {}
 		return generateTrades(table, {
 			version, seed, luck, daytime, weather,
 			stackMixer: mixItems ? 'container' : 'default',
@@ -58,15 +60,24 @@ export const VillagerConfigPreview = ({ docAndNode }: PreviewProps) => {
 				<>
 					<img src="/images/trade.png" alt="Trade background" class="pixelated" draggable={false} />
 					<div style={slotStyle(5, trades.length, index)}>
-						<ItemDisplay item={cost_a} slotDecoration={true} advancedTooltip={advancedTooltips} />
+						{use1204 ?
+							<ItemDisplay1204 item={cost_a as any} slotDecoration={true} advancedTooltip={advancedTooltips} /> :
+							<ItemDisplay item={cost_a} slotDecoration={true} advancedTooltip={advancedTooltips} />
+						}
 					</div>
 					{cost_b != undefined && (
 						<div style={slotStyle(36, trades.length, index)}>
-							<ItemDisplay item={cost_b!} slotDecoration={true} advancedTooltip={advancedTooltips} />
+							{use1204 ?
+								<ItemDisplay1204 item={cost_b as any} slotDecoration={true} advancedTooltip={advancedTooltips} /> :
+								<ItemDisplay item={cost_b} slotDecoration={true} advancedTooltip={advancedTooltips} />
+							}
 						</div>
 					)}
 					<div style={slotStyle(68, trades.length, index)}>
-						<ItemDisplay item={result} slotDecoration={true} advancedTooltip={advancedTooltips} />
+						{use1204 ?
+							<ItemDisplay1204 item={result as any} slotDecoration={true} advancedTooltip={advancedTooltips} /> :
+							<ItemDisplay item={result} slotDecoration={true} advancedTooltip={advancedTooltips} />
+						}
 					</div>
 				</>
 			)}
@@ -75,37 +86,37 @@ export const VillagerConfigPreview = ({ docAndNode }: PreviewProps) => {
 		<div class="controls preview-controls">
 			<BtnMenu icon="gear" tooltip={locale('settings')} >
 				<Btn icon="download" label="Export as PNG" onClick={async e => {
-					e.stopPropagation();
-					if (!overlay.current) return;
+					e.stopPropagation()
+					if (!overlay.current) return
 
 					// Clone the overlay to ensure all content is rendered
-					const clonedOverlay = overlay.current.cloneNode(true) as HTMLDivElement;
-					clonedOverlay.style.overflow = 'visible';
-					clonedOverlay.style.height = 'auto';
-					clonedOverlay.style.maxHeight = 'none';
+					const clonedOverlay = overlay.current.cloneNode(true) as HTMLDivElement
+					clonedOverlay.style.overflow = 'visible'
+					clonedOverlay.style.height = 'auto'
+					clonedOverlay.style.maxHeight = 'none'
 
 					// Ensure pixelated class is applied to all images
 					clonedOverlay.querySelectorAll('img').forEach(img => {
-						img.style.imageRendering = 'pixelated';
-					});
+						img.style.imageRendering = 'pixelated'
+					})
 
-					document.body.appendChild(clonedOverlay);
+					document.body.appendChild(clonedOverlay)
 
 					try {
-						const dataUrl = await toPng(clonedOverlay);
-						
-						const link = document.createElement('a');
-						link.download = 'preview.png';
-						link.href = dataUrl;
-						link.click();
+						const dataUrl = await toPng(clonedOverlay)
+
+						const link = document.createElement('a')
+						link.download = 'preview.png'
+						link.href = dataUrl
+						link.click()
 					} catch (error) {
-						console.error('Failed to export as PNG:', error);
+						console.error('Failed to export as PNG:', error)
 					} finally {
 						// Clean up the cloned overlay
-						document.body.removeChild(clonedOverlay);
+						document.body.removeChild(clonedOverlay)
 					}
 				}} />
-				<Btn icon={advancedTooltips ? 'square_fill' : 'square'} label="Advanced tooltips" onClick={e => {setAdvancedTooltips(!advancedTooltips); e.stopPropagation()}} />
+				<Btn icon={advancedTooltips ? 'square_fill' : 'square'} label="Advanced tooltips" onClick={e => { setAdvancedTooltips(!advancedTooltips); e.stopPropagation() }} />
 			</BtnMenu>
 			<Btn icon="sync" tooltip={locale('generate_new_seed')} onClick={() => setSeed(randomSeed())} />
 		</div>

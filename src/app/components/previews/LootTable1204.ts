@@ -28,6 +28,7 @@ interface LootOptions {
 	getItemTag(id: string): string[],
 	getLootTable(id: string): any,
 	getPredicate(id: string): any,
+	numberProvider: Map<string, number>
 }
 
 interface LootContext extends LootOptions {
@@ -220,7 +221,7 @@ function canEntryRun(entry: any, ctx: LootContext): boolean {
 	return composeConditions(entry.conditions ?? [])(ctx)
 }
 
-function createItem(entry: any, consumer: ItemConsumer, ctx: LootContext) {
+export function createItem(entry: any, consumer: ItemConsumer, ctx: LootContext) {
 	const entryConsumer = decorateFunctions(entry.functions ?? [], consumer, ctx)
 
 	const type = entry.type?.replace(/^minecraft:/, '')
@@ -387,6 +388,55 @@ const LootFunctions: Record<string, (params: any) => LootFunction> = {
 				item.tag.set('Potion', new NbtString(Identifier.parse(id).toString()))
 			} catch (e) {}
 		}
+	},
+	'villagerconfig:enchant_randomly': ({ include, exclude, min_level, max_level }) => (item, ctx) => {
+		if (min_level === undefined) min_level = 0
+		if (max_level === undefined) max_level = 5
+
+		const isBook = item.is('book')
+		if (include === undefined) {
+			include = Enchantment.REGISTRY.map((_, ench) => ench)
+				.map(e => e.id.toString())
+		}
+
+		if (exclude === undefined) {
+			exclude = []
+		}
+		
+		let enchantments: any
+
+		if (include.length > 0) {
+			enchantments = include
+		} else {
+			enchantments = Enchantment.REGISTRY.map((_, ench) => ench)
+			.filter(ench => (isBook || Enchantment.canEnchant(item, ench)))
+				.filter(ench => !exclude.contains(ench))
+				.map(e => e.id.toString())
+		}
+
+		if (enchantments.length > 0) {
+			const id = enchantments[ctx.random.nextInt(enchantments.length)]
+			let ench: Enchantment | undefined
+			try {
+				ench = Enchantment.REGISTRY.get(Identifier.parse(id))
+			} catch (e) {}
+			if (ench === undefined) return
+			let lvl: number = ctx.random.nextInt(max_level - min_level + 1) + min_level
+			lvl = clamp(lvl, ench.minLevel, ench.maxLevel)
+			if (isBook) {
+				item.tag = new NbtCompound()
+				item.count = 1
+			}
+			enchantItem(item, { id, lvl })
+			if (isBook) {
+				item.id = Identifier.create('enchanted_book')
+			}
+			ctx.numberProvider.set("enchantmentLevel", lvl)
+			ctx.numberProvider.set("treasureMultiplier", ctx.random.nextInt(1) + 1)
+		}
+	},
+	'villagerconfig:set_dye': () => () => {
+		return false // TODO
 	},
 }
 
@@ -695,4 +745,10 @@ function getOrCreateTag(item: ItemStack, key: string) {
 		item.tag.set(key, tag)
 		return tag
 	}
+}
+function getHomogeneousList(include: any, getEnchantmentTag: any) {
+	throw new Error('Function not implemented.')
+}
+function updateEnchantments(item: any, arg1: (levels: any) => any) {
+	throw new Error('Function not implemented.')
 }

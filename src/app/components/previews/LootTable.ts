@@ -20,7 +20,7 @@ const StackMixers = {
 	default: assignSlots,
 }
 
-type StackMixer = keyof typeof StackMixers
+export type StackMixer = keyof typeof StackMixers
 
 interface LootOptions extends ItemComponentsProvider {
 	version: VersionId,
@@ -34,6 +34,7 @@ interface LootOptions extends ItemComponentsProvider {
 	getPredicate(id: string): any,
 	getEnchantments(): Map<string, any>,
 	getEnchantmentTag(id: string): string[],
+	numberProvider: Map<string, number>
 }
 
 interface LootContext extends LootOptions {
@@ -55,11 +56,11 @@ const SLOT_COUNT = 27
 
 function fillContainer(items: ResolvedItem[], ctx: LootContext): SlottedItem[] {
 	const slots = shuffle([...Array(SLOT_COUNT)].map((_, i) => i), ctx)
-	
+
 	const queue = items.filter(i => !i.is('air') && i.count > 1)
 	items = items.filter(i => !i.is('air') && i.count === 1)
 
-	while (SLOT_COUNT - items.length - queue.length > 0 && queue.length > 0) { 
+	while (SLOT_COUNT - items.length - queue.length > 0 && queue.length > 0) {
 		const [itemA] = queue.splice(ctx.random.nextInt(queue.length), 1)
 		const splitCount = ctx.random.nextInt(Math.floor(itemA.count / 2)) + 1
 		const itemB = splitItem(itemA, splitCount)
@@ -142,7 +143,7 @@ function createLootContext(options: LootOptions): LootContext {
 	}
 }
 
-function generatePool(pool: any, consumer: ItemConsumer, ctx: LootContext) {
+export function generatePool(pool: any, consumer: ItemConsumer, ctx: LootContext) {
 	if (composeConditions(pool.conditions ?? [])(ctx)) {
 		const poolConsumer = decorateFunctions(pool.functions ?? [], consumer, ctx)
 
@@ -226,7 +227,7 @@ function canEntryRun(entry: any, ctx: LootContext): boolean {
 	return composeConditions(entry.conditions ?? [])(ctx)
 }
 
-function createItem(entry: any, consumer: ItemConsumer, ctx: LootContext) {
+export function createItem(entry: any, consumer: ItemConsumer, ctx: LootContext) {
 	const entryConsumer = decorateFunctions(entry.functions ?? [], consumer, ctx)
 
 	const type = entry.type?.replace(/^minecraft:/, '')
@@ -262,7 +263,7 @@ function computeWeight(entry: any, luck: number) {
 
 type LootFunction = (item: ResolvedItem, ctx: LootContext) => void
 
-function decorateFunctions(functions: any[], consumer: ItemConsumer, ctx: LootContext): ItemConsumer {
+export function decorateFunctions(functions: any[], consumer: ItemConsumer, ctx: LootContext): ItemConsumer {
 	const compositeFunction = composeFunctions(functions)
 	return (item) => {
 		compositeFunction(item, ctx)
@@ -283,7 +284,7 @@ function composeFunctions(functions: any[]): LootFunction {
 	}
 }
 
-const LootFunctions: Record<string, (params: any) => LootFunction> = {
+export const LootFunctions: Record<string, (params: any) => LootFunction> = {
 	enchant_randomly: ({ options, only_compatible }) => (item, ctx) => {
 		let enchantments = options
 			? getHomogeneousList(options, ctx.getEnchantmentTag)
@@ -510,11 +511,55 @@ const LootFunctions: Record<string, (params: any) => LootFunction> = {
 			}
 		})
 	},
+	'villagerconfig:enchant_randomly': ({ include, exclude, min_level, max_level }) => (item, ctx) => {
+		if (min_level === undefined) min_level = 0
+		if (max_level === undefined) max_level = 5
+
+
+		let included = include
+			? getHomogeneousList(include, ctx.getEnchantmentTag)
+			: [...ctx.getEnchantments().keys()]
+
+		let excluded = exclude
+			? getHomogeneousList(exclude, ctx.getEnchantmentTag)
+			: []
+
+		if (!item.is('book')) {
+			included = included.filter(e => {
+				const ench = ctx.getEnchantments().get(e.replace(/^minecraft:/, ''))
+				if (!ench) return true
+				const supportedItems = getHomogeneousList(ench.supported_items, ctx.getItemTag)
+				return supportedItems.some(i => item.is(i))
+			})
+		}
+		included = included.filter(e => !excluded.includes(e))
+
+		if (included.length === 0) {
+			return
+		}
+		const pick = included[ctx.random.nextInt(included.length)]
+		const maxLevel = ctx.getEnchantments().get(pick.replace(/^minecraft:/, ''))?.max_level ?? 1
+		let level = ctx.random.nextInt(max_level - min_level + 1) + min_level
+		level = clamp(level, min_level, maxLevel)
+		if (item.is('book')) {
+			item.id = Identifier.create('enchanted_book')
+			item.base = ctx.getItemComponents(item.id)
+		}
+		updateEnchantments(item, levels => {
+			return levels.set(Identifier.parse(pick).toString(), level)
+		})
+
+		ctx.numberProvider.set("enchantmentLevel", level)
+		ctx.numberProvider.set("treasureMultiplier", ctx.random.nextInt(1) + 1)
+	},
+	'villagerconfig:set_dye': () => () => {
+		// TODO
+	},
 }
 
 type LootCondition = (ctx: LootContext) => boolean
 
-function composeConditions(conditions: any[]): LootCondition {
+export function composeConditions(conditions: any[]): LootCondition {
 	return (ctx) => {
 		for (const cond of conditions) {
 			if (!testCondition(cond, ctx)) {
@@ -625,7 +670,7 @@ const LootConditions: Record<string, (params: any) => LootCondition> = {
 	},
 }
 
-function computeInt(provider: any, ctx: LootContext): number {
+export function computeInt(provider: any, ctx: LootContext): number {
 	if (typeof provider === 'number') return Math.round(provider)
 	if (!isObject(provider)) return 0
 
@@ -646,12 +691,29 @@ function computeInt(provider: any, ctx: LootContext): number {
 					result += 1
 				}
 			}
-			return result 
+			return result
+		case 'villagerconfig:add': {
+			let result = 0
+			for (const addend of provider.addends ?? []) {
+				result += computeInt(addend, ctx)
+			}
+			return result
+		}
+		case 'villagerconfig:multiply': {
+			let result = 1
+			for (const factor of provider.factors ?? []) {
+				result *= computeInt(factor, ctx)
+			}
+			return result
+		}
+		case 'villagerconfig:reference': {
+			return Math.round(ctx.numberProvider.get(provider.id) ?? 0)
+		}
 	}
 	return 0
 }
 
-function computeFloat(provider: any, ctx: LootContext): number {
+export function computeFloat(provider: any, ctx: LootContext): number {
 	if (typeof provider === 'number') return provider
 	if (!isObject(provider)) return 0
 
@@ -672,7 +734,7 @@ function computeFloat(provider: any, ctx: LootContext): number {
 					result += 1
 				}
 			}
-			return result 
+			return result
 	}
 	return 0
 }

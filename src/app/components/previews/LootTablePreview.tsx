@@ -47,6 +47,7 @@ export const LootTablePreview = ({ docAndNode }: PreviewProps) => {
 				getItemTag: (id) => (itemTags.get(id.replace(/^minecraft:/, '')) as any)?.values ?? [],
 				getLootTable: (id) => lootTables.get(id.replace(/^minecraft:/, '')),
 				getPredicate: () => undefined,
+				numberProvider: new Map<string, number>(),
 			})
 		}
 		return generateLootTable(table, {
@@ -58,6 +59,7 @@ export const LootTablePreview = ({ docAndNode }: PreviewProps) => {
 			getEnchantments: () => enchantments ?? new Map(),
 			getEnchantmentTag: (id) => (enchantmentTags?.get(id.replace(/^minecraft:/, '')) as any)?.values ?? [],
 			getItemComponents: (id) => new Map([...(itemComponents?.get(id.toString()) ?? new Map()).entries()].map(([k, v]) => [k, jsonToNbt(v)])),
+			numberProvider: new Map<string, number>(),
 		})
 	}, [version, seed, luck, daytime, weather, mixItems, text, dependencies, loading])
 
