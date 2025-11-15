@@ -746,9 +746,3 @@ function getOrCreateTag(item: ItemStack, key: string) {
 		return tag
 	}
 }
-function getHomogeneousList(include: any, getEnchantmentTag: any) {
-	throw new Error('Function not implemented.')
-}
-function updateEnchantments(item: any, arg1: (levels: any) => any) {
-	throw new Error('Function not implemented.')
-}
