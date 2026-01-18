@@ -692,6 +692,12 @@ export function computeInt(provider: any, ctx: LootContext): number {
 				}
 			}
 			return result
+		case 'sum':
+			let sum = 0
+			for (const summand of provider.summands ?? []) {
+				sum += computeInt(summand, ctx)
+			}
+			return sum
 		case 'villagerconfig:add': {
 			let result = 0
 			for (const addend of provider.addends ?? []) {
@@ -735,6 +741,12 @@ export function computeFloat(provider: any, ctx: LootContext): number {
 				}
 			}
 			return result
+		case 'sum':
+			let sum = 0
+			for (const summand of provider.summands ?? []) {
+				sum += computeFloat(summand, ctx)
+			}
+			return sum
 	}
 	return 0
 }
