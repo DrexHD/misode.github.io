@@ -420,20 +420,12 @@ const initialize: core.ProjectInitializer = async (ctx) => {
 // Duplicate these from spyglass for now, until they are exported separately
 function registerAttributes(meta: core.MetaRegistry, release: ReleaseVersion, versions: VersionMeta[]) {
 	mcdoc.runtime.registerAttribute(meta, 'since', mcdoc.runtime.attribute.validator.string, {
-		filterElement: (config, ctx) => {
-			if (!config.startsWith('1.')) {
-				ctx.logger.warn(`Invalid mcdoc attribute for "since": ${config}`)
-				return true
-			}
+		filterElement: (config, _) => {
 			return ReleaseVersion.cmp(release, config as ReleaseVersion) >= 0
 		},
 	})
 	mcdoc.runtime.registerAttribute(meta, 'until', mcdoc.runtime.attribute.validator.string, {
-		filterElement: (config, ctx) => {
-			if (!config.startsWith('1.')) {
-				ctx.logger.warn(`Invalid mcdoc attribute for "until": ${config}`)
-				return true
-			}
+		filterElement: (config, _) => {
 			return ReleaseVersion.cmp(release, config as ReleaseVersion) < 0
 		},
 	})
@@ -442,13 +434,9 @@ function registerAttributes(meta: core.MetaRegistry, release: ReleaseVersion, ve
 		'deprecated',
 		mcdoc.runtime.attribute.validator.optional(mcdoc.runtime.attribute.validator.string),
 		{
-			mapField: (config, field, ctx) => {
+			mapField: (config, field, _) => {
 				if (config === undefined) {
 					return { ...field, deprecated: true }
-				}
-				if (!config.startsWith('1.')) {
-					ctx.logger.warn(`Invalid mcdoc attribute for "deprecated": ${config}`)
-					return field
 				}
 				if (ReleaseVersion.cmp(release, config as ReleaseVersion) >= 0) {
 					return { ...field, deprecated: true }

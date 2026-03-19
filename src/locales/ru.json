@@ -385,5 +385,9 @@
     "generator.pixelmon:pokedex": "Покедекс",
     "generator.pixelmon:pokedex_trigger": "Триггер Покедекса",
     "partner.ad_astra": "Ad Astra (К Звёздам!)",
-    "partner.pixelmon": "Pixelmon"
+    "partner.pixelmon": "Pixelmon",
+    "generator.loot-table-modifier:loot_modifier": "Модификатор выпадение",
+    "generator.tag/zombie_nautilus_variant": "Тэг варианта зомби-наутилуса",
+    "generator.zombie_nautilus_variant": "Вариант зомби-наутилуса",
+    "partner.loot-table-modifier": "Модификатор таблицы выпадения"
 }

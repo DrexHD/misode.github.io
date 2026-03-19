@@ -312,7 +312,9 @@ export const LootFunctions: Record<string, (params: any) => LootFunction> = {
 		})
 	},
 	enchant_with_levels: ({ options, levels }) => (item, ctx) => {
-		const allowed = getHomogeneousList(options, ctx.getEnchantmentTag)
+		const allowed = options
+			? getHomogeneousList(options, ctx.getEnchantmentTag)
+			: [...ctx.getEnchantments().keys()]
 		const selected = selectEnchantments(item, computeInt(levels, ctx), allowed, ctx)
 		if (item.is('book')) {
 			item.id = Identifier.create('enchanted_book')
@@ -879,9 +881,12 @@ interface Enchant {
 }
 
 function selectEnchantments(item: ResolvedItem, levels: number, options: string[], ctx: LootContext): Enchant[] {
-	const enchantable = item.get('enchantable', tag => tag.isCompound() ? tag.getNumber('value') : undefined)
-	if (enchantable === undefined) {
-		return []
+	let enchantable: number | undefined = 1 // Not fully correct before version 1.21.2
+	if (checkVersion(ctx.version, '1.21.2')) {
+		enchantable = item.get('enchantable', tag => tag.isCompound() ? tag.getNumber('value') : undefined)
+		if (enchantable === undefined) {
+			return []
+		}
 	}
 	let cost = levels + 1 + ctx.random.nextInt(Math.floor(enchantable / 4 + 1)) + ctx.random.nextInt(Math.floor(enchantable / 4 + 1))
 	const f = (ctx.random.nextFloat() + ctx.random.nextFloat() - 1) * 0.15
