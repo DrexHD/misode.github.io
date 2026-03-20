@@ -17,18 +17,16 @@ const changesUrl = 'https://raw.githubusercontent.com/misode/technical-changes'
 const versionDiffUrl = 'https://mcmeta-diff.misode.workers.dev'
 const whatsNewUrl = 'https://whats-new.misode.workers.dev'
 
-const villagerConfigPresetVersions = {
-	'1.21': '1.21.1',
-	'1.21.2': '1.21.1',
-	'1.21.4': '1.21.4',
-	'1.21.5': '1.21.4',
-	'1.21.6': '1.21.4',
-	'1.21.9': '1.21.10',
-	'1.21.11': '1.21.11',
-	'26.1': '26.1',
-} as const
-
-type VersionId = keyof typeof villagerConfigPresetVersions
+const villagerConfigPresetVersions: Partial<Record<VersionId, string>> = {
+  '1.21': '1.21.1',
+  '1.21.2': '1.21.1',
+  '1.21.4': '1.21.4',
+  '1.21.5': '1.21.4',
+  '1.21.6': '1.21.4',
+  '1.21.9': '1.21.10',
+  '1.21.11': '1.21.11',
+  '26.1': '26.1',
+}
 
 type McmetaTypes = 'summary' | 'data' | 'data-json' | 'assets' | 'assets-json' | 'registries' | 'atlas'
 
@@ -168,7 +166,7 @@ export async function fetchPreset(versionId: VersionId, registry: string, id: st
 		if (id.startsWith('immersive_weathering:')) {
 			url = `https://raw.githubusercontent.com/AstralOrdana/Immersive-Weathering/main/src/main/resources/data/immersive_weathering/block_growths/${id.slice(21)}.json`
 		} else if (registry.startsWith('trades')) {
-			let presetVersion = villagerConfigPresetVersions[versionId]
+			const presetVersion = villagerConfigPresetVersions[versionId]
 			console.debug(`[fetchVCPreset] ${versionId} -> ${villagerConfigPresetVersions[versionId]}`)
 			url = `https://raw.githubusercontent.com/DrexHD/VillagerConfig/refs/heads/main/fabric/versions/${presetVersion}/vanilla/data/minecraft/trades/${id}.json`
 		} else if (registry.startsWith('commands')) {
