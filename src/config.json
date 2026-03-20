@@ -230,6 +230,7 @@
       "path": "trades",
       "tags": ["partners"],
       "dependency": "villagerconfig",
+      "minVersion": "1.21",
       "additionalDependencies": ["villagerconfig_loot"],
       "drex": true
     },

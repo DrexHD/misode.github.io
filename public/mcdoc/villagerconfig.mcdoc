@@ -44,7 +44,10 @@ struct BehaviorTrade {
 	reference_providers?: struct {
 		[string]: NumberProvider,
 	},
-	reward_experience?: boolean
+	reward_experience?: boolean,
+	/// The "stored_enchantments" component on any item can affect the price
+	/// If the offered enchanted book has the specified enchantments, the price will be affected by doubling the `additional_trade_cost` transient component.
+	double_trade_price_enchantments?: (#[id(registry="enchantment",tags="allowed")] string | [#[id="enchantment"] string]),
 }
 
 struct Conditions {

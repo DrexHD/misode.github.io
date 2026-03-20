@@ -2,7 +2,7 @@ import config from '../Config.js'
 import { Store } from '../Store.js'
 import { message } from '../Utils.js'
 import type { VersionId } from './Versions.js'
-import { checkVersion, DEFAULT_VERSION } from './Versions.js'
+import { checkVersion } from './Versions.js'
 
 const CACHE_NAME = 'misode-v2'
 const CACHE_LATEST_VERSION = 'cached_latest_version'
@@ -17,7 +17,18 @@ const changesUrl = 'https://raw.githubusercontent.com/misode/technical-changes'
 const versionDiffUrl = 'https://mcmeta-diff.misode.workers.dev'
 const whatsNewUrl = 'https://whats-new.misode.workers.dev'
 
-const villagerConfigPresetVersions = ['1.21.1', '1.21.4', '1.21.8', '1.21.10', '1.21.11']
+const villagerConfigPresetVersions = {
+	'1.21': '1.21.1',
+	'1.21.2': '1.21.1',
+	'1.21.4': '1.21.4',
+	'1.21.5': '1.21.4',
+	'1.21.6': '1.21.4',
+	'1.21.9': '1.21.10',
+	'1.21.11': '1.21.11',
+	'26.1': '26.1',
+} as const
+
+type VersionId = keyof typeof villagerConfigPresetVersions
 
 type McmetaTypes = 'summary' | 'data' | 'data-json' | 'assets' | 'assets-json' | 'registries' | 'atlas'
 
@@ -157,17 +168,8 @@ export async function fetchPreset(versionId: VersionId, registry: string, id: st
 		if (id.startsWith('immersive_weathering:')) {
 			url = `https://raw.githubusercontent.com/AstralOrdana/Immersive-Weathering/main/src/main/resources/data/immersive_weathering/block_growths/${id.slice(21)}.json`
 		} else if (registry.startsWith('trades')) {
-			let presetVersion = DEFAULT_VERSION as string
-			const currentIndex = config.versions.findIndex(v => v.id === versionId)
-			for (let i = currentIndex; i < config.versions.length; i++) {
-				const version = config.versions[i]
-				let versionId = version.ref ?? version.id
-				if (villagerConfigPresetVersions.includes(versionId)) {
-					presetVersion = version.ref ?? version.id
-					break
-				}
-			}
-			console.debug(`[fetchVCPreset] ${versionId} -> ${presetVersion}`)
+			let presetVersion = villagerConfigPresetVersions[versionId]
+			console.debug(`[fetchVCPreset] ${versionId} -> ${villagerConfigPresetVersions[versionId]}`)
 			url = `https://raw.githubusercontent.com/DrexHD/VillagerConfig/refs/heads/main/fabric/versions/${presetVersion}/vanilla/data/minecraft/trades/${id}.json`
 		} else if (registry.startsWith('commands')) {
 			url = `/presets/melius_commands/commands/${id}.json`
@@ -480,7 +482,7 @@ async function deleteMatching(matches: (url: string) => boolean) {
 		const cache = await caches.open(CACHE_NAME)
 		console.debug(`[deleteMatching] Opened cache ${CACHE_NAME}`)
 		const promises: Promise<boolean>[] = []
-  
+
 		for (const request of await cache.keys()) {
 			if (matches(request.url)) {
 				promises.push(cache.delete(request))

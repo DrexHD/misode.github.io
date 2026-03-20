@@ -46,6 +46,12 @@ dispatch villagerconfig:loot_pool_entry[loot_table] to struct LootTablePoolEntry
 }
 
 
+#[since="1.21.11"]
+dispatch villagerconfig:loot_pool_entry[slots] to struct SlotsPoolEntry {
+	slot_source: SlotSource,
+	...VC_SingletonPoolEntry,
+}
+
 /// Adds the contents of an item tag.
 dispatch villagerconfig:loot_pool_entry[tag] to struct TagPoolEntry {
 	name: #[id(registry="item",tags="implicit")] string,
