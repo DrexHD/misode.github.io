@@ -3,8 +3,8 @@ import type { Random } from 'deepslate/core'
 import { Identifier, ItemStack, LegacyRandom } from 'deepslate/core'
 import { ResolvedItem } from '../../services/ResolvedItem.js'
 import { checkVersion, type VersionId } from '../../services/Versions.js'
-import { composeConditions, computeFloat, computeInt, createItem, StackMixer } from '../previews/LootTable.js'
-import { createItem as createItem1204 } from '../previews/LootTable1204.js'
+import { composeConditions, computeFloat, computeInt, generateEntry, StackMixer } from '../previews/LootTable.js'
+import { generateEntry as generateEntry1204 } from '../previews/LootTable1204.js'
 
 export interface SlottedItem {
 	slot: number,
@@ -83,19 +83,19 @@ function generateTrade(trade: any, ctx: LootContext): Trade {
 	let cost_a: ItemStack = new ItemStack(Identifier.parse('air'), 0)
 	let cost_b = undefined
 	let result: ItemStack = new ItemStack(Identifier.parse('air'), 0)
-	createItem0(trade.result, (item: ItemStack) => result = item, ctx)
-	if (trade.cost_b != null) createItem0(trade.cost_b, (item: ItemStack) => cost_b = item, ctx)
-	createItem0(trade.cost_a, (item: ItemStack) => cost_a = item, ctx)
+	generateEntry0(trade.result, (item: ItemStack) => result = item, ctx)
+	if (trade.cost_b != null) generateEntry0(trade.cost_b, (item: ItemStack) => cost_b = item, ctx)
+	generateEntry0(trade.cost_a, (item: ItemStack) => cost_a = item, ctx)
 	let conditions = undefined
 	if (trade.conditions != null) conditions = trade.conditions
 	return { cost_a, cost_b, result, conditions }
 }
 
-function createItem0(entry: any, consumer: any, ctx: LootContext) {
+function generateEntry0(entry: any, consumer: any, ctx: LootContext) {
 	if (checkVersion(ctx.version, '1.20.5')) {
-		createItem(entry, consumer, ctx)
+		generateEntry(entry, consumer, ctx)
 	} else {
-		createItem1204(entry, consumer, ctx)
+		generateEntry1204(entry, consumer, ctx)
 	}
 }
 

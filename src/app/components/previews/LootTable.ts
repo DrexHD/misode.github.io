@@ -183,7 +183,38 @@ export function generatePool(pool: any, consumer: ItemConsumer, ctx: LootContext
 	}
 }
 
-function expandEntry(entry: any, ctx: LootContext, consumer: (entry: any) => void): boolean {
+export function generateEntry(entry: any, consumer: ItemConsumer, ctx: LootContext) {
+	let totalWeight = 0
+	const entries: any[] = []
+
+	// Expand entry
+	expandEntry(entry, ctx, (e) => {
+		const weight = computeWeight(e, ctx.luck)
+		if (weight > 0) {
+			entries.push(e)
+			totalWeight += weight
+		}
+	})
+
+	// Select random entry
+	if (totalWeight === 0 || entries.length === 0) {
+		return
+	}
+	if (entries.length === 1) {
+		createItem(entries[0], consumer, ctx)
+		return
+	}
+	let remainingWeight = ctx.random.nextInt(totalWeight)
+	for (const entry of entries) {
+		remainingWeight -= computeWeight(entry, ctx.luck)
+		if (remainingWeight < 0) {
+			createItem(entry, consumer, ctx)
+			break
+		}
+	}
+}
+
+export function expandEntry(entry: any, ctx: LootContext, consumer: (entry: any) => void): boolean {
 	if (!canEntryRun(entry, ctx)) {
 		return false
 	}
