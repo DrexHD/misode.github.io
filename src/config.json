@@ -212,9 +212,16 @@
     },
     {
       "id": "26.1",
+      "ref": "26.1.1",
+      "name": "26.1",
+      "pack_format": 101,
+      "show": true
+    },
+    {
+      "id": "26.2",
       "dynamic": true,
-      "name": "26.1 (dev)",
-      "pack_format": 95,
+      "name": "26.2",
+      "pack_format": 102,
       "show": true
     }
   ],
@@ -422,7 +429,8 @@
     {
       "id": "trade_set",
       "url": "trade-set",
-      "minVersion": "26.1"
+      "minVersion": "26.1",
+      "wiki": "https://minecraft.wiki/w/Trade_set"
     },
     {
       "id": "text_component",
@@ -805,6 +813,12 @@
       "tags": ["assets"],
       "minVersion": "1.21.2",
       "wiki": "https://minecraft.wiki/w/Shader#Post-processing_effects"
+    },
+    {
+      "id": "sounds",
+      "url": "assets/sounds",
+      "tags": ["assets"],
+      "wiki": "https://minecraft.wiki/w/Sounds.json"
     },
     {
       "id": "ad_astra:planets",

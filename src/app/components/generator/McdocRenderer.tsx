@@ -121,7 +121,7 @@ function Body({ type, optional, node, ctx }: Props<SimplifiedMcdocType>) {
 			return <></>
 		}
 		return <div class="node-body">
-			<ListBody type={type} node={node} ctx={ctx} />
+			<ListBody type={type} optional={optional} node={node} ctx={ctx} />
 		</div>
 	}
 	if (type.kind === 'tuple') {
@@ -849,7 +849,7 @@ function ListHead({ type, node, ctx }: Props<ListType | PrimitiveArrayType>) {
 	</button>
 }
 
-function ListBody({ type: outerType, node, ctx }: Props<ListType | PrimitiveArrayType>) {
+function ListBody({ type: outerType, optional, node, ctx }: Props<ListType | PrimitiveArrayType>) {
 	if (!JsonArrayNode.is(node)) {
 		return <></>
 	}
@@ -892,6 +892,21 @@ function ListBody({ type: outerType, node, ctx }: Props<ListType | PrimitiveArra
 		}
 	}, [type, node, ctx, canAdd])
 
+	const makeListEdit: MakeEdit = useCallback((edit) => {
+		ctx.makeEdit(() => {
+			const newNode = edit(node.range)
+			if (JsonArrayNode.is(newNode) && newNode.children.length === 0 && optional && type.kind === 'list' && (type.lengthRange?.min ?? 0) > 0) {
+				// Remove entire list when empty list is not allowed and field is optional
+				return undefined
+			}
+			return newNode
+		})
+	}, [ctx, node, optional, type])
+
+	const listCtx = useMemo(() => {
+		return { ...ctx, makeEdit: makeListEdit }
+	}, [ctx, makeListEdit])
+
 	return <>
 		{node.children.map((item, index) => {
 			if (index === maxShown) {
@@ -905,7 +920,7 @@ function ListBody({ type: outerType, node, ctx }: Props<ListType | PrimitiveArra
 				return <></>
 			}
 			const key = index.toString()
-			return <ListItem key={key} item={item} index={index} category={category} type={childType} isToggled={isToggled(key)} expand={expand(key)} collapse={collapse(key)} node={node} ctx={ctx} />
+			return <ListItem key={key} item={item} index={index} category={category} type={childType} isToggled={isToggled(key)} expand={expand(key)} collapse={collapse(key)} node={node} ctx={listCtx} />
 		})}
 		{node.children.length > 0 && <div class="node-header">
 			<button class="add tooltipped tip-se" aria-label={locale('add_bottom')} onClick={() => onAddBottom()} disabled={!canAdd}>

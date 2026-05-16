@@ -256,6 +256,9 @@ export class SpyglassService {
 		if (gen.id === 'pack_mcmeta') {
 			return `${UNSAVED_URI}pack.mcmeta`
 		}
+		if (gen.id === 'sounds') {
+			return `${UNSAVED_URI}assets/minecraft/sounds.json`
+		}
 		const pack = gen.tags?.includes('assets') ? 'assets' : 'data'
 		return `${UNSAVED_URI}${pack}/draft/${genPath(gen, this.version)}/draft${gen.ext ?? '.json'}`
 	}
