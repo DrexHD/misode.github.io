@@ -35,6 +35,8 @@ interface Props<Type extends SimplifiedMcdocType = SimplifiedMcdocType> {
 	type: Type
 	optional?: boolean
 	excludeStrings?: string[]
+	collapseItemsByDefault?: boolean
+	listToggles?: ReturnType<typeof useToggles>
 	node: JsonNode | undefined
 	ctx: McdocContext
 }
@@ -55,7 +57,7 @@ export function McdocRoot({ type, node, ctx } : Props) {
 	</>
 }
 
-function Head({ type, optional, excludeStrings, node, ctx }: Props) {
+function Head({ type, optional, excludeStrings, listToggles, node, ctx }: Props) {
 	if (type.kind === 'string') {
 		return <StringHead type={type} optional={optional} excludeStrings={excludeStrings} node={node} ctx={ctx} />
 	}
@@ -78,7 +80,7 @@ function Head({ type, optional, excludeStrings, node, ctx }: Props) {
 		if (isFixedList(type)) {
 			return <TupleHead type={{ kind: 'tuple', items: [...Array(type.lengthRange.min)].map(() => getItemType(type)), attributes: type.attributes }} optional={optional} node={node} ctx={ctx} />
 		}
-		return <ListHead type={type} node={node} ctx={ctx} />
+		return <ListHead type={type} listToggles={listToggles} node={node} ctx={ctx} />
 	}
 	if (type.kind === 'tuple') {
 		return <TupleHead type={type} optional={optional} node={node} ctx={ctx} />
@@ -92,7 +94,7 @@ function Head({ type, optional, excludeStrings, node, ctx }: Props) {
 	return <></>
 }
 
-function Body({ type, optional, node, ctx }: Props<SimplifiedMcdocType>) {
+function Body({ type, optional, collapseItemsByDefault, listToggles, node, ctx }: Props<SimplifiedMcdocType>) {
 	if (type.kind === 'union') {
 		return <UnionBody type={type} optional={optional} node={node} ctx={ctx} />
 	}
@@ -121,7 +123,7 @@ function Body({ type, optional, node, ctx }: Props<SimplifiedMcdocType>) {
 			return <></>
 		}
 		return <div class="node-body">
-			<ListBody type={type} optional={optional} node={node} ctx={ctx} />
+			<ListBody type={type} optional={optional} collapseItemsByDefault={collapseItemsByDefault} listToggles={listToggles} node={node} ctx={ctx} />
 		</div>
 	}
 	if (type.kind === 'tuple') {
@@ -588,6 +590,7 @@ interface StaticFieldProps extends Props {
 }
 function StaticField({ pair, index, field, fieldKey, staticFields, isToggled, expand, collapse, node, ctx }: StaticFieldProps) {
 	const { locale } = useLocale()
+	const listToggles = useToggles()
 
 	const child = pair?.value
 	const childType = simplifyType(field.type, ctx, { key: pair?.key, parent: node })
@@ -660,9 +663,9 @@ function StaticField({ pair, index, field, fieldKey, staticFields, isToggled, ex
 				: <button class="toggle tooltipped tip-se" aria-label={`${locale('collapse')}\n${locale('collapse_all', 'Ctrl')}`} onClick={collapse}>{Octicon.chevron_down}</button>
 			)}
 			<Key label={fieldKey} doc={field.desc} />
-			{!isCollapsed && <Head type={childType} node={child} optional={field.optional} ctx={fieldCtx} />}
+			{!isCollapsed && <Head type={childType} node={child} optional={field.optional} listToggles={listToggles} ctx={fieldCtx} />}
 		</div>
-		{!isCollapsed && <Body type={childType} node={child} optional={field.optional} ctx={fieldCtx} />}
+		{!isCollapsed && <Body type={childType} node={child} optional={field.optional} collapseItemsByDefault={field.type.attributes?.some(a => a.name === 'misode_collapse_items')} listToggles={listToggles} ctx={fieldCtx} />}
 	</div>
 }
 
@@ -812,7 +815,7 @@ function UnknownField({ pair, index, fieldKey, node, ctx }: UnknownFieldProps) {
 	</div>
 }
 
-function ListHead({ type, node, ctx }: Props<ListType | PrimitiveArrayType>) {
+function ListHead({ type, listToggles, node, ctx }: Props<ListType | PrimitiveArrayType>) {
 	const { locale } = useLocale()
 
 	const canAdd = (type.lengthRange?.max ?? Infinity) > (node?.children?.length ?? 0)
@@ -820,6 +823,7 @@ function ListHead({ type, node, ctx }: Props<ListType | PrimitiveArrayType>) {
 	const onAddTop = useCallback(() => {
 		if (canAdd) {
 			ctx.makeEdit((range) => {
+				listToggles?.insert(0, true)
 				const itemType = simplifyType(getItemType(type), ctx)
 				const newValue = getDefault(itemType, range, ctx)
 				const newItem: core.ItemNode<JsonNode> = {
@@ -843,20 +847,21 @@ function ListHead({ type, node, ctx }: Props<ListType | PrimitiveArrayType>) {
 				return newArray
 			})
 		}
-	}, [type, node, ctx, canAdd])
+	}, [type, node, ctx, canAdd, listToggles])
 
 	return <button class="add tooltipped tip-se" aria-label={locale('add_top')} onClick={() => onAddTop()} disabled={!canAdd}>
 		{Octicon.plus_circle}
 	</button>
 }
 
-function ListBody({ type: outerType, optional, node, ctx }: Props<ListType | PrimitiveArrayType>) {
+function ListBody({ type: outerType, optional, collapseItemsByDefault, listToggles, node, ctx }: Props<ListType | PrimitiveArrayType>) {
 	if (!JsonArrayNode.is(node)) {
 		return <></>
 	}
 
 	const { locale } = useLocale()
-	const { expand, collapse, isToggled } = useToggles()
+	const localToggles = useToggles()
+	const { expand, collapse, insert: insertToggle, remove: removeToggle, isToggled } = listToggles ?? localToggles
 	const [maxShown, setMaxShown] = useState(50)
 
 	const type = node.typeDef && isListOrArray(node.typeDef) ? node.typeDef : outerType
@@ -868,6 +873,7 @@ function ListBody({ type: outerType, optional, node, ctx }: Props<ListType | Pri
 	const onAddBottom = useCallback(() => {
 		if (canAdd) {
 			ctx.makeEdit((range) => {
+				insertToggle(node.children.length, true)
 				const itemType = simplifyType(getItemType(type), ctx)
 				const newValue = getDefault(itemType, range, ctx)
 				const newItem: core.ItemNode<JsonNode> = {
@@ -891,7 +897,7 @@ function ListBody({ type: outerType, optional, node, ctx }: Props<ListType | Pri
 				return newArray
 			})
 		}
-	}, [type, node, ctx, canAdd])
+	}, [type, node, ctx, canAdd, insertToggle])
 
 	const makeListEdit: MakeEdit = useCallback((edit) => {
 		ctx.makeEdit(() => {
@@ -921,7 +927,7 @@ function ListBody({ type: outerType, optional, node, ctx }: Props<ListType | Pri
 				return <></>
 			}
 			const key = index.toString()
-			return <ListItem key={key} item={item} index={index} category={category} type={childType} isToggled={isToggled(key)} expand={expand(key)} collapse={collapse(key)} node={node} ctx={listCtx} />
+			return <ListItem key={key} item={item} index={index} category={category} type={childType} collapseByDefault={collapseItemsByDefault === true} isToggled={isToggled(key)} expand={expand(key)} collapse={collapse(key)} removeToggle={removeToggle} node={node} ctx={listCtx} />
 		})}
 		{node.children.length > 0 && <div class="node-header">
 			<button class="add tooltipped tip-se" aria-label={locale('add_bottom')} onClick={() => onAddBottom()} disabled={!canAdd}>
@@ -935,27 +941,30 @@ interface ListItemProps extends Props {
 	item: core.ItemNode<JsonNode>
 	index: number
 	category: string | undefined
+	collapseByDefault: boolean
 	isToggled: boolean | undefined
 	expand: (e: MouseEvent) => void
 	collapse: (e: MouseEvent) => void
+	removeToggle: (index: number) => void
 	node: JsonArrayNode
 }
-function ListItem({ item, index, category, type, isToggled, expand, collapse, node, ctx }: ListItemProps) {
+function ListItem({ item, index, category, type, collapseByDefault, isToggled, expand, collapse, removeToggle, node, ctx }: ListItemProps) {
 	const { locale } = useLocale()
 	const [active, setActive] = useFocus()
 
 	const child = item.value
 	const canToggle = JsonObjectNode.is(child)
-	const isCollapsed = canToggle && (isToggled === false || (isToggled === undefined && node.children.length > 20))
+	const isCollapsed = canToggle && (isToggled === false || (isToggled === undefined && (collapseByDefault || node.children.length > 20)))
 	const canMoveUp = node.children.length > 1 && index > 0
 	const canMoveDown = node.children.length > 1 && index < (node.children.length - 1)
 
 	const onRemove = useCallback(() => {
 		ctx.makeEdit(() => {
+			removeToggle(index)
 			node.children.splice(index, 1)
 			return node
 		})
-	}, [ctx, node, index])
+	}, [ctx, node, index, removeToggle])
 
 	const onMoveUp = useCallback(() => {
 		if (node.children.length <= 1 || index <= 0) {
@@ -1303,11 +1312,37 @@ function useToggles() {
 			setToggleState(state => new Map(state.set(key, false)))
 		}
 	}, [])
+
+	const insert = useCallback((index: number, expanded: boolean) => {
+		setToggleState(state => {
+			const shifted = new Map<string, boolean>()
+			for (const [key, value] of state) {
+				const itemIndex = Number(key)
+				shifted.set(Number.isInteger(itemIndex) && itemIndex >= index ? `${itemIndex + 1}` : key, value)
+			}
+			shifted.set(`${index}`, expanded)
+			return shifted
+		})
+	}, [])
+
+	const remove = useCallback((index: number) => {
+		setToggleState(state => {
+			const shifted = new Map<string, boolean>()
+			for (const [key, value] of state) {
+				const itemIndex = Number(key)
+				if (itemIndex === index) {
+					continue
+				}
+				shifted.set(Number.isInteger(itemIndex) && itemIndex > index ? `${itemIndex - 1}` : key, value)
+			}
+			return shifted
+		})
+	}, [])
 	
 	const isToggled = useCallback((key: string) => {
 		if (!(toggleState instanceof Map)) return false
 		return toggleState.get(key) ?? toggleAll
 	}, [toggleState, toggleAll])
 
-	return { expand, collapse, isToggled }
+	return { expand, collapse, insert, remove, isToggled }
 }

@@ -17,7 +17,7 @@ struct TradeTier {
 struct TradeGroup {
 	/// How many trades will be selected from this group
 	num_to_select: NumberProviderRef,
-	trades: [BehaviorTrade],
+	trades: #[misode_collapse_items] [BehaviorTrade],
 }
 
 // see villagerconfig_loot.mcdoc
