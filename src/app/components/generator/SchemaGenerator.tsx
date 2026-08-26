@@ -61,39 +61,52 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 
 	const [currentPreset, setCurrentPreset] = useSearchParam('preset')
 	const [sharedSnippetId, setSharedSnippetId] = useSearchParam(SHARE_KEY)
+	const sourceRequest = useRef({ preset: currentPreset, snippet: sharedSnippetId })
+	const [sourceRevision, setSourceRevision] = useState(0)
 	const ignoreChange = useRef(false)
 
+	useEffect(() => {
+		const current = sourceRequest.current
+		if (current.preset !== currentPreset || current.snippet !== sharedSnippetId) {
+			sourceRequest.current = { preset: currentPreset, snippet: sharedSnippetId }
+			setSourceRevision(revision => revision + 1)
+		}
+	}, [currentPreset, sharedSnippetId])
+
 	const { value: docAndNode, loading: docLoading, error: docError } = useAsync(async () => {
+		const { preset, snippet } = sourceRequest.current
 		let text: string | undefined = undefined
-		if (currentPreset && sharedSnippetId) {
+		if (preset && snippet) {
+			sourceRequest.current = { preset, snippet: undefined }
+			setSourceRevision(revision => revision + 1)
 			setSharedSnippetId(undefined)
 			return AsyncCancel
 		}
-		if (currentPreset) {
-			text = await loadPreset(currentPreset)
-		} else if (sharedSnippetId) {
-			const snippet = await getSnippet(sharedSnippetId)
+		if (preset) {
+			text = await loadPreset(preset)
+		} else if (snippet) {
+			const sharedSnippet = await getSnippet(snippet)
 			let cancel = false
-			if (snippet.version && snippet.version !== version) {
-				changeVersion(snippet.version, false)
+			if (sharedSnippet.version && sharedSnippet.version !== version) {
+				changeVersion(sharedSnippet.version, false)
 				cancel = true
 			}
-			if (snippet.type && snippet.type !== gen.id) {
-				const snippetGen = config.generators.find(g => g.id === snippet.type)
+			if (sharedSnippet.type && sharedSnippet.type !== gen.id) {
+				const snippetGen = config.generators.find(g => g.id === sharedSnippet.type)
 				if (snippetGen) {
-					route(`${cleanUrl(snippetGen.url)}?${SHARE_KEY}=${snippet.id}`)
+					route(`${cleanUrl(snippetGen.url)}?${SHARE_KEY}=${sharedSnippet.id}`)
 					cancel = true
 				}
 			}
 			if (cancel) {
 				return AsyncCancel
 			}
-			if (snippet.show_preview && !previewShown) {
+			if (sharedSnippet.show_preview && !previewShown) {
 				setPreviewShown(true)
 				setSourceShown(false)
 			}
-			Analytics.openSnippet(gen.id, sharedSnippetId, version)
-			text = snippet.text
+			Analytics.openSnippet(gen.id, snippet, version)
+			text = sharedSnippet.text
 		}
 		if (!service || !uri) {
 			return AsyncCancel
@@ -126,12 +139,13 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 		ignoreChange.current = false
 		Analytics.setGenerator(gen.id)
 		return docAndNode
-	}, [gen.id, version, sharedSnippetId, currentPreset, service, uri])
+	}, [gen.id, version, sourceRevision, service, uri])
 
 	const { doc } = docAndNode ?? {}
 
 	watchSpyglassUri(uri, () => {
 		if (!ignoreChange.current) {
+			sourceRequest.current = { preset: undefined, snippet: undefined }
 			setCurrentPreset(undefined, true)
 			setSharedSnippetId(undefined, true)
 		}
@@ -223,6 +237,8 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 
 	const selectPreset = (id: string) => {
 		Analytics.loadPreset(gen.id, id)
+		sourceRequest.current = { preset: id, snippet: undefined }
+		setSourceRevision(revision => revision + 1)
 		setSharedSnippetId(undefined, true)
 		changeTargetVersion(version, true)
 		setCurrentPreset(id)
