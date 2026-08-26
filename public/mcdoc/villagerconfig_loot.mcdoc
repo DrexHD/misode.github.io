@@ -1,7 +1,8 @@
 // This file is a copy of https://github.com/SpyglassMC/vanilla-mcdoc/blob/main/java/data/loot/mod.mcdoc
 // where minecraft:loot_pool_entry entries were changed to use VC_SingletonPoolEntry instead of SingletonPoolEntry
 // because villagerconfig doesn't care about quality and weight. 
-use ::java::data::util::NumberProvider
+use ::java::data::slot_source::SlotSource
+use ::java::util::registry_ref::ItemListRef
 use ::java::data::loot::CompositePoolEntry
 use ::java::data::loot::DynamicDrops
 use ::java::data::loot::LootPoolEntry
@@ -10,6 +11,7 @@ use ::java::data::loot::LootTable
 use ::java::data::loot::LootEntryType
 use ::java::data::loot::LootCondition
 use ::java::data::loot::LootFunction
+use ::java::data::loot::LootTableListRef
 
 dispatch villagerconfig:loot_pool_entry[empty] to VC_SingletonPoolEntry
 
@@ -33,15 +35,20 @@ dispatch villagerconfig:loot_pool_entry[item] to struct ItemPoolEntry {
 	...VC_SingletonPoolEntry,
 }
 
-/// Adds the contents of another loot table.
 dispatch villagerconfig:loot_pool_entry[loot_table] to struct LootTablePoolEntry {
 	#[until="1.20.5"]
 	name: #[id="loot_table"] string,
 	#[since="1.20.5"]
 	value: (
-		#[id="loot_table"] string |
-		LootTable |
+		#[until="26.3"] #[id="loot_table"] string |
+		#[until="26.3"] LootTable |
+		#[since="26.3"] LootTableListRef |
 	),
+	/// If `true`, randomly selects a loot table to drop. \
+	/// If `false`, drops all loot tables. \
+	/// Defaults to `false`.
+	#[since="26.3"]
+	expand?: boolean,
 	...VC_SingletonPoolEntry,
 }
 
@@ -54,9 +61,21 @@ dispatch villagerconfig:loot_pool_entry[slots] to struct SlotsPoolEntry {
 
 /// Adds the contents of an item tag.
 dispatch villagerconfig:loot_pool_entry[tag] to struct TagPoolEntry {
+	#[until="26.3"]
 	name: #[id(registry="item",tags="implicit")] string,
-	/// If `true`, drops a random item from the tag. If `false`, drops all items in the tag.
-	expand: boolean,
+	#[since="26.3"]
+	items: ItemListRef,
+	#[until="26.3"] ...struct {
+		/// If `true`, drops a random item from the tag. \
+		/// If `false`, drops all items in the tag.
+		expand: boolean,
+	},
+	#[since="26.3"] ...struct {
+		/// If `true`, randomly selects an item to drop. \
+		/// If `false`, drops all items. \
+		/// Defaults to `false`.
+		expand?: boolean,
+	},
 	...VC_SingletonPoolEntry,
 }
 

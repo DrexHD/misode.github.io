@@ -1,8 +1,8 @@
-use ::java::data::util::NumberProvider
+use ::java::data::number_provider::NumberProviderRef
 use ::java::data::loot::LootPoolEntry
 use ::java::data::loot::LootEntryType
 use ::java::data::loot::LootCondition
-use ::java::server::util::ColorString
+use ::java::util::DyeColor
 
 dispatch minecraft:resource[villagerconfig:trade_table] to struct TradeTable {
 	tiers: [TradeTier]
@@ -16,7 +16,7 @@ struct TradeTier {
 
 struct TradeGroup {
 	/// How many trades will be selected from this group
-	num_to_select: NumberProvider<int @ 1..>,
+	num_to_select: NumberProviderRef,
 	trades: [BehaviorTrade],
 }
 
@@ -36,13 +36,13 @@ struct BehaviorTrade {
 	cost_b?: VC_LootPoolEntry,
 	/// The item that the villager will give to the player in exchange for the cost items.
 	result: VC_LootPoolEntry,
-	price_multiplier?: NumberProvider,
-	trader_experience?: NumberProvider<int @ 0..>,
+	price_multiplier?: NumberProviderRef,
+	trader_experience?: NumberProviderRef,
 	/// The number of times the trade can be used before it is disabled.
-	max_uses?: NumberProvider<int @ 0..>,
+	max_uses?: NumberProviderRef,
 	conditions?: [LootCondition],
 	reference_providers?: struct {
-		[string]: NumberProvider,
+		[string]: NumberProviderRef,
 	},
 	reward_experience?: boolean,
 	/// The "stored_enchantments" component on any item can affect the price
@@ -58,23 +58,23 @@ struct Conditions {
 dispatch minecraft:loot_function[villagerconfig:enchant_randomly] to struct VillagerConfigEnchantRandomly {
 	include?: [#[id="enchantment"] string],
 	exclude?: [#[id="enchantment"] string],
-	min_level?: NumberProvider<int @ 0..>,
-	max_level?: NumberProvider<int @ 0..>,
+	min_level?: NumberProviderRef,
+	max_level?: NumberProviderRef,
 	...Conditions
 }
 
 dispatch minecraft:loot_function[villagerconfig:set_dye] to struct VillagerConfigSetDye {
-	dye_colors?: [ColorString],
+	dye_colors?: [DyeColor],
 	add?: boolean,
 	...Conditions
 }
 
 dispatch minecraft:number_provider[villagerconfig:add] to struct VillagerConfigAdd {
-	addends: [NumberProvider],
+	addends: [NumberProviderRef],
 }
 
 dispatch minecraft:number_provider[villagerconfig:multiply] to struct VillagerConfigMultiply {
-	factors: [NumberProvider],
+	factors: [NumberProviderRef],
 }
 
 dispatch minecraft:number_provider[villagerconfig:reference] to struct VillagerConfigReference {
