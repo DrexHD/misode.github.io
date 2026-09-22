@@ -94,9 +94,18 @@ export async function fetchRegistries(versionId: VersionId) {
 		// villagerconfig custom registry entries
 		result.get('loot_function_type')?.push('villagerconfig:enchant_randomly')
 		result.get('loot_function_type')?.push('villagerconfig:set_dye')
-		result.get('loot_number_provider_type')?.push('villagerconfig:add')
-		result.get('loot_number_provider_type')?.push('villagerconfig:multiply')
-		result.get('loot_number_provider_type')?.push('villagerconfig:reference')
+		
+		for (const registry of [
+			result.get('loot_number_provider_type'),
+			result.get('context_int_provider_type'),
+			result.get('context_float_provider_type'),
+		]) {
+			registry?.push(
+				'villagerconfig:add',
+				'villagerconfig:multiply',
+				'villagerconfig:reference',
+			)
+		}
 
 		const villagerPresets = [...result.get('villager_profession')!, 'wanderingtrader']
 		result.set('villagerconfig:trade_table', villagerPresets)

@@ -1,4 +1,9 @@
-use ::java::data::number_provider::NumberProviderRef
+use ::java::data::number_provider::RandomIntGenerator
+use ::java::data::number_provider::IntNumberProviderRef
+use ::java::data::number_provider::RandomValueBounds
+use ::java::data::number_provider::FloatNumberProviderRef
+use ::java::data::number_provider::IntRef
+use ::java::data::number_provider::FloatRef
 use ::java::data::loot::LootPoolEntry
 use ::java::data::loot::LootEntryType
 use ::java::data::loot::LootCondition
@@ -16,7 +21,10 @@ struct TradeTier {
 
 struct TradeGroup {
 	/// How many trades will be selected from this group
-	num_to_select: NumberProviderRef,
+	num_to_select: (
+		#[until="1.17"] RandomIntGenerator |
+		#[since="1.17"] IntNumberProviderRef |
+	),
 	trades: #[misode_collapse_items] [BehaviorTrade],
 }
 
@@ -36,13 +44,25 @@ struct BehaviorTrade {
 	cost_b?: VC_LootPoolEntry,
 	/// The item that the villager will give to the player in exchange for the cost items.
 	result: VC_LootPoolEntry,
-	price_multiplier?: NumberProviderRef,
-	trader_experience?: NumberProviderRef,
+	price_multiplier?: (
+		#[until="1.17"] RandomValueBounds |
+		#[since="1.17"] FloatNumberProviderRef |
+	),
+	trader_experience?: (
+		#[until="1.17"] RandomIntGenerator |
+		#[since="1.17"] IntNumberProviderRef |
+	),
 	/// The number of times the trade can be used before it is disabled.
-	max_uses?: NumberProviderRef,
+	max_uses?: (
+		#[until="1.17"] RandomIntGenerator |
+		#[since="1.17"] IntNumberProviderRef |
+	),
 	conditions?: [LootCondition],
 	reference_providers?: struct {
-		[string]: NumberProviderRef,
+		[string]: (
+			#[until="1.17"] RandomValueBounds |
+			#[since="1.17"] FloatNumberProviderRef |
+		),
 	},
 	reward_experience?: boolean,
 	/// The "stored_enchantments" component on any item can affect the price
@@ -58,8 +78,14 @@ struct Conditions {
 dispatch minecraft:loot_function[villagerconfig:enchant_randomly] to struct VillagerConfigEnchantRandomly {
 	include?: [#[id="enchantment"] string],
 	exclude?: [#[id="enchantment"] string],
-	min_level?: NumberProviderRef,
-	max_level?: NumberProviderRef,
+	min_level?: (
+		#[until="1.17"] RandomIntGenerator |
+		#[since="1.17"] IntNumberProviderRef |
+	),
+	max_level?: (
+		#[until="1.17"] RandomIntGenerator |
+		#[since="1.17"] IntNumberProviderRef |
+	),
 	...Conditions
 }
 
@@ -69,14 +95,40 @@ dispatch minecraft:loot_function[villagerconfig:set_dye] to struct VillagerConfi
 	...Conditions
 }
 
+
+// Legacy number providers
 dispatch minecraft:number_provider[villagerconfig:add] to struct VillagerConfigAdd {
-	addends: [NumberProviderRef],
+	addends: [LegacyNumberProvider],
 }
 
 dispatch minecraft:number_provider[villagerconfig:multiply] to struct VillagerConfigMultiply {
-	factors: [NumberProviderRef],
+	factors: [LegacyNumberProvider],
 }
 
 dispatch minecraft:number_provider[villagerconfig:reference] to struct VillagerConfigReference {
+	id: string,
+}
+
+// context_int
+dispatch minecraft:context_int_provider[villagerconfig:add] to struct VillagerConfigAdd {
+	addends: [IntRef],
+}
+
+dispatch minecraft:context_int_provider[villagerconfig:multiply] to struct VillagerConfigMultiply {
+	factors: [IntRef],
+}
+dispatch minecraft:context_int_provider[villagerconfig:reference] to struct VillagerConfigReference {
+	id: string,
+}
+
+// context_float
+dispatch minecraft:context_float_provider[villagerconfig:add] to struct VillagerConfigAdd {
+	addends: [FloatRef],
+}
+
+dispatch minecraft:context_float_provider[villagerconfig:multiply] to struct VillagerConfigMultiply {
+	factors: [FloatRef],
+}
+dispatch minecraft:context_float_provider[villagerconfig:reference] to struct VillagerConfigReference {
 	id: string,
 }
