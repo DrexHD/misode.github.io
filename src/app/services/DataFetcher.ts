@@ -26,7 +26,8 @@ const villagerConfigPresetVersions: Partial<Record<VersionId, string>> = {
   '1.21.9': '1.21.10',
   '1.21.11': '1.21.11',
   '26.1': '26.1',
-  '26.2': '26.2'
+  '26.2': '26.2',
+  '26.3': '26.3'
 }
 
 type McmetaTypes = 'summary' | 'data' | 'data-json' | 'assets' | 'assets-json' | 'registries' | 'atlas'
