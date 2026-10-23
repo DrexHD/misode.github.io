@@ -146,7 +146,9 @@ function StringHead({ type, optional, excludeStrings, node, ctx }: Props<StringT
 	const { locale } = useLocale()
 	const { version } = useVersion()
 
-	const nodeValue = (JsonStringNode.is(node) ? node.value : undefined)?.replaceAll('\n', '\\n')
+	const isRaw = type.attributes?.some(a => a.name === 'misode_raw_string')
+	const rawNodeValue = JsonStringNode.is(node) ? node.value : undefined
+	const nodeValue = isRaw ? rawNodeValue : rawNodeValue?.replaceAll('\n', '\\n')
 	const [value, setValue] = useState(nodeValue)
 
 	useEffect(() => {
@@ -165,8 +167,10 @@ function StringHead({ type, optional, excludeStrings, node, ctx }: Props<StringT
 	const isSelect = idRegistry && isSelectRegistry(idRegistry, version)
 
 	const onChangeValue = useCallback((newValue: string) => {
-		newValue = newValue.replaceAll('\\n', '\n')
-		if (nodeValue === newValue) {
+		if (!isRaw) {
+			newValue = newValue.replaceAll('\\n', '\n')
+		}
+		if (rawNodeValue === newValue) {
 			return
 		}
 		ctx.makeEdit((range) => {
@@ -181,7 +185,7 @@ function StringHead({ type, optional, excludeStrings, node, ctx }: Props<StringT
 				type: 'json:string',
 			}
 		})
-	}, [optional, node, ctx, nodeValue, isSelect])
+	}, [optional, node, ctx, rawNodeValue, isSelect, isRaw])
 
 	const onCommitValue = useCallback(() => {
 		onChangeValue(value ?? '')
